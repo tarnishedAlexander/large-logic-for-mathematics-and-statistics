@@ -1368,19 +1368,24 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final CrossReference cFuncFunctionsCrossReference_0_0 = (CrossReference)cFuncAssignment_0.eContents().get(0);
 		private final RuleCall cFuncFunctionsIDTerminalRuleCall_0_0_1 = (RuleCall)cFuncFunctionsCrossReference_0_0.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cExpAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cExpExpressionParserRuleCall_2_0 = (RuleCall)cExpAssignment_2.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Assignment cExpAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
+		private final RuleCall cExpExpressionParserRuleCall_2_0_0 = (RuleCall)cExpAssignment_2_0.eContents().get(0);
+		private final Group cGroup_2_1 = (Group)cGroup_2.eContents().get(1);
+		private final Keyword cCommaKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final Assignment cExpAssignment_2_1_1 = (Assignment)cGroup_2_1.eContents().get(1);
+		private final RuleCall cExpExpressionParserRuleCall_2_1_1_0 = (RuleCall)cExpAssignment_2_1_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		////ahora no puede hacer operaciones dentro de los argumentos de callfunction solo se le pasa datos
 		//callFunction:
 		//    func = [Functions]
-		//    "(" exp=Expression ")"
+		//    "(" (exp+=Expression ("," exp+=Expression)*)? ")"
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//func = [Functions]
-		//"(" exp=Expression ")"
+		//"(" (exp+=Expression ("," exp+=Expression)*)? ")"
 		public Group getGroup() { return cGroup; }
 		
 		//func = [Functions]
@@ -1395,11 +1400,26 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//"("
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//exp=Expression
-		public Assignment getExpAssignment_2() { return cExpAssignment_2; }
+		//(exp+=Expression ("," exp+=Expression)*)?
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//exp+=Expression
+		public Assignment getExpAssignment_2_0() { return cExpAssignment_2_0; }
 		
 		//Expression
-		public RuleCall getExpExpressionParserRuleCall_2_0() { return cExpExpressionParserRuleCall_2_0; }
+		public RuleCall getExpExpressionParserRuleCall_2_0_0() { return cExpExpressionParserRuleCall_2_0_0; }
+		
+		//("," exp+=Expression)*
+		public Group getGroup_2_1() { return cGroup_2_1; }
+		
+		//","
+		public Keyword getCommaKeyword_2_1_0() { return cCommaKeyword_2_1_0; }
+		
+		//exp+=Expression
+		public Assignment getExpAssignment_2_1_1() { return cExpAssignment_2_1_1; }
+		
+		//Expression
+		public RuleCall getExpExpressionParserRuleCall_2_1_1_0() { return cExpExpressionParserRuleCall_2_1_1_0; }
 		
 		//")"
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
@@ -2187,7 +2207,7 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	////ahora no puede hacer operaciones dentro de los argumentos de callfunction solo se le pasa datos
 	//callFunction:
 	//    func = [Functions]
-	//    "(" exp=Expression ")"
+	//    "(" (exp+=Expression ("," exp+=Expression)*)? ")"
 	//;
 	public CallFunctionElements getCallFunctionAccess() {
 		return pCallFunction;

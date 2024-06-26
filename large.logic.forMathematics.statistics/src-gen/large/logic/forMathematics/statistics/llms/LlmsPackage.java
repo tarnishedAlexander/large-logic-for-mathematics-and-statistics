@@ -1285,7 +1285,7 @@ public interface LlmsPackage extends EPackage
   int CALL_FUNCTION__FUNC = PARMS_PRINT_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Exp</b></em>' containment reference.
+   * The feature id for the '<em><b>Exp</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2535,10 +2535,10 @@ public interface LlmsPackage extends EPackage
   EReference getcallFunction_Func();
 
   /**
-   * Returns the meta object for the containment reference '{@link large.logic.forMathematics.statistics.llms.callFunction#getExp <em>Exp</em>}'.
+   * Returns the meta object for the containment reference list '{@link large.logic.forMathematics.statistics.llms.callFunction#getExp <em>Exp</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Exp</em>'.
+   * @return the meta object for the containment reference list '<em>Exp</em>'.
    * @see large.logic.forMathematics.statistics.llms.callFunction#getExp()
    * @see #getcallFunction()
    * @generated
@@ -3402,7 +3402,7 @@ public interface LlmsPackage extends EPackage
     EReference CALL_FUNCTION__FUNC = eINSTANCE.getcallFunction_Func();
 
     /**
-     * The meta object literal for the '<em><b>Exp</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Exp</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

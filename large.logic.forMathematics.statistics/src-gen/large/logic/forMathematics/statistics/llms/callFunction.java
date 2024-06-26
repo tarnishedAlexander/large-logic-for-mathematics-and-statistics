@@ -3,6 +3,7 @@
  */
 package large.logic.forMathematics.statistics.llms;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -46,25 +47,15 @@ public interface callFunction extends ParmsPrint, Primary
   void setFunc(Functions value);
 
   /**
-   * Returns the value of the '<em><b>Exp</b></em>' containment reference.
+   * Returns the value of the '<em><b>Exp</b></em>' containment reference list.
+   * The list contents are of type {@link large.logic.forMathematics.statistics.llms.Expression}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Exp</em>' containment reference.
-   * @see #setExp(Expression)
+   * @return the value of the '<em>Exp</em>' containment reference list.
    * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getcallFunction_Exp()
    * @model containment="true"
    * @generated
    */
-  Expression getExp();
-
-  /**
-   * Sets the value of the '{@link large.logic.forMathematics.statistics.llms.callFunction#getExp <em>Exp</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Exp</em>' containment reference.
-   * @see #getExp()
-   * @generated
-   */
-  void setExp(Expression value);
+  EList<Expression> getExp();
 
 } // callFunction

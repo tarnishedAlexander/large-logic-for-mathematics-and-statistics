@@ -3,6 +3,8 @@
  */
 package large.logic.forMathematics.statistics.llms.impl;
 
+import java.util.Collection;
+
 import large.logic.forMathematics.statistics.llms.Expression;
 import large.logic.forMathematics.statistics.llms.Expressions;
 import large.logic.forMathematics.statistics.llms.Functions;
@@ -15,10 +17,15 @@ import large.logic.forMathematics.statistics.llms.callFunction;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -69,14 +76,14 @@ public class callFunctionImpl extends ParmsPrintImpl implements callFunction
   protected Functions func;
 
   /**
-   * The cached value of the '{@link #getExp() <em>Exp</em>}' containment reference.
+   * The cached value of the '{@link #getExp() <em>Exp</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getExp()
    * @generated
    * @ordered
    */
-  protected Expression exp;
+  protected EList<Expression> exp;
 
   /**
    * <!-- begin-user-doc -->
@@ -245,48 +252,13 @@ public class callFunctionImpl extends ParmsPrintImpl implements callFunction
    * @generated
    */
   @Override
-  public Expression getExp()
+  public EList<Expression> getExp()
   {
+    if (exp == null)
+    {
+      exp = new EObjectContainmentEList<Expression>(Expression.class, this, LlmsPackage.CALL_FUNCTION__EXP);
+    }
     return exp;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetExp(Expression newExp, NotificationChain msgs)
-  {
-    Expression oldExp = exp;
-    exp = newExp;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LlmsPackage.CALL_FUNCTION__EXP, oldExp, newExp);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setExp(Expression newExp)
-  {
-    if (newExp != exp)
-    {
-      NotificationChain msgs = null;
-      if (exp != null)
-        msgs = ((InternalEObject)exp).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.CALL_FUNCTION__EXP, null, msgs);
-      if (newExp != null)
-        msgs = ((InternalEObject)newExp).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.CALL_FUNCTION__EXP, null, msgs);
-      msgs = basicSetExp(newExp, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.CALL_FUNCTION__EXP, newExp, newExp));
   }
 
   /**
@@ -302,7 +274,7 @@ public class callFunctionImpl extends ParmsPrintImpl implements callFunction
       case LlmsPackage.CALL_FUNCTION__OP:
         return basicSetOp(null, msgs);
       case LlmsPackage.CALL_FUNCTION__EXP:
-        return basicSetExp(null, msgs);
+        return ((InternalEList<?>)getExp()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -336,6 +308,7 @@ public class callFunctionImpl extends ParmsPrintImpl implements callFunction
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -351,7 +324,8 @@ public class callFunctionImpl extends ParmsPrintImpl implements callFunction
         setFunc((Functions)newValue);
         return;
       case LlmsPackage.CALL_FUNCTION__EXP:
-        setExp((Expression)newValue);
+        getExp().clear();
+        getExp().addAll((Collection<? extends Expression>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -377,7 +351,7 @@ public class callFunctionImpl extends ParmsPrintImpl implements callFunction
         setFunc((Functions)null);
         return;
       case LlmsPackage.CALL_FUNCTION__EXP:
-        setExp((Expression)null);
+        getExp().clear();
         return;
     }
     super.eUnset(featureID);
@@ -400,7 +374,7 @@ public class callFunctionImpl extends ParmsPrintImpl implements callFunction
       case LlmsPackage.CALL_FUNCTION__FUNC:
         return func != null;
       case LlmsPackage.CALL_FUNCTION__EXP:
-        return exp != null;
+        return exp != null && !exp.isEmpty();
     }
     return super.eIsSet(featureID);
   }

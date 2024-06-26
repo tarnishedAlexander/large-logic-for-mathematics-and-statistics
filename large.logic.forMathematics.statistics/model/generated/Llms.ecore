@@ -96,7 +96,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="callFunction" eSuperTypes="#//ParmsPrint #//Primary">
     <eStructuralFeatures xsi:type="ecore:EReference" name="func" eType="#//Functions"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="exp" eType="#//Expression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exp" upperBound="-1" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Variables" eSuperTypes="#//Loops">

@@ -80,6 +80,8 @@ public class LlmsParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMultiplicationAccess().getGroup(), "rule__Multiplication__Group__0");
 			builder.put(grammarAccess.getMultiplicationAccess().getGroup_1(), "rule__Multiplication__Group_1__0");
 			builder.put(grammarAccess.getCallFunctionAccess().getGroup(), "rule__CallFunction__Group__0");
+			builder.put(grammarAccess.getCallFunctionAccess().getGroup_2(), "rule__CallFunction__Group_2__0");
+			builder.put(grammarAccess.getCallFunctionAccess().getGroup_2_1(), "rule__CallFunction__Group_2_1__0");
 			builder.put(grammarAccess.getVariablesAccess().getGroup(), "rule__Variables__Group__0");
 			builder.put(grammarAccess.getVarParmArgsAccess().getGroup(), "rule__VarParmArgs__Group__0");
 			builder.put(grammarAccess.getBooleansAccess().getGroup_1(), "rule__Booleans__Group_1__0");
@@ -134,7 +136,8 @@ public class LlmsParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMultiplicationAccess().getRightAssignment_1_2(), "rule__Multiplication__RightAssignment_1_2");
 			builder.put(grammarAccess.getPrimaryAccess().getVarAssignment_1(), "rule__Primary__VarAssignment_1");
 			builder.put(grammarAccess.getCallFunctionAccess().getFuncAssignment_0(), "rule__CallFunction__FuncAssignment_0");
-			builder.put(grammarAccess.getCallFunctionAccess().getExpAssignment_2(), "rule__CallFunction__ExpAssignment_2");
+			builder.put(grammarAccess.getCallFunctionAccess().getExpAssignment_2_0(), "rule__CallFunction__ExpAssignment_2_0");
+			builder.put(grammarAccess.getCallFunctionAccess().getExpAssignment_2_1_1(), "rule__CallFunction__ExpAssignment_2_1_1");
 			builder.put(grammarAccess.getVariablesAccess().getExpAssignment_2(), "rule__Variables__ExpAssignment_2");
 			builder.put(grammarAccess.getCallVariableAccess().getVarsAssignment(), "rule__CallVariable__VarsAssignment");
 			builder.put(grammarAccess.getVarParmArgsAccess().getNameAssignment_0(), "rule__VarParmArgs__NameAssignment_0");

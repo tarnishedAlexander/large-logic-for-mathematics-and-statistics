@@ -1274,20 +1274,11 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     callFunction returns callFunction
 	 *
 	 * Constraint:
-	 *     (func=[Functions|ID] exp=Expression)
+	 *     (func=[Functions|ID] (exp+=Expression exp+=Expression*)?)
 	 * </pre>
 	 */
 	protected void sequence_callFunction(ISerializationContext context, callFunction semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, LlmsPackage.Literals.CALL_FUNCTION__FUNC) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LlmsPackage.Literals.CALL_FUNCTION__FUNC));
-			if (transientValues.isValueTransient(semanticObject, LlmsPackage.Literals.CALL_FUNCTION__EXP) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LlmsPackage.Literals.CALL_FUNCTION__EXP));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getCallFunctionAccess().getFuncFunctionsIDTerminalRuleCall_0_0_1(), semanticObject.eGet(LlmsPackage.Literals.CALL_FUNCTION__FUNC, false));
-		feeder.accept(grammarAccess.getCallFunctionAccess().getExpExpressionParserRuleCall_2_0(), semanticObject.getExp());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
