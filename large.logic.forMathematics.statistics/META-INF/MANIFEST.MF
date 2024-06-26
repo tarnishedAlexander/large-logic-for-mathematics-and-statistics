@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: large.logic.forMathematics.statistics
+Bundle-ManifestVersion: 2
+Bundle-Name: large.logic.forMathematics.statistics
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: large.logic.forMathematics.statistics; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.16.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.35.0",
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Export-Package: large.logic.forMathematics.statistics.llms,
+ large.logic.forMathematics.statistics.serializer,
+ large.logic.forMathematics.statistics,
+ large.logic.forMathematics.statistics.llms.impl,
+ large.logic.forMathematics.statistics.parser.antlr.internal,
+ large.logic.forMathematics.statistics.services,
+ large.logic.forMathematics.statistics.parser.antlr,
+ large.logic.forMathematics.statistics.scoping,
+ large.logic.forMathematics.statistics.generator,
+ large.logic.forMathematics.statistics.validation,
+ large.logic.forMathematics.statistics.llms.util
+Import-Package: org.apache.log4j

@@ -1,0 +1,261 @@
+	grammar large.logic.forMathematics.statistics.Llms with org.eclipse.xtext.common.Terminals
+	generate llms "http://www.logic.large/forMathematics/statistics/Llms"
+	
+	
+Operations:
+	{Operations} "Class" "{" 
+		
+	(func += Functions |
+	var += Variables |
+	conditional+=Conditionals |
+	loops+=Loops | 
+	print += Prints)*	
+	"}"
+	;
+	
+	Prints:
+		{Prints} "print" "(" 	
+		(print+=ParmsPrint ("," print+=ParmsPrint)*)?	
+		")"
+	;
+	
+	ParmsPrint:
+		Data | CallVariable | callFunction
+	;
+	
+	Names:
+		name = ID
+	;
+	
+	Functions:
+		"Function"
+		output = ParametersOutptut
+		"<="
+		name = Names
+		params = Parametersfunc
+		"=>"
+		"{"
+		body = Bodies
+		"}"
+	;
+	
+	// Function [Output1, Output2] <= id(n:int) => {
+	//		body
+	
+	//}
+	
+	Bodies:
+		//en bodies simempre que hagamos algo con expresiones
+		//se va a guardar en una variable si no es instruccion
+		{Bodies} 
+		//exp += Expression*
+		var += Variables*
+		
+		";"
+	;
+	
+	Loops:
+		"for"
+		"("
+		(Variables | Numbers) ":" number=Numbers 
+		")"
+		"=>"
+		"{"
+		body+=Bodies+
+		"}"
+		
+		//falta while 
+	;
+
+	Conditionals:
+		"if" "("
+		LogicalParams
+		")"
+		"=>"
+		"{"
+		body+=Bodies+
+		"}"
+		("else-if"
+		"("
+		logicParms+=LogicalParams
+		")"
+		"=>"
+		"{"
+		body+=Bodies+
+		"}")*
+		"else{"
+		body+=Bodies+
+		"}"
+	;
+	
+	LogicalParams:
+		LogicalOperation (boolFunc+=BooleanFunction lgicOp+=LogicalOperation)*
+	;
+	
+	
+	//"estan mal los parentesis"
+	/*Parameters:
+		{Parameters} (param += Expression (',' param += Expression)*)?
+	;*/
+	
+	ParametersOutptut:
+		param = varParmArgs 
+		|
+		"["
+		{ParametersOutptut}
+		(params += varParmArgs("," params += varParmArgs)*)?
+		"]"
+	;
+	
+	
+	Parametersfunc:
+		"("
+		{funOutputs} 
+		(params += Expression("," params += Expression)*)?
+		")"
+	;
+	
+	///en Expression hay ambiguedad y en bodies
+	
+	
+	
+	Expression:
+		op = Operation
+	;
+	
+	
+	Operation:
+		AritmeticOperation | LogicalOperation | BooleanFunction
+	;
+
+LogicalOperation:
+	LessThan | GreaterThan | Equal | NotEqual | LessOrEqual | GreaterOrEqual
+;
+	
+	LessThan:
+		"<" left=Primary right=Primary
+	;
+	
+	GreaterThan:
+		">" left=Primary right=Primary
+	;
+	Equal:
+		"=" left=Primary right=Primary
+	;
+	NotEqual:
+		"!=" left=Primary right=Primary
+	;
+	
+	LessOrEqual:
+		"<=" left=Primary right=Primary
+	;
+	
+	GreaterOrEqual:
+		">=" left=Primary right=Primary
+	;
+	
+	BooleanFunction:
+		Ands | Ors| Nots | Nors | Nands
+	;
+	
+	Ands:
+		"&&" primary+=Primary+
+	;
+	
+	Ors:
+		"||" primary += Primary+
+	;
+	
+	Nots:
+		"!" primary+=Primary+
+	;
+	
+	Nors:
+		"nor" primary += Primary+
+	;
+	
+	Nands:
+		"nand" primary += Primary+
+	;
+	
+	AritmeticOperation:
+		sum = Sum
+	;
+	
+	
+	
+	Sum returns Expression:
+		Subs({Sum.left = current} '+' right = Subs)*
+	;
+	
+	Subs returns Expression:
+		Divition({Subs.left = current} '-' right = Divition)*
+
+	;
+	
+	Divition returns Expression:
+		Multiplication({Divition.left = current} '/' right = Multiplication)*
+	;
+	
+	
+	Multiplication returns Expressions:
+		Primary ({Multiplication.left = current} '*' right = Primary)*
+	;
+
+//en primary hay ambiguedad, mas en especifico en callFunction
+
+	Primary:
+		varParmArgs | var = [Variables] | callFunction | Data //falta puede ser numero o string o bool o char
+	;
+	
+	//ahora no puede hacer operaciones dentro de los argumentos de callfunction solo se le pasa datos
+	callFunction:
+		func = [Functions]
+		"(" (exp+=Expression ("," exp+=Expression)*)? ")"
+	;
+	// ((data+=Data("," data+=Data)*)? | (vars+=[Variables](","vars+=[Variables])*)? )
+	//no entiendo porque?
+	Variables:
+		(varParmArgs | CallVariable) //reasignar un valor
+		"<="
+		exp = Expression
+		";"
+	;
+	CallVariable:
+		vars=[Variables]
+	;
+	
+	varParmArgs:
+		name=ID ":" dataType = DataTypes
+	;
+	
+	//cambiar a strings
+	DataTypes:
+		 "int" | "bool" | "doubles" | "string" 
+	;
+	
+	Data: 
+		Numbers | Strings | Booleans | Doubles
+	;
+	
+	Numbers:
+		value=INT
+	;
+	Strings:
+		value= STRING
+	;
+	Booleans:
+		value?='true' | {Booleans} 'false'
+	;
+	
+	Doubles:
+		value=DOUBLE
+	;
+	
+	
+	terminal DOUBLE:
+		'0'..'9'+'.'('0'..'9')*
+	;
+	
+	//esta los parametros y los tipos de datos
+	

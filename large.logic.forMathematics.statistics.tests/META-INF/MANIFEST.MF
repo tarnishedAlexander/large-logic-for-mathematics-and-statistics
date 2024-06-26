@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: large.logic.forMathematics.statistics.tests
+Bundle-ManifestVersion: 2
+Bundle-Name: large.logic.forMathematics.statistics.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: large.logic.forMathematics.statistics.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: large.logic.forMathematics.statistics,
+ org.eclipse.xtext.testing,
+ org.eclipse.xtext.xbase.testing,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.35.0"
+Import-Package: org.junit.jupiter.api;version="[5.1.0,6.0.0)",
+ org.junit.jupiter.api.extension;version="[5.1.0,6.0.0)"
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Export-Package: large.logic.forMathematics.statistics.tests;x-internal=true

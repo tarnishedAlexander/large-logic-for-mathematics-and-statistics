@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: large.logic.forMathematics.statistics.ui
+Bundle-ManifestVersion: 2
+Bundle-Name: large.logic.forMathematics.statistics.ui
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: large.logic.forMathematics.statistics.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: large.logic.forMathematics.statistics,
+ large.logic.forMathematics.statistics.ide,
+ org.eclipse.xtext.ui,
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.ui.editors;bundle-version="3.14.300",
+ org.eclipse.ui.ide;bundle-version="3.18.500",
+ org.eclipse.ui,
+ org.eclipse.compare,
+ org.eclipse.xtext.builder
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Export-Package: large.logic.forMathematics.statistics.ui.contentassist,
+ large.logic.forMathematics.statistics.ui.quickfix,
+ large.logic.forMathematics.statistics.ui.internal
+Bundle-Activator: large.logic.forMathematics.statistics.ui.internal.StatisticsActivator

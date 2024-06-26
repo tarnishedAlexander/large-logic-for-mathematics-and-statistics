@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: large.logic.forMathematics.statistics.ide
+Bundle-ManifestVersion: 2
+Bundle-Name: large.logic.forMathematics.statistics.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: large.logic.forMathematics.statistics.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: large.logic.forMathematics.statistics,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Export-Package: large.logic.forMathematics.statistics.ide.contentassist.antlr,
+ large.logic.forMathematics.statistics.ide.contentassist.antlr.internal
