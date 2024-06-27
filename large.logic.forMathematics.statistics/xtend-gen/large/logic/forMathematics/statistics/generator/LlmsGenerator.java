@@ -104,7 +104,7 @@ public class LlmsGenerator extends AbstractGenerator {
 
   public CharSequence generate(final Variables vars) {
     throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field ex is undefined for the type Variables");
+      + "\nno viable alternative at input \'» = «\'");
   }
 
   public CharSequence generate(final Conditionals cond) {

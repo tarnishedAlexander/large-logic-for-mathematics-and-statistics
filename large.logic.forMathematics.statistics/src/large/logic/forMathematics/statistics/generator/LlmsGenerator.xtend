@@ -60,7 +60,7 @@ class LlmsGenerator extends AbstractGenerator {
 	'''
 	
 	def generate(Variables vars)'''
-	«vars.typesVars» = «vars.ex p»
+	«vars.» = «vars.exp»
 	'''
 	def generate(Conditionals cond)'''
 	if «cond.»

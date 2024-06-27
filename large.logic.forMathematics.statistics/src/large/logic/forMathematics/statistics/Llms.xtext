@@ -217,7 +217,7 @@ LogicalOperation:
 	// ((data+=Data("," data+=Data)*)? | (vars+=[Variables](","vars+=[Variables])*)? )
 	//no entiendo porque?
 	Variables:
-		typesVars=(varParmArgs | CallVariable) //reasignar un valor
+		(varParmArgs | CallVariable) //reasignar un valor
 		"<="
 		exp = Expression
 		";"
