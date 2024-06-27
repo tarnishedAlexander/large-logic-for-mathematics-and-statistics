@@ -3,9 +3,10 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="llms" nsURI="http://www.logic.large/forMathematics/statistics/Llms"
     nsPrefix="llms">
   <eClassifiers xsi:type="ecore:EClass" name="Operations">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="func" upperBound="-1" eType="#//Functions"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="var" upperBound="-1" eType="#//Variables"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vars" upperBound="-1" eType="#//Variables"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditional" upperBound="-1"
         eType="#//Conditionals" containment="true"/>
@@ -100,13 +101,15 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Variables" eSuperTypes="#//Loops">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typesVars" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="exp" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CallVariable" eSuperTypes="#//ParmsPrint #//Variables">
+  <eClassifiers xsi:type="ecore:EClass" name="CallVariable" eSuperTypes="#//ParmsPrint">
     <eStructuralFeatures xsi:type="ecore:EReference" name="vars" eType="#//Variables"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="varParmArgs" eSuperTypes="#//Primary #//Variables">
+  <eClassifiers xsi:type="ecore:EClass" name="varParmArgs" eSuperTypes="#//Primary">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>

@@ -35,6 +35,7 @@ import large.logic.forMathematics.statistics.llms.Prints;
 import large.logic.forMathematics.statistics.llms.Strings;
 import large.logic.forMathematics.statistics.llms.Subs;
 import large.logic.forMathematics.statistics.llms.Sum;
+import large.logic.forMathematics.statistics.llms.Variables;
 import large.logic.forMathematics.statistics.llms.callFunction;
 import large.logic.forMathematics.statistics.llms.funOutputs;
 import large.logic.forMathematics.statistics.llms.varParmArgs;
@@ -76,20 +77,8 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_Booleans(context, (Booleans) semanticObject); 
 				return; 
 			case LlmsPackage.CALL_VARIABLE:
-				if (rule == grammarAccess.getParmsPrintRule()
-						|| rule == grammarAccess.getCallVariableRule()) {
-					sequence_CallVariable(context, (CallVariable) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getLoopsRule()) {
-					sequence_CallVariable_Loops_Variables(context, (CallVariable) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getVariablesRule()) {
-					sequence_CallVariable_Variables(context, (CallVariable) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_CallVariable(context, (CallVariable) semanticObject); 
+				return; 
 			case LlmsPackage.DIVITION:
 				sequence_Divition(context, (Divition) semanticObject); 
 				return; 
@@ -258,6 +247,16 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case LlmsPackage.SUM:
 				sequence_Sum(context, (Sum) semanticObject); 
 				return; 
+			case LlmsPackage.VARIABLES:
+				if (rule == grammarAccess.getLoopsRule()) {
+					sequence_Loops_Variables(context, (Variables) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getVariablesRule()) {
+					sequence_Variables(context, (Variables) semanticObject); 
+					return; 
+				}
+				else break;
 			case LlmsPackage.CALL_FUNCTION:
 				sequence_callFunction(context, (callFunction) semanticObject); 
 				return; 
@@ -265,28 +264,8 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_Parametersfunc(context, (funOutputs) semanticObject); 
 				return; 
 			case LlmsPackage.VAR_PARM_ARGS:
-				if (rule == grammarAccess.getLoopsRule()) {
-					sequence_Loops_Variables_varParmArgs(context, (varParmArgs) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getVariablesRule()) {
-					sequence_Variables_varParmArgs(context, (varParmArgs) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getSumRule()
-						|| action == grammarAccess.getSumAccess().getSumLeftAction_1_0()
-						|| rule == grammarAccess.getSubsRule()
-						|| action == grammarAccess.getSubsAccess().getSubsLeftAction_1_0()
-						|| rule == grammarAccess.getDivitionRule()
-						|| action == grammarAccess.getDivitionAccess().getDivitionLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicationRule()
-						|| action == grammarAccess.getMultiplicationAccess().getMultiplicationLeftAction_1_0()
-						|| rule == grammarAccess.getPrimaryRule()
-						|| rule == grammarAccess.getVarParmArgsRule()) {
-					sequence_varParmArgs(context, (varParmArgs) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_varParmArgs(context, (varParmArgs) semanticObject); 
+				return; 
 			}
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
@@ -385,43 +364,6 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getCallVariableAccess().getVarsVariablesIDTerminalRuleCall_0_1(), semanticObject.eGet(LlmsPackage.Literals.CALL_VARIABLE__VARS, false));
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Loops returns CallVariable
-	 *
-	 * Constraint:
-	 *     (vars=[Variables|ID] exp=Expression number=Numbers body+=Bodies+)
-	 * </pre>
-	 */
-	protected void sequence_CallVariable_Loops_Variables(ISerializationContext context, CallVariable semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Variables returns CallVariable
-	 *
-	 * Constraint:
-	 *     (vars=[Variables|ID] exp=Expression)
-	 * </pre>
-	 */
-	protected void sequence_CallVariable_Variables(ISerializationContext context, CallVariable semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, LlmsPackage.Literals.CALL_VARIABLE__VARS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LlmsPackage.Literals.CALL_VARIABLE__VARS));
-			if (transientValues.isValueTransient(semanticObject, LlmsPackage.Literals.VARIABLES__EXP) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LlmsPackage.Literals.VARIABLES__EXP));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getCallVariableAccess().getVarsVariablesIDTerminalRuleCall_0_1(), semanticObject.eGet(LlmsPackage.Literals.CALL_VARIABLE__VARS, false));
-		feeder.accept(grammarAccess.getVariablesAccess().getExpExpressionParserRuleCall_2_0(), semanticObject.getExp());
 		feeder.finish();
 	}
 	
@@ -886,13 +828,13 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Loops returns varParmArgs
+	 *     Loops returns Variables
 	 *
 	 * Constraint:
-	 *     (name=ID dataType=DataTypes exp=Expression number=Numbers body+=Bodies+)
+	 *     ((typesVars=varParmArgs | typesVars=CallVariable) exp=Expression number=Numbers body+=Bodies+)
 	 * </pre>
 	 */
-	protected void sequence_Loops_Variables_varParmArgs(ISerializationContext context, varParmArgs semanticObject) {
+	protected void sequence_Loops_Variables(ISerializationContext context, Variables semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1057,7 +999,7 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Operations returns Operations
 	 *
 	 * Constraint:
-	 *     (func+=Functions | var+=Variables | conditional+=Conditionals | loops+=Loops | print+=Prints)*
+	 *     (name=ID (func+=Functions | vars+=Variables | conditional+=Conditionals | loops+=Loops | print+=Prints)*)
 	 * </pre>
 	 */
 	protected void sequence_Operations(ISerializationContext context, Operations semanticObject) {
@@ -1235,26 +1177,14 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Variables returns varParmArgs
+	 *     Variables returns Variables
 	 *
 	 * Constraint:
-	 *     (name=ID dataType=DataTypes exp=Expression)
+	 *     ((typesVars=varParmArgs | typesVars=CallVariable) exp=Expression)
 	 * </pre>
 	 */
-	protected void sequence_Variables_varParmArgs(ISerializationContext context, varParmArgs semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, LlmsPackage.Literals.VAR_PARM_ARGS__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LlmsPackage.Literals.VAR_PARM_ARGS__NAME));
-			if (transientValues.isValueTransient(semanticObject, LlmsPackage.Literals.VAR_PARM_ARGS__DATA_TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LlmsPackage.Literals.VAR_PARM_ARGS__DATA_TYPE));
-			if (transientValues.isValueTransient(semanticObject, LlmsPackage.Literals.VARIABLES__EXP) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LlmsPackage.Literals.VARIABLES__EXP));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getVarParmArgsAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getVarParmArgsAccess().getDataTypeDataTypesParserRuleCall_2_0(), semanticObject.getDataType());
-		feeder.accept(grammarAccess.getVariablesAccess().getExpExpressionParserRuleCall_2_0(), semanticObject.getExp());
-		feeder.finish();
+	protected void sequence_Variables(ISerializationContext context, Variables semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

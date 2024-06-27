@@ -20,7 +20,7 @@ package large.logic.forMathematics.statistics.llms;
  * @model
  * @generated
  */
-public interface CallVariable extends ParmsPrint, Variables
+public interface CallVariable extends ParmsPrint
 {
   /**
    * Returns the value of the '<em><b>Vars</b></em>' reference.

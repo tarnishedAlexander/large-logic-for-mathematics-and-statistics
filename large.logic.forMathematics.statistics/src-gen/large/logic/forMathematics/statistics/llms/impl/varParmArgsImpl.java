@@ -3,28 +3,14 @@
  */
 package large.logic.forMathematics.statistics.llms.impl;
 
-import java.util.Collection;
-
-import large.logic.forMathematics.statistics.llms.Bodies;
-import large.logic.forMathematics.statistics.llms.Expression;
 import large.logic.forMathematics.statistics.llms.LlmsPackage;
-import large.logic.forMathematics.statistics.llms.Loops;
-import large.logic.forMathematics.statistics.llms.Numbers;
-import large.logic.forMathematics.statistics.llms.Variables;
 import large.logic.forMathematics.statistics.llms.varParmArgs;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,9 +20,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link large.logic.forMathematics.statistics.llms.impl.varParmArgsImpl#getNumber <em>Number</em>}</li>
- *   <li>{@link large.logic.forMathematics.statistics.llms.impl.varParmArgsImpl#getBody <em>Body</em>}</li>
- *   <li>{@link large.logic.forMathematics.statistics.llms.impl.varParmArgsImpl#getExp <em>Exp</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.impl.varParmArgsImpl#getName <em>Name</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.impl.varParmArgsImpl#getDataType <em>Data Type</em>}</li>
  * </ul>
@@ -45,36 +28,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class varParmArgsImpl extends PrimaryImpl implements varParmArgs
 {
-  /**
-   * The cached value of the '{@link #getNumber() <em>Number</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getNumber()
-   * @generated
-   * @ordered
-   */
-  protected Numbers number;
-
-  /**
-   * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getBody()
-   * @generated
-   * @ordered
-   */
-  protected EList<Bodies> body;
-
-  /**
-   * The cached value of the '{@link #getExp() <em>Exp</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getExp()
-   * @generated
-   * @ordered
-   */
-  protected Expression exp;
-
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -142,121 +95,6 @@ public class varParmArgsImpl extends PrimaryImpl implements varParmArgs
    * @generated
    */
   @Override
-  public Numbers getNumber()
-  {
-    return number;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetNumber(Numbers newNumber, NotificationChain msgs)
-  {
-    Numbers oldNumber = number;
-    number = newNumber;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LlmsPackage.VAR_PARM_ARGS__NUMBER, oldNumber, newNumber);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setNumber(Numbers newNumber)
-  {
-    if (newNumber != number)
-    {
-      NotificationChain msgs = null;
-      if (number != null)
-        msgs = ((InternalEObject)number).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.VAR_PARM_ARGS__NUMBER, null, msgs);
-      if (newNumber != null)
-        msgs = ((InternalEObject)newNumber).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.VAR_PARM_ARGS__NUMBER, null, msgs);
-      msgs = basicSetNumber(newNumber, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.VAR_PARM_ARGS__NUMBER, newNumber, newNumber));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EList<Bodies> getBody()
-  {
-    if (body == null)
-    {
-      body = new EObjectContainmentEList<Bodies>(Bodies.class, this, LlmsPackage.VAR_PARM_ARGS__BODY);
-    }
-    return body;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Expression getExp()
-  {
-    return exp;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetExp(Expression newExp, NotificationChain msgs)
-  {
-    Expression oldExp = exp;
-    exp = newExp;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LlmsPackage.VAR_PARM_ARGS__EXP, oldExp, newExp);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setExp(Expression newExp)
-  {
-    if (newExp != exp)
-    {
-      NotificationChain msgs = null;
-      if (exp != null)
-        msgs = ((InternalEObject)exp).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.VAR_PARM_ARGS__EXP, null, msgs);
-      if (newExp != null)
-        msgs = ((InternalEObject)newExp).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.VAR_PARM_ARGS__EXP, null, msgs);
-      msgs = basicSetExp(newExp, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.VAR_PARM_ARGS__EXP, newExp, newExp));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public String getName()
   {
     return name;
@@ -307,36 +145,10 @@ public class varParmArgsImpl extends PrimaryImpl implements varParmArgs
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case LlmsPackage.VAR_PARM_ARGS__NUMBER:
-        return basicSetNumber(null, msgs);
-      case LlmsPackage.VAR_PARM_ARGS__BODY:
-        return ((InternalEList<?>)getBody()).basicRemove(otherEnd, msgs);
-      case LlmsPackage.VAR_PARM_ARGS__EXP:
-        return basicSetExp(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
-      case LlmsPackage.VAR_PARM_ARGS__NUMBER:
-        return getNumber();
-      case LlmsPackage.VAR_PARM_ARGS__BODY:
-        return getBody();
-      case LlmsPackage.VAR_PARM_ARGS__EXP:
-        return getExp();
       case LlmsPackage.VAR_PARM_ARGS__NAME:
         return getName();
       case LlmsPackage.VAR_PARM_ARGS__DATA_TYPE:
@@ -350,22 +162,11 @@ public class varParmArgsImpl extends PrimaryImpl implements varParmArgs
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case LlmsPackage.VAR_PARM_ARGS__NUMBER:
-        setNumber((Numbers)newValue);
-        return;
-      case LlmsPackage.VAR_PARM_ARGS__BODY:
-        getBody().clear();
-        getBody().addAll((Collection<? extends Bodies>)newValue);
-        return;
-      case LlmsPackage.VAR_PARM_ARGS__EXP:
-        setExp((Expression)newValue);
-        return;
       case LlmsPackage.VAR_PARM_ARGS__NAME:
         setName((String)newValue);
         return;
@@ -386,15 +187,6 @@ public class varParmArgsImpl extends PrimaryImpl implements varParmArgs
   {
     switch (featureID)
     {
-      case LlmsPackage.VAR_PARM_ARGS__NUMBER:
-        setNumber((Numbers)null);
-        return;
-      case LlmsPackage.VAR_PARM_ARGS__BODY:
-        getBody().clear();
-        return;
-      case LlmsPackage.VAR_PARM_ARGS__EXP:
-        setExp((Expression)null);
-        return;
       case LlmsPackage.VAR_PARM_ARGS__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -415,74 +207,12 @@ public class varParmArgsImpl extends PrimaryImpl implements varParmArgs
   {
     switch (featureID)
     {
-      case LlmsPackage.VAR_PARM_ARGS__NUMBER:
-        return number != null;
-      case LlmsPackage.VAR_PARM_ARGS__BODY:
-        return body != null && !body.isEmpty();
-      case LlmsPackage.VAR_PARM_ARGS__EXP:
-        return exp != null;
       case LlmsPackage.VAR_PARM_ARGS__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case LlmsPackage.VAR_PARM_ARGS__DATA_TYPE:
         return DATA_TYPE_EDEFAULT == null ? dataType != null : !DATA_TYPE_EDEFAULT.equals(dataType);
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == Loops.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case LlmsPackage.VAR_PARM_ARGS__NUMBER: return LlmsPackage.LOOPS__NUMBER;
-        case LlmsPackage.VAR_PARM_ARGS__BODY: return LlmsPackage.LOOPS__BODY;
-        default: return -1;
-      }
-    }
-    if (baseClass == Variables.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case LlmsPackage.VAR_PARM_ARGS__EXP: return LlmsPackage.VARIABLES__EXP;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == Loops.class)
-    {
-      switch (baseFeatureID)
-      {
-        case LlmsPackage.LOOPS__NUMBER: return LlmsPackage.VAR_PARM_ARGS__NUMBER;
-        case LlmsPackage.LOOPS__BODY: return LlmsPackage.VAR_PARM_ARGS__BODY;
-        default: return -1;
-      }
-    }
-    if (baseClass == Variables.class)
-    {
-      switch (baseFeatureID)
-      {
-        case LlmsPackage.VARIABLES__EXP: return LlmsPackage.VAR_PARM_ARGS__EXP;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
   /**

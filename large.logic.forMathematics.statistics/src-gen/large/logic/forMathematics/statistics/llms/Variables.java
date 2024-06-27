@@ -3,6 +3,7 @@
  */
 package large.logic.forMathematics.statistics.llms;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,6 +14,7 @@ package large.logic.forMathematics.statistics.llms;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.Variables#getTypesVars <em>Types Vars</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.Variables#getExp <em>Exp</em>}</li>
  * </ul>
  *
@@ -22,6 +24,28 @@ package large.logic.forMathematics.statistics.llms;
  */
 public interface Variables extends Loops
 {
+  /**
+   * Returns the value of the '<em><b>Types Vars</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Types Vars</em>' containment reference.
+   * @see #setTypesVars(EObject)
+   * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getVariables_TypesVars()
+   * @model containment="true"
+   * @generated
+   */
+  EObject getTypesVars();
+
+  /**
+   * Sets the value of the '{@link large.logic.forMathematics.statistics.llms.Variables#getTypesVars <em>Types Vars</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Types Vars</em>' containment reference.
+   * @see #getTypesVars()
+   * @generated
+   */
+  void setTypesVars(EObject value);
+
   /**
    * Returns the value of the '<em><b>Exp</b></em>' containment reference.
    * <!-- begin-user-doc -->

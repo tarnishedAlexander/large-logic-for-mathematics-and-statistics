@@ -87,17 +87,35 @@ ruleOperations returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getOperationsAccess().getClassKeyword_1());
 		}
-		otherlv_2='{'
+		(
+			(
+				lv_name_2_0=RULE_ID
+				{
+					newLeafNode(lv_name_2_0, grammarAccess.getOperationsAccess().getNameIDTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getOperationsRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_2_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		otherlv_3='{'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getOperationsAccess().getLeftCurlyBracketKeyword_2());
+			newLeafNode(otherlv_3, grammarAccess.getOperationsAccess().getLeftCurlyBracketKeyword_3());
 		}
 		(
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getOperationsAccess().getFuncFunctionsParserRuleCall_3_0_0());
+						newCompositeNode(grammarAccess.getOperationsAccess().getFuncFunctionsParserRuleCall_4_0_0());
 					}
-					lv_func_3_0=ruleFunctions
+					lv_func_4_0=ruleFunctions
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getOperationsRule());
@@ -105,7 +123,7 @@ ruleOperations returns [EObject current=null]
 						add(
 							$current,
 							"func",
-							lv_func_3_0,
+							lv_func_4_0,
 							"large.logic.forMathematics.statistics.Llms.Functions");
 						afterParserOrEnumRuleCall();
 					}
@@ -115,17 +133,17 @@ ruleOperations returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getOperationsAccess().getVarVariablesParserRuleCall_3_1_0());
+						newCompositeNode(grammarAccess.getOperationsAccess().getVarsVariablesParserRuleCall_4_1_0());
 					}
-					lv_var_4_0=ruleVariables
+					lv_vars_5_0=ruleVariables
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getOperationsRule());
 						}
 						add(
 							$current,
-							"var",
-							lv_var_4_0,
+							"vars",
+							lv_vars_5_0,
 							"large.logic.forMathematics.statistics.Llms.Variables");
 						afterParserOrEnumRuleCall();
 					}
@@ -135,9 +153,9 @@ ruleOperations returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getOperationsAccess().getConditionalConditionalsParserRuleCall_3_2_0());
+						newCompositeNode(grammarAccess.getOperationsAccess().getConditionalConditionalsParserRuleCall_4_2_0());
 					}
-					lv_conditional_5_0=ruleConditionals
+					lv_conditional_6_0=ruleConditionals
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getOperationsRule());
@@ -145,7 +163,7 @@ ruleOperations returns [EObject current=null]
 						add(
 							$current,
 							"conditional",
-							lv_conditional_5_0,
+							lv_conditional_6_0,
 							"large.logic.forMathematics.statistics.Llms.Conditionals");
 						afterParserOrEnumRuleCall();
 					}
@@ -155,9 +173,9 @@ ruleOperations returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getOperationsAccess().getLoopsLoopsParserRuleCall_3_3_0());
+						newCompositeNode(grammarAccess.getOperationsAccess().getLoopsLoopsParserRuleCall_4_3_0());
 					}
-					lv_loops_6_0=ruleLoops
+					lv_loops_7_0=ruleLoops
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getOperationsRule());
@@ -165,7 +183,7 @@ ruleOperations returns [EObject current=null]
 						add(
 							$current,
 							"loops",
-							lv_loops_6_0,
+							lv_loops_7_0,
 							"large.logic.forMathematics.statistics.Llms.Loops");
 						afterParserOrEnumRuleCall();
 					}
@@ -175,9 +193,9 @@ ruleOperations returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getOperationsAccess().getPrintPrintsParserRuleCall_3_4_0());
+						newCompositeNode(grammarAccess.getOperationsAccess().getPrintPrintsParserRuleCall_4_4_0());
 					}
-					lv_print_7_0=rulePrints
+					lv_print_8_0=rulePrints
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getOperationsRule());
@@ -185,16 +203,16 @@ ruleOperations returns [EObject current=null]
 						add(
 							$current,
 							"print",
-							lv_print_7_0,
+							lv_print_8_0,
 							"large.logic.forMathematics.statistics.Llms.Prints");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)*
-		otherlv_8='}'
+		otherlv_9='}'
 		{
-			newLeafNode(otherlv_8, grammarAccess.getOperationsAccess().getRightCurlyBracketKeyword_4());
+			newLeafNode(otherlv_9, grammarAccess.getOperationsAccess().getRightCurlyBracketKeyword_5());
 		}
 	)
 ;
@@ -2267,34 +2285,52 @@ ruleVariables returns [EObject current=null]
 }:
 	(
 		(
-			{
-				newCompositeNode(grammarAccess.getVariablesAccess().getVarParmArgsParserRuleCall_0_0());
-			}
-			this_varParmArgs_0=rulevarParmArgs
-			{
-				$current = $this_varParmArgs_0.current;
-				afterParserOrEnumRuleCall();
-			}
-			    |
-			{
-				newCompositeNode(grammarAccess.getVariablesAccess().getCallVariableParserRuleCall_0_1());
-			}
-			this_CallVariable_1=ruleCallVariable
-			{
-				$current = $this_CallVariable_1.current;
-				afterParserOrEnumRuleCall();
-			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getVariablesAccess().getTypesVarsVarParmArgsParserRuleCall_0_0_0());
+					}
+					lv_typesVars_0_1=rulevarParmArgs
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getVariablesRule());
+						}
+						set(
+							$current,
+							"typesVars",
+							lv_typesVars_0_1,
+							"large.logic.forMathematics.statistics.Llms.varParmArgs");
+						afterParserOrEnumRuleCall();
+					}
+					    |
+					{
+						newCompositeNode(grammarAccess.getVariablesAccess().getTypesVarsCallVariableParserRuleCall_0_0_1());
+					}
+					lv_typesVars_0_2=ruleCallVariable
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getVariablesRule());
+						}
+						set(
+							$current,
+							"typesVars",
+							lv_typesVars_0_2,
+							"large.logic.forMathematics.statistics.Llms.CallVariable");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
 		)
-		otherlv_2='<='
+		otherlv_1='<='
 		{
-			newLeafNode(otherlv_2, grammarAccess.getVariablesAccess().getLessThanSignEqualsSignKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getVariablesAccess().getLessThanSignEqualsSignKeyword_1());
 		}
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getVariablesAccess().getExpExpressionParserRuleCall_2_0());
 				}
-				lv_exp_3_0=ruleExpression
+				lv_exp_2_0=ruleExpression
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getVariablesRule());
@@ -2302,15 +2338,15 @@ ruleVariables returns [EObject current=null]
 					set(
 						$current,
 						"exp",
-						lv_exp_3_0,
+						lv_exp_2_0,
 						"large.logic.forMathematics.statistics.Llms.Expression");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_4=';'
+		otherlv_3=';'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getVariablesAccess().getSemicolonKeyword_3());
+			newLeafNode(otherlv_3, grammarAccess.getVariablesAccess().getSemicolonKeyword_3());
 		}
 	)
 ;

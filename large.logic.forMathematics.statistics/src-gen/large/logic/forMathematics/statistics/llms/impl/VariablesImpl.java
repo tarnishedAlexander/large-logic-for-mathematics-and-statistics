@@ -11,6 +11,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -23,6 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.impl.VariablesImpl#getTypesVars <em>Types Vars</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.impl.VariablesImpl#getExp <em>Exp</em>}</li>
  * </ul>
  *
@@ -30,6 +32,16 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class VariablesImpl extends LoopsImpl implements Variables
 {
+  /**
+   * The cached value of the '{@link #getTypesVars() <em>Types Vars</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTypesVars()
+   * @generated
+   * @ordered
+   */
+  protected EObject typesVars;
+
   /**
    * The cached value of the '{@link #getExp() <em>Exp</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -59,6 +71,56 @@ public class VariablesImpl extends LoopsImpl implements Variables
   protected EClass eStaticClass()
   {
     return LlmsPackage.Literals.VARIABLES;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EObject getTypesVars()
+  {
+    return typesVars;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTypesVars(EObject newTypesVars, NotificationChain msgs)
+  {
+    EObject oldTypesVars = typesVars;
+    typesVars = newTypesVars;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LlmsPackage.VARIABLES__TYPES_VARS, oldTypesVars, newTypesVars);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTypesVars(EObject newTypesVars)
+  {
+    if (newTypesVars != typesVars)
+    {
+      NotificationChain msgs = null;
+      if (typesVars != null)
+        msgs = ((InternalEObject)typesVars).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.VARIABLES__TYPES_VARS, null, msgs);
+      if (newTypesVars != null)
+        msgs = ((InternalEObject)newTypesVars).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.VARIABLES__TYPES_VARS, null, msgs);
+      msgs = basicSetTypesVars(newTypesVars, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.VARIABLES__TYPES_VARS, newTypesVars, newTypesVars));
   }
 
   /**
@@ -121,6 +183,8 @@ public class VariablesImpl extends LoopsImpl implements Variables
   {
     switch (featureID)
     {
+      case LlmsPackage.VARIABLES__TYPES_VARS:
+        return basicSetTypesVars(null, msgs);
       case LlmsPackage.VARIABLES__EXP:
         return basicSetExp(null, msgs);
     }
@@ -137,6 +201,8 @@ public class VariablesImpl extends LoopsImpl implements Variables
   {
     switch (featureID)
     {
+      case LlmsPackage.VARIABLES__TYPES_VARS:
+        return getTypesVars();
       case LlmsPackage.VARIABLES__EXP:
         return getExp();
     }
@@ -153,6 +219,9 @@ public class VariablesImpl extends LoopsImpl implements Variables
   {
     switch (featureID)
     {
+      case LlmsPackage.VARIABLES__TYPES_VARS:
+        setTypesVars((EObject)newValue);
+        return;
       case LlmsPackage.VARIABLES__EXP:
         setExp((Expression)newValue);
         return;
@@ -170,6 +239,9 @@ public class VariablesImpl extends LoopsImpl implements Variables
   {
     switch (featureID)
     {
+      case LlmsPackage.VARIABLES__TYPES_VARS:
+        setTypesVars((EObject)null);
+        return;
       case LlmsPackage.VARIABLES__EXP:
         setExp((Expression)null);
         return;
@@ -187,6 +259,8 @@ public class VariablesImpl extends LoopsImpl implements Variables
   {
     switch (featureID)
     {
+      case LlmsPackage.VARIABLES__TYPES_VARS:
+        return typesVars != null;
       case LlmsPackage.VARIABLES__EXP:
         return exp != null;
     }

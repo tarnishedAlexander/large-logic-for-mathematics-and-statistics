@@ -3,28 +3,16 @@
  */
 package large.logic.forMathematics.statistics.llms.impl;
 
-import java.util.Collection;
-
-import large.logic.forMathematics.statistics.llms.Bodies;
 import large.logic.forMathematics.statistics.llms.CallVariable;
-import large.logic.forMathematics.statistics.llms.Expression;
 import large.logic.forMathematics.statistics.llms.LlmsPackage;
-import large.logic.forMathematics.statistics.llms.Loops;
-import large.logic.forMathematics.statistics.llms.Numbers;
 import large.logic.forMathematics.statistics.llms.Variables;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,9 +22,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link large.logic.forMathematics.statistics.llms.impl.CallVariableImpl#getNumber <em>Number</em>}</li>
- *   <li>{@link large.logic.forMathematics.statistics.llms.impl.CallVariableImpl#getBody <em>Body</em>}</li>
- *   <li>{@link large.logic.forMathematics.statistics.llms.impl.CallVariableImpl#getExp <em>Exp</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.impl.CallVariableImpl#getVars <em>Vars</em>}</li>
  * </ul>
  *
@@ -44,36 +29,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
 {
-  /**
-   * The cached value of the '{@link #getNumber() <em>Number</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getNumber()
-   * @generated
-   * @ordered
-   */
-  protected Numbers number;
-
-  /**
-   * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getBody()
-   * @generated
-   * @ordered
-   */
-  protected EList<Bodies> body;
-
-  /**
-   * The cached value of the '{@link #getExp() <em>Exp</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getExp()
-   * @generated
-   * @ordered
-   */
-  protected Expression exp;
-
   /**
    * The cached value of the '{@link #getVars() <em>Vars</em>}' reference.
    * <!-- begin-user-doc -->
@@ -103,121 +58,6 @@ public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
   protected EClass eStaticClass()
   {
     return LlmsPackage.Literals.CALL_VARIABLE;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Numbers getNumber()
-  {
-    return number;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetNumber(Numbers newNumber, NotificationChain msgs)
-  {
-    Numbers oldNumber = number;
-    number = newNumber;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LlmsPackage.CALL_VARIABLE__NUMBER, oldNumber, newNumber);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setNumber(Numbers newNumber)
-  {
-    if (newNumber != number)
-    {
-      NotificationChain msgs = null;
-      if (number != null)
-        msgs = ((InternalEObject)number).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.CALL_VARIABLE__NUMBER, null, msgs);
-      if (newNumber != null)
-        msgs = ((InternalEObject)newNumber).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.CALL_VARIABLE__NUMBER, null, msgs);
-      msgs = basicSetNumber(newNumber, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.CALL_VARIABLE__NUMBER, newNumber, newNumber));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EList<Bodies> getBody()
-  {
-    if (body == null)
-    {
-      body = new EObjectContainmentEList<Bodies>(Bodies.class, this, LlmsPackage.CALL_VARIABLE__BODY);
-    }
-    return body;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Expression getExp()
-  {
-    return exp;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetExp(Expression newExp, NotificationChain msgs)
-  {
-    Expression oldExp = exp;
-    exp = newExp;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LlmsPackage.CALL_VARIABLE__EXP, oldExp, newExp);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setExp(Expression newExp)
-  {
-    if (newExp != exp)
-    {
-      NotificationChain msgs = null;
-      if (exp != null)
-        msgs = ((InternalEObject)exp).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.CALL_VARIABLE__EXP, null, msgs);
-      if (newExp != null)
-        msgs = ((InternalEObject)newExp).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.CALL_VARIABLE__EXP, null, msgs);
-      msgs = basicSetExp(newExp, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.CALL_VARIABLE__EXP, newExp, newExp));
   }
 
   /**
@@ -271,36 +111,10 @@ public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case LlmsPackage.CALL_VARIABLE__NUMBER:
-        return basicSetNumber(null, msgs);
-      case LlmsPackage.CALL_VARIABLE__BODY:
-        return ((InternalEList<?>)getBody()).basicRemove(otherEnd, msgs);
-      case LlmsPackage.CALL_VARIABLE__EXP:
-        return basicSetExp(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
-      case LlmsPackage.CALL_VARIABLE__NUMBER:
-        return getNumber();
-      case LlmsPackage.CALL_VARIABLE__BODY:
-        return getBody();
-      case LlmsPackage.CALL_VARIABLE__EXP:
-        return getExp();
       case LlmsPackage.CALL_VARIABLE__VARS:
         if (resolve) return getVars();
         return basicGetVars();
@@ -313,22 +127,11 @@ public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case LlmsPackage.CALL_VARIABLE__NUMBER:
-        setNumber((Numbers)newValue);
-        return;
-      case LlmsPackage.CALL_VARIABLE__BODY:
-        getBody().clear();
-        getBody().addAll((Collection<? extends Bodies>)newValue);
-        return;
-      case LlmsPackage.CALL_VARIABLE__EXP:
-        setExp((Expression)newValue);
-        return;
       case LlmsPackage.CALL_VARIABLE__VARS:
         setVars((Variables)newValue);
         return;
@@ -346,15 +149,6 @@ public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
   {
     switch (featureID)
     {
-      case LlmsPackage.CALL_VARIABLE__NUMBER:
-        setNumber((Numbers)null);
-        return;
-      case LlmsPackage.CALL_VARIABLE__BODY:
-        getBody().clear();
-        return;
-      case LlmsPackage.CALL_VARIABLE__EXP:
-        setExp((Expression)null);
-        return;
       case LlmsPackage.CALL_VARIABLE__VARS:
         setVars((Variables)null);
         return;
@@ -372,72 +166,10 @@ public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
   {
     switch (featureID)
     {
-      case LlmsPackage.CALL_VARIABLE__NUMBER:
-        return number != null;
-      case LlmsPackage.CALL_VARIABLE__BODY:
-        return body != null && !body.isEmpty();
-      case LlmsPackage.CALL_VARIABLE__EXP:
-        return exp != null;
       case LlmsPackage.CALL_VARIABLE__VARS:
         return vars != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == Loops.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case LlmsPackage.CALL_VARIABLE__NUMBER: return LlmsPackage.LOOPS__NUMBER;
-        case LlmsPackage.CALL_VARIABLE__BODY: return LlmsPackage.LOOPS__BODY;
-        default: return -1;
-      }
-    }
-    if (baseClass == Variables.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case LlmsPackage.CALL_VARIABLE__EXP: return LlmsPackage.VARIABLES__EXP;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == Loops.class)
-    {
-      switch (baseFeatureID)
-      {
-        case LlmsPackage.LOOPS__NUMBER: return LlmsPackage.CALL_VARIABLE__NUMBER;
-        case LlmsPackage.LOOPS__BODY: return LlmsPackage.CALL_VARIABLE__BODY;
-        default: return -1;
-      }
-    }
-    if (baseClass == Variables.class)
-    {
-      switch (baseFeatureID)
-      {
-        case LlmsPackage.VARIABLES__EXP: return LlmsPackage.CALL_VARIABLE__EXP;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
 } //CallVariableImpl

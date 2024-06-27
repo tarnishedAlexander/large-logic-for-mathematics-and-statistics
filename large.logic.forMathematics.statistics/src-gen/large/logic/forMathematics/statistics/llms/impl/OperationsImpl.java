@@ -13,6 +13,7 @@ import large.logic.forMathematics.statistics.llms.Operations;
 import large.logic.forMathematics.statistics.llms.Prints;
 import large.logic.forMathematics.statistics.llms.Variables;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -20,6 +21,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -33,8 +35,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.impl.OperationsImpl#getName <em>Name</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.impl.OperationsImpl#getFunc <em>Func</em>}</li>
- *   <li>{@link large.logic.forMathematics.statistics.llms.impl.OperationsImpl#getVar <em>Var</em>}</li>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.impl.OperationsImpl#getVars <em>Vars</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.impl.OperationsImpl#getConditional <em>Conditional</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.impl.OperationsImpl#getLoops <em>Loops</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.impl.OperationsImpl#getPrint <em>Print</em>}</li>
@@ -44,6 +47,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class OperationsImpl extends MinimalEObjectImpl.Container implements Operations
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getFunc() <em>Func</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -55,14 +78,14 @@ public class OperationsImpl extends MinimalEObjectImpl.Container implements Oper
   protected EList<Functions> func;
 
   /**
-   * The cached value of the '{@link #getVar() <em>Var</em>}' containment reference list.
+   * The cached value of the '{@link #getVars() <em>Vars</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVar()
+   * @see #getVars()
    * @generated
    * @ordered
    */
-  protected EList<Variables> var;
+  protected EList<Variables> vars;
 
   /**
    * The cached value of the '{@link #getConditional() <em>Conditional</em>}' containment reference list.
@@ -121,6 +144,31 @@ public class OperationsImpl extends MinimalEObjectImpl.Container implements Oper
    * @generated
    */
   @Override
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.OPERATIONS__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<Functions> getFunc()
   {
     if (func == null)
@@ -136,13 +184,13 @@ public class OperationsImpl extends MinimalEObjectImpl.Container implements Oper
    * @generated
    */
   @Override
-  public EList<Variables> getVar()
+  public EList<Variables> getVars()
   {
-    if (var == null)
+    if (vars == null)
     {
-      var = new EObjectContainmentEList<Variables>(Variables.class, this, LlmsPackage.OPERATIONS__VAR);
+      vars = new EObjectContainmentEList<Variables>(Variables.class, this, LlmsPackage.OPERATIONS__VARS);
     }
-    return var;
+    return vars;
   }
 
   /**
@@ -202,8 +250,8 @@ public class OperationsImpl extends MinimalEObjectImpl.Container implements Oper
     {
       case LlmsPackage.OPERATIONS__FUNC:
         return ((InternalEList<?>)getFunc()).basicRemove(otherEnd, msgs);
-      case LlmsPackage.OPERATIONS__VAR:
-        return ((InternalEList<?>)getVar()).basicRemove(otherEnd, msgs);
+      case LlmsPackage.OPERATIONS__VARS:
+        return ((InternalEList<?>)getVars()).basicRemove(otherEnd, msgs);
       case LlmsPackage.OPERATIONS__CONDITIONAL:
         return ((InternalEList<?>)getConditional()).basicRemove(otherEnd, msgs);
       case LlmsPackage.OPERATIONS__LOOPS:
@@ -224,10 +272,12 @@ public class OperationsImpl extends MinimalEObjectImpl.Container implements Oper
   {
     switch (featureID)
     {
+      case LlmsPackage.OPERATIONS__NAME:
+        return getName();
       case LlmsPackage.OPERATIONS__FUNC:
         return getFunc();
-      case LlmsPackage.OPERATIONS__VAR:
-        return getVar();
+      case LlmsPackage.OPERATIONS__VARS:
+        return getVars();
       case LlmsPackage.OPERATIONS__CONDITIONAL:
         return getConditional();
       case LlmsPackage.OPERATIONS__LOOPS:
@@ -249,13 +299,16 @@ public class OperationsImpl extends MinimalEObjectImpl.Container implements Oper
   {
     switch (featureID)
     {
+      case LlmsPackage.OPERATIONS__NAME:
+        setName((String)newValue);
+        return;
       case LlmsPackage.OPERATIONS__FUNC:
         getFunc().clear();
         getFunc().addAll((Collection<? extends Functions>)newValue);
         return;
-      case LlmsPackage.OPERATIONS__VAR:
-        getVar().clear();
-        getVar().addAll((Collection<? extends Variables>)newValue);
+      case LlmsPackage.OPERATIONS__VARS:
+        getVars().clear();
+        getVars().addAll((Collection<? extends Variables>)newValue);
         return;
       case LlmsPackage.OPERATIONS__CONDITIONAL:
         getConditional().clear();
@@ -283,11 +336,14 @@ public class OperationsImpl extends MinimalEObjectImpl.Container implements Oper
   {
     switch (featureID)
     {
+      case LlmsPackage.OPERATIONS__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case LlmsPackage.OPERATIONS__FUNC:
         getFunc().clear();
         return;
-      case LlmsPackage.OPERATIONS__VAR:
-        getVar().clear();
+      case LlmsPackage.OPERATIONS__VARS:
+        getVars().clear();
         return;
       case LlmsPackage.OPERATIONS__CONDITIONAL:
         getConditional().clear();
@@ -312,10 +368,12 @@ public class OperationsImpl extends MinimalEObjectImpl.Container implements Oper
   {
     switch (featureID)
     {
+      case LlmsPackage.OPERATIONS__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case LlmsPackage.OPERATIONS__FUNC:
         return func != null && !func.isEmpty();
-      case LlmsPackage.OPERATIONS__VAR:
-        return var != null && !var.isEmpty();
+      case LlmsPackage.OPERATIONS__VARS:
+        return vars != null && !vars.isEmpty();
       case LlmsPackage.OPERATIONS__CONDITIONAL:
         return conditional != null && !conditional.isEmpty();
       case LlmsPackage.OPERATIONS__LOOPS:
@@ -324,6 +382,23 @@ public class OperationsImpl extends MinimalEObjectImpl.Container implements Oper
         return print != null && !print.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //OperationsImpl

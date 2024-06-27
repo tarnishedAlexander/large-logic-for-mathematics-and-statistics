@@ -343,8 +343,6 @@ public class LlmsSwitch<T> extends Switch<T>
         CallVariable callVariable = (CallVariable)theEObject;
         T result = caseCallVariable(callVariable);
         if (result == null) result = caseParmsPrint(callVariable);
-        if (result == null) result = caseVariables(callVariable);
-        if (result == null) result = caseLoops(callVariable);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -353,9 +351,7 @@ public class LlmsSwitch<T> extends Switch<T>
         varParmArgs varParmArgs = (varParmArgs)theEObject;
         T result = casevarParmArgs(varParmArgs);
         if (result == null) result = casePrimary(varParmArgs);
-        if (result == null) result = caseVariables(varParmArgs);
         if (result == null) result = caseExpressions(varParmArgs);
-        if (result == null) result = caseLoops(varParmArgs);
         if (result == null) result = caseExpression(varParmArgs);
         if (result == null) result = defaultCase(theEObject);
         return result;

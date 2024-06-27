@@ -7,8 +7,9 @@
   <genPackages prefix="Llms" basePackage="large.logic.forMathematics.statistics" disposableProviderFactory="true"
       fileExtensions="lol" ecorePackage="Llms.ecore#/">
     <genClasses ecoreClass="Llms.ecore#//Operations">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Llms.ecore#//Operations/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Operations/func"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Operations/var"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Operations/vars"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Operations/conditional"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Operations/loops"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Operations/print"/>
@@ -79,6 +80,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//callFunction/exp"/>
     </genClasses>
     <genClasses ecoreClass="Llms.ecore#//Variables">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Variables/typesVars"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Variables/exp"/>
     </genClasses>
     <genClasses ecoreClass="Llms.ecore#//CallVariable">

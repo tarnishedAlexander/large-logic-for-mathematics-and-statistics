@@ -1,43 +1,44 @@
-	grammar large.logic.forMathematics.statistics.Llms with org.eclipse.xtext.common.Terminals
-	generate llms "http://www.logic.large/forMathematics/statistics/Llms"
+grammar large.logic.forMathematics.statistics.Llms with org.eclipse.xtext.common.Terminals
+generate llms "http://www.logic.large/forMathematics/statistics/Llms"
 	
 	
 Operations:
-	{Operations} "Class" "{" 
-		
+	{Operations} "Class" 
+	name=ID
+	 "{" 
 	(func += Functions |
-	var += Variables |
+	vars += Variables |
 	conditional+=Conditionals |
 	loops+=Loops | 
-	print += Prints)*	
+	print += Prints)*
 	"}"
 	;
 	
-	Prints:
-		{Prints} "print" "(" 	
-		(print+=ParmsPrint ("," print+=ParmsPrint)*)?	
-		")"
-	;
+Prints:
+	{Prints} "print" "(" 	
+	(print+=ParmsPrint ("," print+=ParmsPrint)*)?	
+	")"
+;
 	
-	ParmsPrint:
-		Data | CallVariable | callFunction
-	;
+ParmsPrint:
+	Data | CallVariable | callFunction
+;
 	
-	Names:
-		name = ID
-	;
+Names:
+	name = ID
+;
 	
-	Functions:
-		"Function"
-		output = ParametersOutptut
-		"<="
-		name = Names
-		params = Parametersfunc
-		"=>"
-		"{"
-		body = Bodies
-		"}"
-	;
+Functions:
+	"Function"
+	output = ParametersOutptut
+	"<="
+	name = Names
+	params = Parametersfunc
+	"=>"
+	"{"
+	body = Bodies
+	"}"
+;
 	
 	// Function [Output1, Output2] <= id(n:int) => {
 	//		body
@@ -216,7 +217,7 @@ LogicalOperation:
 	// ((data+=Data("," data+=Data)*)? | (vars+=[Variables](","vars+=[Variables])*)? )
 	//no entiendo porque?
 	Variables:
-		(varParmArgs | CallVariable) //reasignar un valor
+		typesVars=(varParmArgs | CallVariable) //reasignar un valor
 		"<="
 		exp = Expression
 		";"

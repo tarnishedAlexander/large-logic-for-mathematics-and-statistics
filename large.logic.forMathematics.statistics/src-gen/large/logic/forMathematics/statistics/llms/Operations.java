@@ -16,8 +16,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.Operations#getName <em>Name</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.Operations#getFunc <em>Func</em>}</li>
- *   <li>{@link large.logic.forMathematics.statistics.llms.Operations#getVar <em>Var</em>}</li>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.Operations#getVars <em>Vars</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.Operations#getConditional <em>Conditional</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.Operations#getLoops <em>Loops</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.Operations#getPrint <em>Print</em>}</li>
@@ -29,6 +30,28 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Operations extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getOperations_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link large.logic.forMathematics.statistics.llms.Operations#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
   /**
    * Returns the value of the '<em><b>Func</b></em>' containment reference list.
    * The list contents are of type {@link large.logic.forMathematics.statistics.llms.Functions}.
@@ -42,16 +65,16 @@ public interface Operations extends EObject
   EList<Functions> getFunc();
 
   /**
-   * Returns the value of the '<em><b>Var</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Vars</b></em>' containment reference list.
    * The list contents are of type {@link large.logic.forMathematics.statistics.llms.Variables}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Var</em>' containment reference list.
-   * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getOperations_Var()
+   * @return the value of the '<em>Vars</em>' containment reference list.
+   * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getOperations_Vars()
    * @model containment="true"
    * @generated
    */
-  EList<Variables> getVar();
+  EList<Variables> getVars();
 
   /**
    * Returns the value of the '<em><b>Conditional</b></em>' containment reference list.

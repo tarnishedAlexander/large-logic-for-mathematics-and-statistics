@@ -3,7 +3,20 @@
  */
 package large.logic.forMathematics.statistics.generator;
 
+import large.logic.forMathematics.statistics.llms.Bodies;
+import large.logic.forMathematics.statistics.llms.Conditionals;
+import large.logic.forMathematics.statistics.llms.Functions;
+import large.logic.forMathematics.statistics.llms.Loops;
+import large.logic.forMathematics.statistics.llms.Names;
+import large.logic.forMathematics.statistics.llms.Operations;
+import large.logic.forMathematics.statistics.llms.ParametersOutptut;
+import large.logic.forMathematics.statistics.llms.ParmsPrint;
+import large.logic.forMathematics.statistics.llms.Prints;
+import large.logic.forMathematics.statistics.llms.Variables;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
@@ -17,5 +30,100 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 public class LlmsGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    EObject _get = resource.getContents().get(0);
+    final Operations program = ((Operations) _get);
+    fsa.generateFile(program.getName(), ".m", this.generate(program));
+  }
+
+  public CharSequence generate(final Operations op) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      EList<Functions> _func = op.getFunc();
+      for(final Functions functions : _func) {
+        CharSequence _generate = this.generate(functions);
+        _builder.append(_generate);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.newLine();
+    {
+      EList<Variables> _vars = op.getVars();
+      for(final Variables variables : _vars) {
+        CharSequence _generate_1 = this.generate(variables);
+        _builder.append(_generate_1);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      EList<Conditionals> _conditional = op.getConditional();
+      for(final Conditionals conditional : _conditional) {
+        CharSequence _generate_2 = this.generate(conditional);
+        _builder.append(_generate_2);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      EList<Loops> _loops = op.getLoops();
+      for(final Loops loops : _loops) {
+        CharSequence _generate_3 = this.generate(loops);
+        _builder.append(_generate_3);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      EList<Prints> _print = op.getPrint();
+      for(final Prints prints : _print) {
+        CharSequence _generate_4 = this.generate(prints);
+        _builder.append(_generate_4);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+
+  public CharSequence generate(final Functions fun) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("function ");
+    ParametersOutptut _output = fun.getOutput();
+    _builder.append(_output);
+    _builder.append(" = ");
+    Names _name = fun.getName();
+    _builder.append(_name);
+    _builder.append(" ");
+    ParametersOutptut _output_1 = fun.getOutput();
+    _builder.append(_output_1);
+    _builder.append(" ");
+    _builder.newLineIfNotEmpty();
+    Bodies _body = fun.getBody();
+    _builder.append(_body);
+    _builder.newLineIfNotEmpty();
+    _builder.append("end");
+    _builder.newLine();
+    return _builder;
+  }
+
+  public CharSequence generate(final Variables vars) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field ex is undefined for the type Variables");
+  }
+
+  public CharSequence generate(final Conditionals cond) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nno viable alternative at input \'»\\r\\n\\t\'\'\'\'");
+  }
+
+  public CharSequence generate(final Loops loops) {
+    StringConcatenation _builder = new StringConcatenation();
+    return _builder;
+  }
+
+  public CharSequence generate(final Prints prints) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("disp( ");
+    EList<ParmsPrint> _print = prints.getPrint();
+    _builder.append(_print);
+    _builder.append(" )");
+    _builder.newLineIfNotEmpty();
+    return _builder;
   }
 }

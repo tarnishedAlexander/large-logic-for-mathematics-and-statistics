@@ -7,6 +7,14 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import large.logic.forMathematics.statistics.llms.Operations
+import large.logic.forMathematics.statistics.llms.Variables
+import large.logic.forMathematics.statistics.llms.Functions
+import large.logic.forMathematics.statistics.llms.Conditionals
+import large.logic.forMathematics.statistics.llms.Loops
+import large.logic.forMathematics.statistics.llms.Prints
+import large.logic.forMathematics.statistics.llms.varParmArgs
+
 
 /**
  * Generates code from your model files on save.
@@ -21,5 +29,50 @@ class LlmsGenerator extends AbstractGenerator {
 //				.filter(Greeting)
 //				.map[name]
 //				.join(', '))
+		val program = resource.contents.get(0) as Operations
+		fsa.generateFile(program.name, '.m', generate(program))
 	}
+	
+	def generate(Operations op) '''
+	«FOR functions  : op.func»
+		«generate(functions)»
+	«ENDFOR»
+	
+	«FOR variables  : op.vars»
+			«generate(variables)»
+	«ENDFOR»
+	«FOR conditional  : op.conditional»
+			«generate(conditional)»
+	«ENDFOR»
+	«FOR loops  : op.loops»
+		«generate(loops)»
+	«ENDFOR»
+	«FOR prints  : op.print»
+		«generate(prints)»
+	«ENDFOR»
+	''' 
+
+
+	def generate(Functions fun)'''
+	function «fun.output» = «fun.name» «fun.output» 
+	«fun.body»
+	end
+	'''
+	
+	def generate(Variables vars)'''
+	«vars.typesVars» = «vars.ex p»
+	'''
+	def generate(Conditionals cond)'''
+	if «cond.»
+	'''
+	def generate(Loops loops)'''
+	'''
+	def generate(Prints prints)'''
+	disp( «prints.print» )
+	'''
+	
+	'''
+	
 }
+
+ 

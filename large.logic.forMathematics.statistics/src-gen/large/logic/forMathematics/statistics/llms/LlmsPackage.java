@@ -68,22 +68,31 @@ public interface LlmsPackage extends EPackage
   int OPERATIONS = 0;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPERATIONS__NAME = 0;
+
+  /**
    * The feature id for the '<em><b>Func</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPERATIONS__FUNC = 0;
+  int OPERATIONS__FUNC = 1;
 
   /**
-   * The feature id for the '<em><b>Var</b></em>' containment reference list.
+   * The feature id for the '<em><b>Vars</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPERATIONS__VAR = 1;
+  int OPERATIONS__VARS = 2;
 
   /**
    * The feature id for the '<em><b>Conditional</b></em>' containment reference list.
@@ -92,7 +101,7 @@ public interface LlmsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERATIONS__CONDITIONAL = 2;
+  int OPERATIONS__CONDITIONAL = 3;
 
   /**
    * The feature id for the '<em><b>Loops</b></em>' containment reference list.
@@ -101,7 +110,7 @@ public interface LlmsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERATIONS__LOOPS = 3;
+  int OPERATIONS__LOOPS = 4;
 
   /**
    * The feature id for the '<em><b>Print</b></em>' containment reference list.
@@ -110,7 +119,7 @@ public interface LlmsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERATIONS__PRINT = 4;
+  int OPERATIONS__PRINT = 5;
 
   /**
    * The number of structural features of the '<em>Operations</em>' class.
@@ -119,7 +128,7 @@ public interface LlmsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERATIONS_FEATURE_COUNT = 5;
+  int OPERATIONS_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link large.logic.forMathematics.statistics.llms.impl.PrintsImpl <em>Prints</em>}' class.
@@ -1331,13 +1340,22 @@ public interface LlmsPackage extends EPackage
   int VARIABLES__BODY = LOOPS__BODY;
 
   /**
+   * The feature id for the '<em><b>Types Vars</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLES__TYPES_VARS = LOOPS_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Exp</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VARIABLES__EXP = LOOPS_FEATURE_COUNT + 0;
+  int VARIABLES__EXP = LOOPS_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Variables</em>' class.
@@ -1346,7 +1364,7 @@ public interface LlmsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLES_FEATURE_COUNT = LOOPS_FEATURE_COUNT + 1;
+  int VARIABLES_FEATURE_COUNT = LOOPS_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link large.logic.forMathematics.statistics.llms.impl.CallVariableImpl <em>Call Variable</em>}' class.
@@ -1359,40 +1377,13 @@ public interface LlmsPackage extends EPackage
   int CALL_VARIABLE = 31;
 
   /**
-   * The feature id for the '<em><b>Number</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CALL_VARIABLE__NUMBER = PARMS_PRINT_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Body</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CALL_VARIABLE__BODY = PARMS_PRINT_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Exp</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CALL_VARIABLE__EXP = PARMS_PRINT_FEATURE_COUNT + 2;
-
-  /**
    * The feature id for the '<em><b>Vars</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CALL_VARIABLE__VARS = PARMS_PRINT_FEATURE_COUNT + 3;
+  int CALL_VARIABLE__VARS = PARMS_PRINT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Call Variable</em>' class.
@@ -1401,7 +1392,7 @@ public interface LlmsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CALL_VARIABLE_FEATURE_COUNT = PARMS_PRINT_FEATURE_COUNT + 4;
+  int CALL_VARIABLE_FEATURE_COUNT = PARMS_PRINT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link large.logic.forMathematics.statistics.llms.impl.varParmArgsImpl <em>var Parm Args</em>}' class.
@@ -1432,40 +1423,13 @@ public interface LlmsPackage extends EPackage
   int VAR_PARM_ARGS__VAR = PRIMARY__VAR;
 
   /**
-   * The feature id for the '<em><b>Number</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VAR_PARM_ARGS__NUMBER = PRIMARY_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Body</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VAR_PARM_ARGS__BODY = PRIMARY_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Exp</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VAR_PARM_ARGS__EXP = PRIMARY_FEATURE_COUNT + 2;
-
-  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VAR_PARM_ARGS__NAME = PRIMARY_FEATURE_COUNT + 3;
+  int VAR_PARM_ARGS__NAME = PRIMARY_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Data Type</b></em>' attribute.
@@ -1474,7 +1438,7 @@ public interface LlmsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VAR_PARM_ARGS__DATA_TYPE = PRIMARY_FEATURE_COUNT + 4;
+  int VAR_PARM_ARGS__DATA_TYPE = PRIMARY_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>var Parm Args</em>' class.
@@ -1483,7 +1447,7 @@ public interface LlmsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VAR_PARM_ARGS_FEATURE_COUNT = PRIMARY_FEATURE_COUNT + 5;
+  int VAR_PARM_ARGS_FEATURE_COUNT = PRIMARY_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link large.logic.forMathematics.statistics.llms.impl.DataImpl <em>Data</em>}' class.
@@ -1948,6 +1912,17 @@ public interface LlmsPackage extends EPackage
   EClass getOperations();
 
   /**
+   * Returns the meta object for the attribute '{@link large.logic.forMathematics.statistics.llms.Operations#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see large.logic.forMathematics.statistics.llms.Operations#getName()
+   * @see #getOperations()
+   * @generated
+   */
+  EAttribute getOperations_Name();
+
+  /**
    * Returns the meta object for the containment reference list '{@link large.logic.forMathematics.statistics.llms.Operations#getFunc <em>Func</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1959,15 +1934,15 @@ public interface LlmsPackage extends EPackage
   EReference getOperations_Func();
 
   /**
-   * Returns the meta object for the containment reference list '{@link large.logic.forMathematics.statistics.llms.Operations#getVar <em>Var</em>}'.
+   * Returns the meta object for the containment reference list '{@link large.logic.forMathematics.statistics.llms.Operations#getVars <em>Vars</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Var</em>'.
-   * @see large.logic.forMathematics.statistics.llms.Operations#getVar()
+   * @return the meta object for the containment reference list '<em>Vars</em>'.
+   * @see large.logic.forMathematics.statistics.llms.Operations#getVars()
    * @see #getOperations()
    * @generated
    */
-  EReference getOperations_Var();
+  EReference getOperations_Vars();
 
   /**
    * Returns the meta object for the containment reference list '{@link large.logic.forMathematics.statistics.llms.Operations#getConditional <em>Conditional</em>}'.
@@ -2556,6 +2531,17 @@ public interface LlmsPackage extends EPackage
   EClass getVariables();
 
   /**
+   * Returns the meta object for the containment reference '{@link large.logic.forMathematics.statistics.llms.Variables#getTypesVars <em>Types Vars</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Types Vars</em>'.
+   * @see large.logic.forMathematics.statistics.llms.Variables#getTypesVars()
+   * @see #getVariables()
+   * @generated
+   */
+  EReference getVariables_TypesVars();
+
+  /**
    * Returns the meta object for the containment reference '{@link large.logic.forMathematics.statistics.llms.Variables#getExp <em>Exp</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2896,6 +2882,14 @@ public interface LlmsPackage extends EPackage
     EClass OPERATIONS = eINSTANCE.getOperations();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute OPERATIONS__NAME = eINSTANCE.getOperations_Name();
+
+    /**
      * The meta object literal for the '<em><b>Func</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2904,12 +2898,12 @@ public interface LlmsPackage extends EPackage
     EReference OPERATIONS__FUNC = eINSTANCE.getOperations_Func();
 
     /**
-     * The meta object literal for the '<em><b>Var</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Vars</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPERATIONS__VAR = eINSTANCE.getOperations_Var();
+    EReference OPERATIONS__VARS = eINSTANCE.getOperations_Vars();
 
     /**
      * The meta object literal for the '<em><b>Conditional</b></em>' containment reference list feature.
@@ -3418,6 +3412,14 @@ public interface LlmsPackage extends EPackage
      * @generated
      */
     EClass VARIABLES = eINSTANCE.getVariables();
+
+    /**
+     * The meta object literal for the '<em><b>Types Vars</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VARIABLES__TYPES_VARS = eINSTANCE.getVariables_TypesVars();
 
     /**
      * The meta object literal for the '<em><b>Exp</b></em>' containment reference feature.
