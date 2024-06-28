@@ -4,7 +4,10 @@
 package large.logic.forMathematics.statistics.llms.impl;
 
 import large.logic.forMathematics.statistics.llms.Expression;
+import large.logic.forMathematics.statistics.llms.Expressions;
 import large.logic.forMathematics.statistics.llms.LlmsPackage;
+import large.logic.forMathematics.statistics.llms.Operation;
+import large.logic.forMathematics.statistics.llms.Primary;
 import large.logic.forMathematics.statistics.llms.varParmArgs;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.impl.varParmArgsImpl#getOp <em>Op</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.impl.varParmArgsImpl#getName <em>Name</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.impl.varParmArgsImpl#getDataType <em>Data Type</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.impl.varParmArgsImpl#getExp <em>Exp</em>}</li>
@@ -30,8 +34,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class varParmArgsImpl extends PrimaryImpl implements varParmArgs
+public class varParmArgsImpl extends GenericVariableImpl implements varParmArgs
 {
+  /**
+   * The cached value of the '{@link #getOp() <em>Op</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOp()
+   * @generated
+   * @ordered
+   */
+  protected Operation op;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -101,6 +115,56 @@ public class varParmArgsImpl extends PrimaryImpl implements varParmArgs
   protected EClass eStaticClass()
   {
     return LlmsPackage.Literals.VAR_PARM_ARGS;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Operation getOp()
+  {
+    return op;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetOp(Operation newOp, NotificationChain msgs)
+  {
+    Operation oldOp = op;
+    op = newOp;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LlmsPackage.VAR_PARM_ARGS__OP, oldOp, newOp);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setOp(Operation newOp)
+  {
+    if (newOp != op)
+    {
+      NotificationChain msgs = null;
+      if (op != null)
+        msgs = ((InternalEObject)op).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.VAR_PARM_ARGS__OP, null, msgs);
+      if (newOp != null)
+        msgs = ((InternalEObject)newOp).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.VAR_PARM_ARGS__OP, null, msgs);
+      msgs = basicSetOp(newOp, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.VAR_PARM_ARGS__OP, newOp, newOp));
   }
 
   /**
@@ -213,6 +277,8 @@ public class varParmArgsImpl extends PrimaryImpl implements varParmArgs
   {
     switch (featureID)
     {
+      case LlmsPackage.VAR_PARM_ARGS__OP:
+        return basicSetOp(null, msgs);
       case LlmsPackage.VAR_PARM_ARGS__EXP:
         return basicSetExp(null, msgs);
     }
@@ -229,6 +295,8 @@ public class varParmArgsImpl extends PrimaryImpl implements varParmArgs
   {
     switch (featureID)
     {
+      case LlmsPackage.VAR_PARM_ARGS__OP:
+        return getOp();
       case LlmsPackage.VAR_PARM_ARGS__NAME:
         return getName();
       case LlmsPackage.VAR_PARM_ARGS__DATA_TYPE:
@@ -249,6 +317,9 @@ public class varParmArgsImpl extends PrimaryImpl implements varParmArgs
   {
     switch (featureID)
     {
+      case LlmsPackage.VAR_PARM_ARGS__OP:
+        setOp((Operation)newValue);
+        return;
       case LlmsPackage.VAR_PARM_ARGS__NAME:
         setName((String)newValue);
         return;
@@ -272,6 +343,9 @@ public class varParmArgsImpl extends PrimaryImpl implements varParmArgs
   {
     switch (featureID)
     {
+      case LlmsPackage.VAR_PARM_ARGS__OP:
+        setOp((Operation)null);
+        return;
       case LlmsPackage.VAR_PARM_ARGS__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -295,6 +369,8 @@ public class varParmArgsImpl extends PrimaryImpl implements varParmArgs
   {
     switch (featureID)
     {
+      case LlmsPackage.VAR_PARM_ARGS__OP:
+        return op != null;
       case LlmsPackage.VAR_PARM_ARGS__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case LlmsPackage.VAR_PARM_ARGS__DATA_TYPE:
@@ -303,6 +379,72 @@ public class varParmArgsImpl extends PrimaryImpl implements varParmArgs
         return exp != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Expression.class)
+    {
+      switch (derivedFeatureID)
+      {
+        case LlmsPackage.VAR_PARM_ARGS__OP: return LlmsPackage.EXPRESSION__OP;
+        default: return -1;
+      }
+    }
+    if (baseClass == Expressions.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == Primary.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Expression.class)
+    {
+      switch (baseFeatureID)
+      {
+        case LlmsPackage.EXPRESSION__OP: return LlmsPackage.VAR_PARM_ARGS__OP;
+        default: return -1;
+      }
+    }
+    if (baseClass == Expressions.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == Primary.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
   /**

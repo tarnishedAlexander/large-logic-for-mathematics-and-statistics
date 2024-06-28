@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link large.logic.forMathematics.statistics.llms.Bodies#getVar <em>Var</em>}</li>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.Bodies#getLoops <em>Loops</em>}</li>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.Bodies#getCond <em>Cond</em>}</li>
  * </ul>
  *
  * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getBodies()
@@ -36,5 +38,29 @@ public interface Bodies extends EObject
    * @generated
    */
   EList<GenericVariable> getVar();
+
+  /**
+   * Returns the value of the '<em><b>Loops</b></em>' containment reference list.
+   * The list contents are of type {@link large.logic.forMathematics.statistics.llms.Loops}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Loops</em>' containment reference list.
+   * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getBodies_Loops()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Loops> getLoops();
+
+  /**
+   * Returns the value of the '<em><b>Cond</b></em>' containment reference list.
+   * The list contents are of type {@link large.logic.forMathematics.statistics.llms.Conditionals}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Cond</em>' containment reference list.
+   * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getBodies_Cond()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Conditionals> getCond();
 
 } // Bodies

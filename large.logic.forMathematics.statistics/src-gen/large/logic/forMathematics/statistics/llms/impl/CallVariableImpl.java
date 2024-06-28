@@ -6,9 +6,9 @@ package large.logic.forMathematics.statistics.llms.impl;
 import large.logic.forMathematics.statistics.llms.CallVariable;
 import large.logic.forMathematics.statistics.llms.Expression;
 import large.logic.forMathematics.statistics.llms.Expressions;
-import large.logic.forMathematics.statistics.llms.GenericVariable;
 import large.logic.forMathematics.statistics.llms.LlmsPackage;
 import large.logic.forMathematics.statistics.llms.Operation;
+import large.logic.forMathematics.statistics.llms.ParmsPrint;
 import large.logic.forMathematics.statistics.llms.Primary;
 import large.logic.forMathematics.statistics.llms.varParmArgs;
 
@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
+public class CallVariableImpl extends GenericVariableImpl implements CallVariable
 {
   /**
    * The cached value of the '{@link #getOp() <em>Op</em>}' containment reference.
@@ -273,6 +273,13 @@ public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
   @Override
   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
   {
+    if (baseClass == ParmsPrint.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
     if (baseClass == Expression.class)
     {
       switch (derivedFeatureID)
@@ -295,13 +302,6 @@ public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
         default: return -1;
       }
     }
-    if (baseClass == GenericVariable.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
     return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
   }
 
@@ -313,6 +313,13 @@ public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
   @Override
   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
   {
+    if (baseClass == ParmsPrint.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
     if (baseClass == Expression.class)
     {
       switch (baseFeatureID)
@@ -329,13 +336,6 @@ public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
       }
     }
     if (baseClass == Primary.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == GenericVariable.class)
     {
       switch (baseFeatureID)
       {

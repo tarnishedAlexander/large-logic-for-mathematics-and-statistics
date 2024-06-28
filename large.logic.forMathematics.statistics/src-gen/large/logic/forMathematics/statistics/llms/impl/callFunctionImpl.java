@@ -5,13 +5,13 @@ package large.logic.forMathematics.statistics.llms.impl;
 
 import java.util.Collection;
 
+import large.logic.forMathematics.statistics.llms.CallFunction;
 import large.logic.forMathematics.statistics.llms.Expression;
 import large.logic.forMathematics.statistics.llms.Expressions;
 import large.logic.forMathematics.statistics.llms.Functions;
 import large.logic.forMathematics.statistics.llms.LlmsPackage;
 import large.logic.forMathematics.statistics.llms.Operation;
 import large.logic.forMathematics.statistics.llms.Primary;
-import large.logic.forMathematics.statistics.llms.callFunction;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -28,20 +28,20 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>call Function</b></em>'.
+ * An implementation of the model object '<em><b>Call Function</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link large.logic.forMathematics.statistics.llms.impl.callFunctionImpl#getOp <em>Op</em>}</li>
- *   <li>{@link large.logic.forMathematics.statistics.llms.impl.callFunctionImpl#getFunc <em>Func</em>}</li>
- *   <li>{@link large.logic.forMathematics.statistics.llms.impl.callFunctionImpl#getExp <em>Exp</em>}</li>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.impl.CallFunctionImpl#getOp <em>Op</em>}</li>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.impl.CallFunctionImpl#getFunc <em>Func</em>}</li>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.impl.CallFunctionImpl#getExp <em>Exp</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class callFunctionImpl extends ParmsPrintImpl implements callFunction
+public class CallFunctionImpl extends ParmsPrintImpl implements CallFunction
 {
   /**
    * The cached value of the '{@link #getOp() <em>Op</em>}' containment reference.
@@ -78,7 +78,7 @@ public class callFunctionImpl extends ParmsPrintImpl implements callFunction
    * <!-- end-user-doc -->
    * @generated
    */
-  protected callFunctionImpl()
+  protected CallFunctionImpl()
   {
     super();
   }
@@ -377,4 +377,4 @@ public class callFunctionImpl extends ParmsPrintImpl implements callFunction
     return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
-} //callFunctionImpl
+} //CallFunctionImpl

@@ -3,6 +3,8 @@
  */
 package large.logic.forMathematics.statistics.llms;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -10,6 +12,14 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>Conditionals</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.Conditionals#getIfs <em>Ifs</em>}</li>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.Conditionals#getElseif <em>Elseif</em>}</li>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.Conditionals#getElses <em>Elses</em>}</li>
+ * </ul>
  *
  * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getConditionals()
  * @model
@@ -17,4 +27,60 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Conditionals extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Ifs</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Ifs</em>' containment reference.
+   * @see #setIfs(Ifs)
+   * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getConditionals_Ifs()
+   * @model containment="true"
+   * @generated
+   */
+  Ifs getIfs();
+
+  /**
+   * Sets the value of the '{@link large.logic.forMathematics.statistics.llms.Conditionals#getIfs <em>Ifs</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Ifs</em>' containment reference.
+   * @see #getIfs()
+   * @generated
+   */
+  void setIfs(Ifs value);
+
+  /**
+   * Returns the value of the '<em><b>Elseif</b></em>' containment reference list.
+   * The list contents are of type {@link large.logic.forMathematics.statistics.llms.ElseIfs}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Elseif</em>' containment reference list.
+   * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getConditionals_Elseif()
+   * @model containment="true"
+   * @generated
+   */
+  EList<ElseIfs> getElseif();
+
+  /**
+   * Returns the value of the '<em><b>Elses</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Elses</em>' containment reference.
+   * @see #setElses(Elses)
+   * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getConditionals_Elses()
+   * @model containment="true"
+   * @generated
+   */
+  Elses getElses();
+
+  /**
+   * Sets the value of the '{@link large.logic.forMathematics.statistics.llms.Conditionals#getElses <em>Elses</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Elses</em>' containment reference.
+   * @see #getElses()
+   * @generated
+   */
+  void setElses(Elses value);
+
 } // Conditionals

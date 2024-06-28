@@ -9,18 +9,23 @@ import large.logic.forMathematics.statistics.llms.Assignment;
 import large.logic.forMathematics.statistics.llms.Bodies;
 import large.logic.forMathematics.statistics.llms.BooleanFunction;
 import large.logic.forMathematics.statistics.llms.Booleans;
+import large.logic.forMathematics.statistics.llms.CallFunction;
 import large.logic.forMathematics.statistics.llms.CallVariable;
 import large.logic.forMathematics.statistics.llms.Conditionals;
-import large.logic.forMathematics.statistics.llms.Data;
+import large.logic.forMathematics.statistics.llms.Datas;
 import large.logic.forMathematics.statistics.llms.Divition;
 import large.logic.forMathematics.statistics.llms.Doubles;
+import large.logic.forMathematics.statistics.llms.ElseIfs;
+import large.logic.forMathematics.statistics.llms.Elses;
 import large.logic.forMathematics.statistics.llms.Equal;
 import large.logic.forMathematics.statistics.llms.Expression;
 import large.logic.forMathematics.statistics.llms.Expressions;
+import large.logic.forMathematics.statistics.llms.Fors;
 import large.logic.forMathematics.statistics.llms.Functions;
 import large.logic.forMathematics.statistics.llms.GenericVariable;
 import large.logic.forMathematics.statistics.llms.GreaterOrEqual;
 import large.logic.forMathematics.statistics.llms.GreaterThan;
+import large.logic.forMathematics.statistics.llms.Ifs;
 import large.logic.forMathematics.statistics.llms.LessOrEqual;
 import large.logic.forMathematics.statistics.llms.LessThan;
 import large.logic.forMathematics.statistics.llms.LlmsFactory;
@@ -29,12 +34,12 @@ import large.logic.forMathematics.statistics.llms.LogicalOperation;
 import large.logic.forMathematics.statistics.llms.LogicalParams;
 import large.logic.forMathematics.statistics.llms.Loops;
 import large.logic.forMathematics.statistics.llms.Multiplication;
-import large.logic.forMathematics.statistics.llms.Names;
 import large.logic.forMathematics.statistics.llms.Nands;
 import large.logic.forMathematics.statistics.llms.Nors;
 import large.logic.forMathematics.statistics.llms.NotEqual;
 import large.logic.forMathematics.statistics.llms.Nots;
 import large.logic.forMathematics.statistics.llms.Numbers;
+import large.logic.forMathematics.statistics.llms.OnlyVar;
 import large.logic.forMathematics.statistics.llms.Operation;
 import large.logic.forMathematics.statistics.llms.Operations;
 import large.logic.forMathematics.statistics.llms.Ors;
@@ -46,7 +51,7 @@ import large.logic.forMathematics.statistics.llms.Prints;
 import large.logic.forMathematics.statistics.llms.Strings;
 import large.logic.forMathematics.statistics.llms.Subs;
 import large.logic.forMathematics.statistics.llms.Sum;
-import large.logic.forMathematics.statistics.llms.callFunction;
+import large.logic.forMathematics.statistics.llms.Whiles;
 import large.logic.forMathematics.statistics.llms.funOutputs;
 import large.logic.forMathematics.statistics.llms.varParmArgs;
 
@@ -77,56 +82,7 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass printsEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass parmsPrintEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass namesEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass functionsEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass bodiesEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass loopsEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass conditionalsEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass logicalParamsEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -147,7 +103,119 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass bodiesEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass varParmArgsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass expressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass genericVariableEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass loopsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass forsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass whilesEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass conditionalsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass ifsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass elseIfsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass elsesEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass parmsPrintEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass callFunctionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass callVariableEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass onlyVarEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass assignmentEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass logicalParamsEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -273,42 +341,7 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass callFunctionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass assignmentEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass genericVariableEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass callVariableEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass varParmArgsEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass dataEClass = null;
+  private EClass datasEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -337,6 +370,13 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
    * @generated
    */
   private EClass doublesEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass printsEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -518,61 +558,6 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
    * @generated
    */
   @Override
-  public EClass getPrints()
-  {
-    return printsEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getPrints_Print()
-  {
-    return (EReference)printsEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getParmsPrint()
-  {
-    return parmsPrintEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getNames()
-  {
-    return namesEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getNames_Name()
-  {
-    return (EAttribute)namesEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getFunctions()
   {
     return functionsEClass;
@@ -595,9 +580,9 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
    * @generated
    */
   @Override
-  public EReference getFunctions_Name()
+  public EAttribute getFunctions_Name()
   {
-    return (EReference)functionsEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)functionsEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -620,116 +605,6 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
   public EReference getFunctions_Body()
   {
     return (EReference)functionsEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getBodies()
-  {
-    return bodiesEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getBodies_Var()
-  {
-    return (EReference)bodiesEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getLoops()
-  {
-    return loopsEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getLoops_Var()
-  {
-    return (EReference)loopsEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getLoops_Number()
-  {
-    return (EReference)loopsEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getLoops_Body()
-  {
-    return (EReference)loopsEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getConditionals()
-  {
-    return conditionalsEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getLogicalParams()
-  {
-    return logicalParamsEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getLogicalParams_Body()
-  {
-    return (EReference)logicalParamsEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getLogicalParams_LogicParms()
-  {
-    return (EReference)logicalParamsEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -782,6 +657,94 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
    * @generated
    */
   @Override
+  public EClass getBodies()
+  {
+    return bodiesEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBodies_Var()
+  {
+    return (EReference)bodiesEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBodies_Loops()
+  {
+    return (EReference)bodiesEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBodies_Cond()
+  {
+    return (EReference)bodiesEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getvarParmArgs()
+  {
+    return varParmArgsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getvarParmArgs_Name()
+  {
+    return (EAttribute)varParmArgsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getvarParmArgs_DataType()
+  {
+    return (EAttribute)varParmArgsEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getvarParmArgs_Exp()
+  {
+    return (EReference)varParmArgsEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getExpression()
   {
     return expressionEClass;
@@ -796,6 +759,380 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
   public EReference getExpression_Op()
   {
     return (EReference)expressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getGenericVariable()
+  {
+    return genericVariableEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLoops()
+  {
+    return loopsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFors()
+  {
+    return forsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFors_Var()
+  {
+    return (EReference)forsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFors_Number()
+  {
+    return (EReference)forsEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFors_Body()
+  {
+    return (EReference)forsEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getWhiles()
+  {
+    return whilesEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getWhiles_Logical()
+  {
+    return (EReference)whilesEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getWhiles_Bodie()
+  {
+    return (EReference)whilesEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getConditionals()
+  {
+    return conditionalsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConditionals_Ifs()
+  {
+    return (EReference)conditionalsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConditionals_Elseif()
+  {
+    return (EReference)conditionalsEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConditionals_Elses()
+  {
+    return (EReference)conditionalsEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getIfs()
+  {
+    return ifsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIfs_Lg()
+  {
+    return (EReference)ifsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIfs_Body()
+  {
+    return (EReference)ifsEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getElseIfs()
+  {
+    return elseIfsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getElseIfs_LogicParms()
+  {
+    return (EReference)elseIfsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getElseIfs_Body()
+  {
+    return (EReference)elseIfsEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getElses()
+  {
+    return elsesEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getElses_Body()
+  {
+    return (EReference)elsesEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getParmsPrint()
+  {
+    return parmsPrintEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCallFunction()
+  {
+    return callFunctionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCallFunction_Func()
+  {
+    return (EReference)callFunctionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCallFunction_Exp()
+  {
+    return (EReference)callFunctionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCallVariable()
+  {
+    return callVariableEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCallVariable_Vars()
+  {
+    return (EReference)callVariableEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getOnlyVar()
+  {
+    return onlyVarEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getOnlyVar_Name()
+  {
+    return (EAttribute)onlyVarEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getOnlyVar_DataType()
+  {
+    return (EAttribute)onlyVarEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getAssignment()
+  {
+    return assignmentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAssignment_Vars()
+  {
+    return (EReference)assignmentEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAssignment_Exp()
+  {
+    return (EReference)assignmentEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLogicalParams()
+  {
+    return logicalParamsEClass;
   }
 
   /**
@@ -1057,152 +1394,9 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
    * @generated
    */
   @Override
-  public EClass getcallFunction()
+  public EClass getDatas()
   {
-    return callFunctionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getcallFunction_Func()
-  {
-    return (EReference)callFunctionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getcallFunction_Exp()
-  {
-    return (EReference)callFunctionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getAssignment()
-  {
-    return assignmentEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getAssignment_Vars()
-  {
-    return (EReference)assignmentEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getAssignment_Exp()
-  {
-    return (EReference)assignmentEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getGenericVariable()
-  {
-    return genericVariableEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getCallVariable()
-  {
-    return callVariableEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getCallVariable_Vars()
-  {
-    return (EReference)callVariableEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getvarParmArgs()
-  {
-    return varParmArgsEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getvarParmArgs_Name()
-  {
-    return (EAttribute)varParmArgsEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getvarParmArgs_DataType()
-  {
-    return (EAttribute)varParmArgsEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getvarParmArgs_Exp()
-  {
-    return (EReference)varParmArgsEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getData()
-  {
-    return dataEClass;
+    return datasEClass;
   }
 
   /**
@@ -1291,6 +1485,28 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
   public EAttribute getDoubles_Value()
   {
     return (EAttribute)doublesEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getPrints()
+  {
+    return printsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPrints_Print()
+  {
+    return (EReference)printsEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1486,33 +1702,11 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
     createEReference(operationsEClass, OPERATIONS__LOOPS);
     createEReference(operationsEClass, OPERATIONS__PRINT);
 
-    printsEClass = createEClass(PRINTS);
-    createEReference(printsEClass, PRINTS__PRINT);
-
-    parmsPrintEClass = createEClass(PARMS_PRINT);
-
-    namesEClass = createEClass(NAMES);
-    createEAttribute(namesEClass, NAMES__NAME);
-
     functionsEClass = createEClass(FUNCTIONS);
     createEReference(functionsEClass, FUNCTIONS__OUTPUT);
-    createEReference(functionsEClass, FUNCTIONS__NAME);
+    createEAttribute(functionsEClass, FUNCTIONS__NAME);
     createEReference(functionsEClass, FUNCTIONS__PARAMS);
     createEReference(functionsEClass, FUNCTIONS__BODY);
-
-    bodiesEClass = createEClass(BODIES);
-    createEReference(bodiesEClass, BODIES__VAR);
-
-    loopsEClass = createEClass(LOOPS);
-    createEReference(loopsEClass, LOOPS__VAR);
-    createEReference(loopsEClass, LOOPS__NUMBER);
-    createEReference(loopsEClass, LOOPS__BODY);
-
-    conditionalsEClass = createEClass(CONDITIONALS);
-
-    logicalParamsEClass = createEClass(LOGICAL_PARAMS);
-    createEReference(logicalParamsEClass, LOGICAL_PARAMS__BODY);
-    createEReference(logicalParamsEClass, LOGICAL_PARAMS__LOGIC_PARMS);
 
     parametersOutptutEClass = createEClass(PARAMETERS_OUTPTUT);
     createEReference(parametersOutptutEClass, PARAMETERS_OUTPTUT__PARAM);
@@ -1520,8 +1714,66 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
 
     parametersfuncEClass = createEClass(PARAMETERSFUNC);
 
+    bodiesEClass = createEClass(BODIES);
+    createEReference(bodiesEClass, BODIES__VAR);
+    createEReference(bodiesEClass, BODIES__LOOPS);
+    createEReference(bodiesEClass, BODIES__COND);
+
+    varParmArgsEClass = createEClass(VAR_PARM_ARGS);
+    createEAttribute(varParmArgsEClass, VAR_PARM_ARGS__NAME);
+    createEAttribute(varParmArgsEClass, VAR_PARM_ARGS__DATA_TYPE);
+    createEReference(varParmArgsEClass, VAR_PARM_ARGS__EXP);
+
     expressionEClass = createEClass(EXPRESSION);
     createEReference(expressionEClass, EXPRESSION__OP);
+
+    genericVariableEClass = createEClass(GENERIC_VARIABLE);
+
+    loopsEClass = createEClass(LOOPS);
+
+    forsEClass = createEClass(FORS);
+    createEReference(forsEClass, FORS__VAR);
+    createEReference(forsEClass, FORS__NUMBER);
+    createEReference(forsEClass, FORS__BODY);
+
+    whilesEClass = createEClass(WHILES);
+    createEReference(whilesEClass, WHILES__LOGICAL);
+    createEReference(whilesEClass, WHILES__BODIE);
+
+    conditionalsEClass = createEClass(CONDITIONALS);
+    createEReference(conditionalsEClass, CONDITIONALS__IFS);
+    createEReference(conditionalsEClass, CONDITIONALS__ELSEIF);
+    createEReference(conditionalsEClass, CONDITIONALS__ELSES);
+
+    ifsEClass = createEClass(IFS);
+    createEReference(ifsEClass, IFS__LG);
+    createEReference(ifsEClass, IFS__BODY);
+
+    elseIfsEClass = createEClass(ELSE_IFS);
+    createEReference(elseIfsEClass, ELSE_IFS__LOGIC_PARMS);
+    createEReference(elseIfsEClass, ELSE_IFS__BODY);
+
+    elsesEClass = createEClass(ELSES);
+    createEReference(elsesEClass, ELSES__BODY);
+
+    parmsPrintEClass = createEClass(PARMS_PRINT);
+
+    callFunctionEClass = createEClass(CALL_FUNCTION);
+    createEReference(callFunctionEClass, CALL_FUNCTION__FUNC);
+    createEReference(callFunctionEClass, CALL_FUNCTION__EXP);
+
+    callVariableEClass = createEClass(CALL_VARIABLE);
+    createEReference(callVariableEClass, CALL_VARIABLE__VARS);
+
+    onlyVarEClass = createEClass(ONLY_VAR);
+    createEAttribute(onlyVarEClass, ONLY_VAR__NAME);
+    createEAttribute(onlyVarEClass, ONLY_VAR__DATA_TYPE);
+
+    assignmentEClass = createEClass(ASSIGNMENT);
+    createEReference(assignmentEClass, ASSIGNMENT__VARS);
+    createEReference(assignmentEClass, ASSIGNMENT__EXP);
+
+    logicalParamsEClass = createEClass(LOGICAL_PARAMS);
 
     operationEClass = createEClass(OPERATION);
 
@@ -1563,25 +1815,7 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
 
     primaryEClass = createEClass(PRIMARY);
 
-    callFunctionEClass = createEClass(CALL_FUNCTION);
-    createEReference(callFunctionEClass, CALL_FUNCTION__FUNC);
-    createEReference(callFunctionEClass, CALL_FUNCTION__EXP);
-
-    assignmentEClass = createEClass(ASSIGNMENT);
-    createEReference(assignmentEClass, ASSIGNMENT__VARS);
-    createEReference(assignmentEClass, ASSIGNMENT__EXP);
-
-    genericVariableEClass = createEClass(GENERIC_VARIABLE);
-
-    callVariableEClass = createEClass(CALL_VARIABLE);
-    createEReference(callVariableEClass, CALL_VARIABLE__VARS);
-
-    varParmArgsEClass = createEClass(VAR_PARM_ARGS);
-    createEAttribute(varParmArgsEClass, VAR_PARM_ARGS__NAME);
-    createEAttribute(varParmArgsEClass, VAR_PARM_ARGS__DATA_TYPE);
-    createEReference(varParmArgsEClass, VAR_PARM_ARGS__EXP);
-
-    dataEClass = createEClass(DATA);
+    datasEClass = createEClass(DATAS);
 
     numbersEClass = createEClass(NUMBERS);
     createEAttribute(numbersEClass, NUMBERS__VALUE);
@@ -1594,6 +1828,9 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
 
     doublesEClass = createEClass(DOUBLES);
     createEAttribute(doublesEClass, DOUBLES__VALUE);
+
+    printsEClass = createEClass(PRINTS);
+    createEReference(printsEClass, PRINTS__PRINT);
 
     funOutputsEClass = createEClass(FUN_OUTPUTS);
     createEReference(funOutputsEClass, FUN_OUTPUTS__PARAMS);
@@ -1644,7 +1881,17 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    logicalParamsEClass.getESuperTypes().add(this.getConditionals());
+    varParmArgsEClass.getESuperTypes().add(this.getGenericVariable());
+    varParmArgsEClass.getESuperTypes().add(this.getPrimary());
+    forsEClass.getESuperTypes().add(this.getLoops());
+    whilesEClass.getESuperTypes().add(this.getLoops());
+    callFunctionEClass.getESuperTypes().add(this.getParmsPrint());
+    callFunctionEClass.getESuperTypes().add(this.getPrimary());
+    callVariableEClass.getESuperTypes().add(this.getGenericVariable());
+    callVariableEClass.getESuperTypes().add(this.getParmsPrint());
+    callVariableEClass.getESuperTypes().add(this.getPrimary());
+    onlyVarEClass.getESuperTypes().add(this.getGenericVariable());
+    assignmentEClass.getESuperTypes().add(this.getGenericVariable());
     logicalOperationEClass.getESuperTypes().add(this.getLogicalParams());
     logicalOperationEClass.getESuperTypes().add(this.getOperation());
     lessThanEClass.getESuperTypes().add(this.getLogicalOperation());
@@ -1662,19 +1909,12 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
     aritmeticOperationEClass.getESuperTypes().add(this.getOperation());
     expressionsEClass.getESuperTypes().add(this.getExpression());
     primaryEClass.getESuperTypes().add(this.getExpressions());
-    callFunctionEClass.getESuperTypes().add(this.getParmsPrint());
-    callFunctionEClass.getESuperTypes().add(this.getPrimary());
-    callVariableEClass.getESuperTypes().add(this.getParmsPrint());
-    callVariableEClass.getESuperTypes().add(this.getPrimary());
-    callVariableEClass.getESuperTypes().add(this.getGenericVariable());
-    varParmArgsEClass.getESuperTypes().add(this.getPrimary());
-    varParmArgsEClass.getESuperTypes().add(this.getGenericVariable());
-    dataEClass.getESuperTypes().add(this.getParmsPrint());
-    dataEClass.getESuperTypes().add(this.getPrimary());
-    numbersEClass.getESuperTypes().add(this.getData());
-    stringsEClass.getESuperTypes().add(this.getData());
-    booleansEClass.getESuperTypes().add(this.getData());
-    doublesEClass.getESuperTypes().add(this.getData());
+    datasEClass.getESuperTypes().add(this.getParmsPrint());
+    datasEClass.getESuperTypes().add(this.getPrimary());
+    numbersEClass.getESuperTypes().add(this.getDatas());
+    stringsEClass.getESuperTypes().add(this.getDatas());
+    booleansEClass.getESuperTypes().add(this.getDatas());
+    doublesEClass.getESuperTypes().add(this.getDatas());
     funOutputsEClass.getESuperTypes().add(this.getParametersfunc());
     sumEClass.getESuperTypes().add(this.getExpression());
     subsEClass.getESuperTypes().add(this.getExpression());
@@ -1690,33 +1930,11 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
     initEReference(getOperations_Loops(), this.getLoops(), null, "loops", null, 0, -1, Operations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOperations_Print(), this.getPrints(), null, "print", null, 0, -1, Operations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(printsEClass, Prints.class, "Prints", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getPrints_Print(), this.getParmsPrint(), null, "print", null, 0, -1, Prints.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(parmsPrintEClass, ParmsPrint.class, "ParmsPrint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(namesEClass, Names.class, "Names", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getNames_Name(), ecorePackage.getEString(), "name", null, 0, 1, Names.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(functionsEClass, Functions.class, "Functions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFunctions_Output(), this.getParametersOutptut(), null, "output", null, 0, 1, Functions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunctions_Name(), this.getNames(), null, "name", null, 0, 1, Functions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFunctions_Name(), ecorePackage.getEString(), "name", null, 0, 1, Functions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctions_Params(), this.getParametersfunc(), null, "params", null, 0, 1, Functions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctions_Body(), this.getBodies(), null, "body", null, 0, 1, Functions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(bodiesEClass, Bodies.class, "Bodies", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getBodies_Var(), this.getGenericVariable(), null, "var", null, 0, -1, Bodies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(loopsEClass, Loops.class, "Loops", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLoops_Var(), this.getGenericVariable(), null, "var", null, 0, 1, Loops.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLoops_Number(), this.getNumbers(), null, "number", null, 0, 1, Loops.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLoops_Body(), this.getBodies(), null, "body", null, 0, -1, Loops.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(conditionalsEClass, Conditionals.class, "Conditionals", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(logicalParamsEClass, LogicalParams.class, "LogicalParams", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLogicalParams_Body(), this.getBodies(), null, "body", null, 0, -1, LogicalParams.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLogicalParams_LogicParms(), this.getLogicalParams(), null, "logicParms", null, 0, -1, LogicalParams.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(parametersOutptutEClass, ParametersOutptut.class, "ParametersOutptut", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getParametersOutptut_Param(), this.getvarParmArgs(), null, "param", null, 0, 1, ParametersOutptut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1724,8 +1942,66 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
 
     initEClass(parametersfuncEClass, Parametersfunc.class, "Parametersfunc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+    initEClass(bodiesEClass, Bodies.class, "Bodies", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getBodies_Var(), this.getGenericVariable(), null, "var", null, 0, -1, Bodies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBodies_Loops(), this.getLoops(), null, "loops", null, 0, -1, Bodies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBodies_Cond(), this.getConditionals(), null, "cond", null, 0, -1, Bodies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(varParmArgsEClass, varParmArgs.class, "varParmArgs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getvarParmArgs_Name(), ecorePackage.getEString(), "name", null, 0, 1, varParmArgs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getvarParmArgs_DataType(), ecorePackage.getEString(), "dataType", null, 0, 1, varParmArgs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getvarParmArgs_Exp(), this.getExpression(), null, "exp", null, 0, 1, varParmArgs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getExpression_Op(), this.getOperation(), null, "op", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(genericVariableEClass, GenericVariable.class, "GenericVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(loopsEClass, Loops.class, "Loops", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(forsEClass, Fors.class, "Fors", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFors_Var(), this.getGenericVariable(), null, "var", null, 0, 1, Fors.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFors_Number(), this.getNumbers(), null, "number", null, 0, 1, Fors.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFors_Body(), this.getBodies(), null, "body", null, 0, -1, Fors.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(whilesEClass, Whiles.class, "Whiles", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getWhiles_Logical(), this.getLogicalParams(), null, "logical", null, 0, 1, Whiles.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWhiles_Bodie(), this.getBodies(), null, "bodie", null, 0, -1, Whiles.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(conditionalsEClass, Conditionals.class, "Conditionals", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConditionals_Ifs(), this.getIfs(), null, "ifs", null, 0, 1, Conditionals.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConditionals_Elseif(), this.getElseIfs(), null, "elseif", null, 0, -1, Conditionals.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConditionals_Elses(), this.getElses(), null, "elses", null, 0, 1, Conditionals.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(ifsEClass, Ifs.class, "Ifs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getIfs_Lg(), this.getLogicalParams(), null, "lg", null, 0, 1, Ifs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIfs_Body(), this.getBodies(), null, "body", null, 0, -1, Ifs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(elseIfsEClass, ElseIfs.class, "ElseIfs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getElseIfs_LogicParms(), this.getLogicalParams(), null, "logicParms", null, 0, -1, ElseIfs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getElseIfs_Body(), this.getBodies(), null, "body", null, 0, -1, ElseIfs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(elsesEClass, Elses.class, "Elses", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getElses_Body(), this.getBodies(), null, "body", null, 0, -1, Elses.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(parmsPrintEClass, ParmsPrint.class, "ParmsPrint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(callFunctionEClass, CallFunction.class, "CallFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCallFunction_Func(), this.getFunctions(), null, "func", null, 0, 1, CallFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCallFunction_Exp(), this.getExpression(), null, "exp", null, 0, -1, CallFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(callVariableEClass, CallVariable.class, "CallVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCallVariable_Vars(), this.getvarParmArgs(), null, "vars", null, 0, 1, CallVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(onlyVarEClass, OnlyVar.class, "OnlyVar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getOnlyVar_Name(), ecorePackage.getEString(), "name", null, 0, 1, OnlyVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getOnlyVar_DataType(), ecorePackage.getEString(), "dataType", null, 0, 1, OnlyVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(assignmentEClass, Assignment.class, "Assignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAssignment_Vars(), this.getvarParmArgs(), null, "vars", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAssignment_Exp(), this.getExpression(), null, "exp", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(logicalParamsEClass, LogicalParams.class, "LogicalParams", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1767,25 +2043,7 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
 
     initEClass(primaryEClass, Primary.class, "Primary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(callFunctionEClass, callFunction.class, "callFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getcallFunction_Func(), this.getFunctions(), null, "func", null, 0, 1, callFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getcallFunction_Exp(), this.getExpression(), null, "exp", null, 0, -1, callFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(assignmentEClass, Assignment.class, "Assignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAssignment_Vars(), this.getvarParmArgs(), null, "vars", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAssignment_Exp(), this.getExpression(), null, "exp", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(genericVariableEClass, GenericVariable.class, "GenericVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(callVariableEClass, CallVariable.class, "CallVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCallVariable_Vars(), this.getvarParmArgs(), null, "vars", null, 0, 1, CallVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(varParmArgsEClass, varParmArgs.class, "varParmArgs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getvarParmArgs_Name(), ecorePackage.getEString(), "name", null, 0, 1, varParmArgs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getvarParmArgs_DataType(), ecorePackage.getEString(), "dataType", null, 0, 1, varParmArgs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getvarParmArgs_Exp(), this.getExpression(), null, "exp", null, 0, 1, varParmArgs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(dataEClass, Data.class, "Data", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(datasEClass, Datas.class, "Datas", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(numbersEClass, Numbers.class, "Numbers", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getNumbers_Value(), ecorePackage.getEInt(), "value", null, 0, 1, Numbers.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1798,6 +2056,9 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
 
     initEClass(doublesEClass, Doubles.class, "Doubles", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDoubles_Value(), ecorePackage.getEString(), "value", null, 0, 1, Doubles.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(printsEClass, Prints.class, "Prints", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPrints_Print(), this.getParmsPrint(), null, "print", null, 0, -1, Prints.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(funOutputsEClass, funOutputs.class, "funOutputs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getfunOutputs_Params(), this.getExpression(), null, "params", null, 0, -1, funOutputs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

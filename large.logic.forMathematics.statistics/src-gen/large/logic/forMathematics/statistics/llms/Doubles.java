@@ -20,7 +20,7 @@ package large.logic.forMathematics.statistics.llms;
  * @model
  * @generated
  */
-public interface Doubles extends Data
+public interface Doubles extends Datas
 {
   /**
    * Returns the value of the '<em><b>Value</b></em>' attribute.

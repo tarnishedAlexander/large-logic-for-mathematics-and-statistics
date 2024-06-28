@@ -3,7 +3,7 @@
  */
 package large.logic.forMathematics.statistics.llms.impl;
 
-import large.logic.forMathematics.statistics.llms.Data;
+import large.logic.forMathematics.statistics.llms.Datas;
 import large.logic.forMathematics.statistics.llms.Expression;
 import large.logic.forMathematics.statistics.llms.Expressions;
 import large.logic.forMathematics.statistics.llms.LlmsPackage;
@@ -20,18 +20,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Data</b></em>'.
+ * An implementation of the model object '<em><b>Datas</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link large.logic.forMathematics.statistics.llms.impl.DataImpl#getOp <em>Op</em>}</li>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.impl.DatasImpl#getOp <em>Op</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class DataImpl extends ParmsPrintImpl implements Data
+public class DatasImpl extends ParmsPrintImpl implements Datas
 {
   /**
    * The cached value of the '{@link #getOp() <em>Op</em>}' containment reference.
@@ -48,7 +48,7 @@ public class DataImpl extends ParmsPrintImpl implements Data
    * <!-- end-user-doc -->
    * @generated
    */
-  protected DataImpl()
+  protected DatasImpl()
   {
     super();
   }
@@ -61,7 +61,7 @@ public class DataImpl extends ParmsPrintImpl implements Data
   @Override
   protected EClass eStaticClass()
   {
-    return LlmsPackage.Literals.DATA;
+    return LlmsPackage.Literals.DATAS;
   }
 
   /**
@@ -86,7 +86,7 @@ public class DataImpl extends ParmsPrintImpl implements Data
     op = newOp;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LlmsPackage.DATA__OP, oldOp, newOp);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LlmsPackage.DATAS__OP, oldOp, newOp);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -104,14 +104,14 @@ public class DataImpl extends ParmsPrintImpl implements Data
     {
       NotificationChain msgs = null;
       if (op != null)
-        msgs = ((InternalEObject)op).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.DATA__OP, null, msgs);
+        msgs = ((InternalEObject)op).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.DATAS__OP, null, msgs);
       if (newOp != null)
-        msgs = ((InternalEObject)newOp).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.DATA__OP, null, msgs);
+        msgs = ((InternalEObject)newOp).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.DATAS__OP, null, msgs);
       msgs = basicSetOp(newOp, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.DATA__OP, newOp, newOp));
+      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.DATAS__OP, newOp, newOp));
   }
 
   /**
@@ -124,7 +124,7 @@ public class DataImpl extends ParmsPrintImpl implements Data
   {
     switch (featureID)
     {
-      case LlmsPackage.DATA__OP:
+      case LlmsPackage.DATAS__OP:
         return basicSetOp(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -140,7 +140,7 @@ public class DataImpl extends ParmsPrintImpl implements Data
   {
     switch (featureID)
     {
-      case LlmsPackage.DATA__OP:
+      case LlmsPackage.DATAS__OP:
         return getOp();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -156,7 +156,7 @@ public class DataImpl extends ParmsPrintImpl implements Data
   {
     switch (featureID)
     {
-      case LlmsPackage.DATA__OP:
+      case LlmsPackage.DATAS__OP:
         setOp((Operation)newValue);
         return;
     }
@@ -173,7 +173,7 @@ public class DataImpl extends ParmsPrintImpl implements Data
   {
     switch (featureID)
     {
-      case LlmsPackage.DATA__OP:
+      case LlmsPackage.DATAS__OP:
         setOp((Operation)null);
         return;
     }
@@ -190,7 +190,7 @@ public class DataImpl extends ParmsPrintImpl implements Data
   {
     switch (featureID)
     {
-      case LlmsPackage.DATA__OP:
+      case LlmsPackage.DATAS__OP:
         return op != null;
     }
     return super.eIsSet(featureID);
@@ -208,7 +208,7 @@ public class DataImpl extends ParmsPrintImpl implements Data
     {
       switch (derivedFeatureID)
       {
-        case LlmsPackage.DATA__OP: return LlmsPackage.EXPRESSION__OP;
+        case LlmsPackage.DATAS__OP: return LlmsPackage.EXPRESSION__OP;
         default: return -1;
       }
     }
@@ -241,7 +241,7 @@ public class DataImpl extends ParmsPrintImpl implements Data
     {
       switch (baseFeatureID)
       {
-        case LlmsPackage.EXPRESSION__OP: return LlmsPackage.DATA__OP;
+        case LlmsPackage.EXPRESSION__OP: return LlmsPackage.DATAS__OP;
         default: return -1;
       }
     }
@@ -262,4 +262,4 @@ public class DataImpl extends ParmsPrintImpl implements Data
     return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
-} //DataImpl
+} //DatasImpl

@@ -3,22 +3,75 @@
  */
 package large.logic.forMathematics.statistics.llms.impl;
 
+import java.util.Collection;
+
 import large.logic.forMathematics.statistics.llms.Conditionals;
+import large.logic.forMathematics.statistics.llms.ElseIfs;
+import large.logic.forMathematics.statistics.llms.Elses;
+import large.logic.forMathematics.statistics.llms.Ifs;
 import large.logic.forMathematics.statistics.llms.LlmsPackage;
 
-import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Conditionals</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.impl.ConditionalsImpl#getIfs <em>Ifs</em>}</li>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.impl.ConditionalsImpl#getElseif <em>Elseif</em>}</li>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.impl.ConditionalsImpl#getElses <em>Elses</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class ConditionalsImpl extends MinimalEObjectImpl.Container implements Conditionals
 {
+  /**
+   * The cached value of the '{@link #getIfs() <em>Ifs</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getIfs()
+   * @generated
+   * @ordered
+   */
+  protected Ifs ifs;
+
+  /**
+   * The cached value of the '{@link #getElseif() <em>Elseif</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getElseif()
+   * @generated
+   * @ordered
+   */
+  protected EList<ElseIfs> elseif;
+
+  /**
+   * The cached value of the '{@link #getElses() <em>Elses</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getElses()
+   * @generated
+   * @ordered
+   */
+  protected Elses elses;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -38,6 +91,229 @@ public class ConditionalsImpl extends MinimalEObjectImpl.Container implements Co
   protected EClass eStaticClass()
   {
     return LlmsPackage.Literals.CONDITIONALS;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Ifs getIfs()
+  {
+    return ifs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetIfs(Ifs newIfs, NotificationChain msgs)
+  {
+    Ifs oldIfs = ifs;
+    ifs = newIfs;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LlmsPackage.CONDITIONALS__IFS, oldIfs, newIfs);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setIfs(Ifs newIfs)
+  {
+    if (newIfs != ifs)
+    {
+      NotificationChain msgs = null;
+      if (ifs != null)
+        msgs = ((InternalEObject)ifs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.CONDITIONALS__IFS, null, msgs);
+      if (newIfs != null)
+        msgs = ((InternalEObject)newIfs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.CONDITIONALS__IFS, null, msgs);
+      msgs = basicSetIfs(newIfs, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.CONDITIONALS__IFS, newIfs, newIfs));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<ElseIfs> getElseif()
+  {
+    if (elseif == null)
+    {
+      elseif = new EObjectContainmentEList<ElseIfs>(ElseIfs.class, this, LlmsPackage.CONDITIONALS__ELSEIF);
+    }
+    return elseif;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Elses getElses()
+  {
+    return elses;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetElses(Elses newElses, NotificationChain msgs)
+  {
+    Elses oldElses = elses;
+    elses = newElses;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LlmsPackage.CONDITIONALS__ELSES, oldElses, newElses);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setElses(Elses newElses)
+  {
+    if (newElses != elses)
+    {
+      NotificationChain msgs = null;
+      if (elses != null)
+        msgs = ((InternalEObject)elses).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.CONDITIONALS__ELSES, null, msgs);
+      if (newElses != null)
+        msgs = ((InternalEObject)newElses).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.CONDITIONALS__ELSES, null, msgs);
+      msgs = basicSetElses(newElses, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.CONDITIONALS__ELSES, newElses, newElses));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case LlmsPackage.CONDITIONALS__IFS:
+        return basicSetIfs(null, msgs);
+      case LlmsPackage.CONDITIONALS__ELSEIF:
+        return ((InternalEList<?>)getElseif()).basicRemove(otherEnd, msgs);
+      case LlmsPackage.CONDITIONALS__ELSES:
+        return basicSetElses(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case LlmsPackage.CONDITIONALS__IFS:
+        return getIfs();
+      case LlmsPackage.CONDITIONALS__ELSEIF:
+        return getElseif();
+      case LlmsPackage.CONDITIONALS__ELSES:
+        return getElses();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case LlmsPackage.CONDITIONALS__IFS:
+        setIfs((Ifs)newValue);
+        return;
+      case LlmsPackage.CONDITIONALS__ELSEIF:
+        getElseif().clear();
+        getElseif().addAll((Collection<? extends ElseIfs>)newValue);
+        return;
+      case LlmsPackage.CONDITIONALS__ELSES:
+        setElses((Elses)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case LlmsPackage.CONDITIONALS__IFS:
+        setIfs((Ifs)null);
+        return;
+      case LlmsPackage.CONDITIONALS__ELSEIF:
+        getElseif().clear();
+        return;
+      case LlmsPackage.CONDITIONALS__ELSES:
+        setElses((Elses)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case LlmsPackage.CONDITIONALS__IFS:
+        return ifs != null;
+      case LlmsPackage.CONDITIONALS__ELSEIF:
+        return elseif != null && !elseif.isEmpty();
+      case LlmsPackage.CONDITIONALS__ELSES:
+        return elses != null;
+    }
+    return super.eIsSet(featureID);
   }
 
 } //ConditionalsImpl

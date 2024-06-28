@@ -80,60 +80,10 @@ public class LlmsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case LlmsPackage.PRINTS:
-      {
-        Prints prints = (Prints)theEObject;
-        T result = casePrints(prints);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case LlmsPackage.PARMS_PRINT:
-      {
-        ParmsPrint parmsPrint = (ParmsPrint)theEObject;
-        T result = caseParmsPrint(parmsPrint);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case LlmsPackage.NAMES:
-      {
-        Names names = (Names)theEObject;
-        T result = caseNames(names);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case LlmsPackage.FUNCTIONS:
       {
         Functions functions = (Functions)theEObject;
         T result = caseFunctions(functions);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case LlmsPackage.BODIES:
-      {
-        Bodies bodies = (Bodies)theEObject;
-        T result = caseBodies(bodies);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case LlmsPackage.LOOPS:
-      {
-        Loops loops = (Loops)theEObject;
-        T result = caseLoops(loops);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case LlmsPackage.CONDITIONALS:
-      {
-        Conditionals conditionals = (Conditionals)theEObject;
-        T result = caseConditionals(conditionals);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case LlmsPackage.LOGICAL_PARAMS:
-      {
-        LogicalParams logicalParams = (LogicalParams)theEObject;
-        T result = caseLogicalParams(logicalParams);
-        if (result == null) result = caseConditionals(logicalParams);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -151,10 +101,139 @@ public class LlmsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case LlmsPackage.BODIES:
+      {
+        Bodies bodies = (Bodies)theEObject;
+        T result = caseBodies(bodies);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LlmsPackage.VAR_PARM_ARGS:
+      {
+        varParmArgs varParmArgs = (varParmArgs)theEObject;
+        T result = casevarParmArgs(varParmArgs);
+        if (result == null) result = caseGenericVariable(varParmArgs);
+        if (result == null) result = casePrimary(varParmArgs);
+        if (result == null) result = caseExpressions(varParmArgs);
+        if (result == null) result = caseExpression(varParmArgs);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case LlmsPackage.EXPRESSION:
       {
         Expression expression = (Expression)theEObject;
         T result = caseExpression(expression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LlmsPackage.GENERIC_VARIABLE:
+      {
+        GenericVariable genericVariable = (GenericVariable)theEObject;
+        T result = caseGenericVariable(genericVariable);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LlmsPackage.LOOPS:
+      {
+        Loops loops = (Loops)theEObject;
+        T result = caseLoops(loops);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LlmsPackage.FORS:
+      {
+        Fors fors = (Fors)theEObject;
+        T result = caseFors(fors);
+        if (result == null) result = caseLoops(fors);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LlmsPackage.WHILES:
+      {
+        Whiles whiles = (Whiles)theEObject;
+        T result = caseWhiles(whiles);
+        if (result == null) result = caseLoops(whiles);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LlmsPackage.CONDITIONALS:
+      {
+        Conditionals conditionals = (Conditionals)theEObject;
+        T result = caseConditionals(conditionals);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LlmsPackage.IFS:
+      {
+        Ifs ifs = (Ifs)theEObject;
+        T result = caseIfs(ifs);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LlmsPackage.ELSE_IFS:
+      {
+        ElseIfs elseIfs = (ElseIfs)theEObject;
+        T result = caseElseIfs(elseIfs);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LlmsPackage.ELSES:
+      {
+        Elses elses = (Elses)theEObject;
+        T result = caseElses(elses);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LlmsPackage.PARMS_PRINT:
+      {
+        ParmsPrint parmsPrint = (ParmsPrint)theEObject;
+        T result = caseParmsPrint(parmsPrint);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LlmsPackage.CALL_FUNCTION:
+      {
+        CallFunction callFunction = (CallFunction)theEObject;
+        T result = caseCallFunction(callFunction);
+        if (result == null) result = caseParmsPrint(callFunction);
+        if (result == null) result = casePrimary(callFunction);
+        if (result == null) result = caseExpressions(callFunction);
+        if (result == null) result = caseExpression(callFunction);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LlmsPackage.CALL_VARIABLE:
+      {
+        CallVariable callVariable = (CallVariable)theEObject;
+        T result = caseCallVariable(callVariable);
+        if (result == null) result = caseGenericVariable(callVariable);
+        if (result == null) result = caseParmsPrint(callVariable);
+        if (result == null) result = casePrimary(callVariable);
+        if (result == null) result = caseExpressions(callVariable);
+        if (result == null) result = caseExpression(callVariable);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LlmsPackage.ONLY_VAR:
+      {
+        OnlyVar onlyVar = (OnlyVar)theEObject;
+        T result = caseOnlyVar(onlyVar);
+        if (result == null) result = caseGenericVariable(onlyVar);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LlmsPackage.ASSIGNMENT:
+      {
+        Assignment assignment = (Assignment)theEObject;
+        T result = caseAssignment(assignment);
+        if (result == null) result = caseGenericVariable(assignment);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LlmsPackage.LOGICAL_PARAMS:
+      {
+        LogicalParams logicalParams = (LogicalParams)theEObject;
+        T result = caseLogicalParams(logicalParams);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -171,7 +250,6 @@ public class LlmsSwitch<T> extends Switch<T>
         T result = caseLogicalOperation(logicalOperation);
         if (result == null) result = caseLogicalParams(logicalOperation);
         if (result == null) result = caseOperation(logicalOperation);
-        if (result == null) result = caseConditionals(logicalOperation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -182,7 +260,6 @@ public class LlmsSwitch<T> extends Switch<T>
         if (result == null) result = caseLogicalOperation(lessThan);
         if (result == null) result = caseLogicalParams(lessThan);
         if (result == null) result = caseOperation(lessThan);
-        if (result == null) result = caseConditionals(lessThan);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -193,7 +270,6 @@ public class LlmsSwitch<T> extends Switch<T>
         if (result == null) result = caseLogicalOperation(greaterThan);
         if (result == null) result = caseLogicalParams(greaterThan);
         if (result == null) result = caseOperation(greaterThan);
-        if (result == null) result = caseConditionals(greaterThan);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -204,7 +280,6 @@ public class LlmsSwitch<T> extends Switch<T>
         if (result == null) result = caseLogicalOperation(equal);
         if (result == null) result = caseLogicalParams(equal);
         if (result == null) result = caseOperation(equal);
-        if (result == null) result = caseConditionals(equal);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -215,7 +290,6 @@ public class LlmsSwitch<T> extends Switch<T>
         if (result == null) result = caseLogicalOperation(notEqual);
         if (result == null) result = caseLogicalParams(notEqual);
         if (result == null) result = caseOperation(notEqual);
-        if (result == null) result = caseConditionals(notEqual);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -226,7 +300,6 @@ public class LlmsSwitch<T> extends Switch<T>
         if (result == null) result = caseLogicalOperation(lessOrEqual);
         if (result == null) result = caseLogicalParams(lessOrEqual);
         if (result == null) result = caseOperation(lessOrEqual);
-        if (result == null) result = caseConditionals(lessOrEqual);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -237,7 +310,6 @@ public class LlmsSwitch<T> extends Switch<T>
         if (result == null) result = caseLogicalOperation(greaterOrEqual);
         if (result == null) result = caseLogicalParams(greaterOrEqual);
         if (result == null) result = caseOperation(greaterOrEqual);
-        if (result == null) result = caseConditionals(greaterOrEqual);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -319,62 +391,14 @@ public class LlmsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case LlmsPackage.CALL_FUNCTION:
+      case LlmsPackage.DATAS:
       {
-        callFunction callFunction = (callFunction)theEObject;
-        T result = casecallFunction(callFunction);
-        if (result == null) result = caseParmsPrint(callFunction);
-        if (result == null) result = casePrimary(callFunction);
-        if (result == null) result = caseExpressions(callFunction);
-        if (result == null) result = caseExpression(callFunction);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case LlmsPackage.ASSIGNMENT:
-      {
-        Assignment assignment = (Assignment)theEObject;
-        T result = caseAssignment(assignment);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case LlmsPackage.GENERIC_VARIABLE:
-      {
-        GenericVariable genericVariable = (GenericVariable)theEObject;
-        T result = caseGenericVariable(genericVariable);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case LlmsPackage.CALL_VARIABLE:
-      {
-        CallVariable callVariable = (CallVariable)theEObject;
-        T result = caseCallVariable(callVariable);
-        if (result == null) result = caseParmsPrint(callVariable);
-        if (result == null) result = casePrimary(callVariable);
-        if (result == null) result = caseGenericVariable(callVariable);
-        if (result == null) result = caseExpressions(callVariable);
-        if (result == null) result = caseExpression(callVariable);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case LlmsPackage.VAR_PARM_ARGS:
-      {
-        varParmArgs varParmArgs = (varParmArgs)theEObject;
-        T result = casevarParmArgs(varParmArgs);
-        if (result == null) result = casePrimary(varParmArgs);
-        if (result == null) result = caseGenericVariable(varParmArgs);
-        if (result == null) result = caseExpressions(varParmArgs);
-        if (result == null) result = caseExpression(varParmArgs);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case LlmsPackage.DATA:
-      {
-        Data data = (Data)theEObject;
-        T result = caseData(data);
-        if (result == null) result = caseParmsPrint(data);
-        if (result == null) result = casePrimary(data);
-        if (result == null) result = caseExpressions(data);
-        if (result == null) result = caseExpression(data);
+        Datas datas = (Datas)theEObject;
+        T result = caseDatas(datas);
+        if (result == null) result = caseParmsPrint(datas);
+        if (result == null) result = casePrimary(datas);
+        if (result == null) result = caseExpressions(datas);
+        if (result == null) result = caseExpression(datas);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -382,7 +406,7 @@ public class LlmsSwitch<T> extends Switch<T>
       {
         Numbers numbers = (Numbers)theEObject;
         T result = caseNumbers(numbers);
-        if (result == null) result = caseData(numbers);
+        if (result == null) result = caseDatas(numbers);
         if (result == null) result = caseParmsPrint(numbers);
         if (result == null) result = casePrimary(numbers);
         if (result == null) result = caseExpressions(numbers);
@@ -394,7 +418,7 @@ public class LlmsSwitch<T> extends Switch<T>
       {
         Strings strings = (Strings)theEObject;
         T result = caseStrings(strings);
-        if (result == null) result = caseData(strings);
+        if (result == null) result = caseDatas(strings);
         if (result == null) result = caseParmsPrint(strings);
         if (result == null) result = casePrimary(strings);
         if (result == null) result = caseExpressions(strings);
@@ -406,7 +430,7 @@ public class LlmsSwitch<T> extends Switch<T>
       {
         Booleans booleans = (Booleans)theEObject;
         T result = caseBooleans(booleans);
-        if (result == null) result = caseData(booleans);
+        if (result == null) result = caseDatas(booleans);
         if (result == null) result = caseParmsPrint(booleans);
         if (result == null) result = casePrimary(booleans);
         if (result == null) result = caseExpressions(booleans);
@@ -418,11 +442,18 @@ public class LlmsSwitch<T> extends Switch<T>
       {
         Doubles doubles = (Doubles)theEObject;
         T result = caseDoubles(doubles);
-        if (result == null) result = caseData(doubles);
+        if (result == null) result = caseDatas(doubles);
         if (result == null) result = caseParmsPrint(doubles);
         if (result == null) result = casePrimary(doubles);
         if (result == null) result = caseExpressions(doubles);
         if (result == null) result = caseExpression(doubles);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LlmsPackage.PRINTS:
+      {
+        Prints prints = (Prints)theEObject;
+        T result = casePrints(prints);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -488,54 +519,6 @@ public class LlmsSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Prints</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Prints</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casePrints(Prints object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Parms Print</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Parms Print</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseParmsPrint(ParmsPrint object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Names</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Names</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseNames(Names object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Functions</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -547,70 +530,6 @@ public class LlmsSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFunctions(Functions object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Bodies</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Bodies</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseBodies(Bodies object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Loops</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Loops</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseLoops(Loops object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Conditionals</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Conditionals</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseConditionals(Conditionals object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Logical Params</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Logical Params</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseLogicalParams(LogicalParams object)
   {
     return null;
   }
@@ -648,6 +567,38 @@ public class LlmsSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Bodies</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Bodies</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBodies(Bodies object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>var Parm Args</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>var Parm Args</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casevarParmArgs(varParmArgs object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -659,6 +610,230 @@ public class LlmsSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseExpression(Expression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Generic Variable</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Generic Variable</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGenericVariable(GenericVariable object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Loops</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Loops</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLoops(Loops object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Fors</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Fors</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFors(Fors object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Whiles</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Whiles</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWhiles(Whiles object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Conditionals</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Conditionals</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConditionals(Conditionals object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Ifs</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Ifs</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIfs(Ifs object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Else Ifs</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Else Ifs</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseElseIfs(ElseIfs object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Elses</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Elses</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseElses(Elses object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parms Print</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parms Print</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParmsPrint(ParmsPrint object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Call Function</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Call Function</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCallFunction(CallFunction object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Call Variable</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Call Variable</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCallVariable(CallVariable object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Only Var</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Only Var</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOnlyVar(OnlyVar object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Assignment</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Assignment</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAssignment(Assignment object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Logical Params</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Logical Params</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLogicalParams(LogicalParams object)
   {
     return null;
   }
@@ -936,97 +1111,17 @@ public class LlmsSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>call Function</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Datas</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>call Function</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Datas</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casecallFunction(callFunction object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Assignment</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Assignment</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAssignment(Assignment object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Generic Variable</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Generic Variable</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseGenericVariable(GenericVariable object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Call Variable</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Call Variable</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCallVariable(CallVariable object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>var Parm Args</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>var Parm Args</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casevarParmArgs(varParmArgs object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Data</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Data</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseData(Data object)
+  public T caseDatas(Datas object)
   {
     return null;
   }
@@ -1091,6 +1186,22 @@ public class LlmsSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDoubles(Doubles object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Prints</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Prints</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePrints(Prints object)
   {
     return null;
   }

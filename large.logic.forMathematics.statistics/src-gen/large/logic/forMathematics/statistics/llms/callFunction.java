@@ -7,22 +7,22 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>call Function</b></em>'.
+ * A representation of the model object '<em><b>Call Function</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link large.logic.forMathematics.statistics.llms.callFunction#getFunc <em>Func</em>}</li>
- *   <li>{@link large.logic.forMathematics.statistics.llms.callFunction#getExp <em>Exp</em>}</li>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.CallFunction#getFunc <em>Func</em>}</li>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.CallFunction#getExp <em>Exp</em>}</li>
  * </ul>
  *
- * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getcallFunction()
+ * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getCallFunction()
  * @model
  * @generated
  */
-public interface callFunction extends ParmsPrint, Primary
+public interface CallFunction extends ParmsPrint, Primary
 {
   /**
    * Returns the value of the '<em><b>Func</b></em>' reference.
@@ -30,14 +30,14 @@ public interface callFunction extends ParmsPrint, Primary
    * <!-- end-user-doc -->
    * @return the value of the '<em>Func</em>' reference.
    * @see #setFunc(Functions)
-   * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getcallFunction_Func()
+   * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getCallFunction_Func()
    * @model
    * @generated
    */
   Functions getFunc();
 
   /**
-   * Sets the value of the '{@link large.logic.forMathematics.statistics.llms.callFunction#getFunc <em>Func</em>}' reference.
+   * Sets the value of the '{@link large.logic.forMathematics.statistics.llms.CallFunction#getFunc <em>Func</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Func</em>' reference.
@@ -52,10 +52,10 @@ public interface callFunction extends ParmsPrint, Primary
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Exp</em>' containment reference list.
-   * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getcallFunction_Exp()
+   * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getCallFunction_Exp()
    * @model containment="true"
    * @generated
    */
   EList<Expression> getExp();
 
-} // callFunction
+} // CallFunction

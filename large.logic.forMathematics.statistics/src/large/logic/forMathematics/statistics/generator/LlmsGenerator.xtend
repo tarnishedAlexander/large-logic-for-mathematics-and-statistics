@@ -8,13 +8,24 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import large.logic.forMathematics.statistics.llms.Operations
-import large.logic.forMathematics.statistics.llms.Variables
 import large.logic.forMathematics.statistics.llms.Functions
 import large.logic.forMathematics.statistics.llms.Conditionals
 import large.logic.forMathematics.statistics.llms.Loops
 import large.logic.forMathematics.statistics.llms.Prints
 import large.logic.forMathematics.statistics.llms.varParmArgs
 import large.logic.forMathematics.statistics.llms.CallVariable
+import large.logic.forMathematics.statistics.llms.Whiles
+import large.logic.forMathematics.statistics.llms.Fors
+import large.logic.forMathematics.statistics.llms.ElseIfs
+import large.logic.forMathematics.statistics.llms.Ifs
+import large.logic.forMathematics.statistics.llms.Elses
+import large.logic.forMathematics.statistics.llms.ParmsPrint
+import large.logic.forMathematics.statistics.llms.Datas
+import large.logic.forMathematics.statistics.llms.Numbers
+import large.logic.forMathematics.statistics.llms.Strings
+import large.logic.forMathematics.statistics.llms.Booleans
+import large.logic.forMathematics.statistics.llms.Doubles
+import large.logic.forMathematics.statistics.llms.CallFunction
 
 /**
  * Generates code from your model files on save.
@@ -30,63 +41,128 @@ class LlmsGenerator extends AbstractGenerator {
 //				.map[name]
 //				.join(', '))
 		val program = resource.contents.get(0) as Operations
-		fsa.generateFile(program.name, '.m', generate(program))
+		fsa.generateFile(program.name, ".m", generate(program))
 	}
-	
+
 	def generate(Operations op) '''
-	«FOR functions  : op.func»
-		«generate(functions)»
-	«ENDFOR»
+		«FOR functions : op.func»
+			«generatefunc(functions)»
+		«ENDFOR»
+		
+		«FOR variables : op.vars»
+			«generateVariables(variables)»
+		«ENDFOR»
+		
+		«FOR conditional : op.conditional»
+			«generateCond(conditional)»
+		«ENDFOR»
+		
+		«FOR loops : op.loops»
+			«generateLoops(loops)»
+		«ENDFOR»
+		
+		«FOR prints : op.print»
+			«generatePrint(prints)»
+		«ENDFOR»
+	'''
+
+	def generatefunc(Functions fun) '''
+		function «fun.output» = «fun.name» «fun.output» 
+		«fun.body»
+		end
+	'''
+
+	def generateVariables(varParmArgs vars) '''
+		generateDataTypes(vars.dataType)(«vars.name») = «vars.exp»  ;
+	'''
+	//porque no reconoce daataTypes?
+	/*def generateDataTypes(DataTypes dt)'''
+	'''*/
 	
-	«FOR variables  : op.vars»
-			«generate(variables)»
-	«ENDFOR»
-	«FOR conditional  : op.conditional»
-			«generate(conditional)»
-	«ENDFOR»
-	«FOR loops  : op.loops»
-		«generate(loops)»
-	«ENDFOR»
-	«FOR prints  : op.print»
-		«generate(prints)»
-	«ENDFOR»
-	''' 
 
+	// falta el else-if
+	def generateCond(Conditionals cond) '''	
+		«generateIfs(cond.ifs)»
+		«FOR elseif : cond.elseif»
+		«generateElif(elseif)»
+		«ENDFOR»
+		«generateElses(cond.elses)»
+		
+		
+	'''
+	
+	def generateIfs(Ifs ifs)'''
+	if «ifs.lg»
+	
+	«ifs.body»
+	
+	'''
+	
+	def generateElif(ElseIfs elif)'''
+	elseif «elif.logicParms»
+		«elif.body»
+	
+	'''
+	
+	def generateElses(Elses elses)'''
+	else
+	«elses.body»
+	end
+	'''
 
-	def generatefunc(Functions fun)'''
-	function «fun.output» = «fun.name» «fun.output» 
-	«fun.body»
+	def generateLoops(Loops loops) '''
+		«generateKindLoops(loops)»
+	'''
+
+	def dispatch generateKindLoops(Fors fors) '''
+	for «fors.^var»
+	«fors.body»
+	
+	end
+	'''
+
+	def dispatch generateKindLoops(Whiles whiles) '''
+	
+	while «whiles.logical» 
+	«whiles.bodie»
 	end
 	'''
 	
-	def generateVariables(Variables vars)'''
-	«generate(vars)» = «vars.exp»
-	'''
-	dispatch def generate(varParmArgs vpa)'''
-	«vpa.name»  «vpa.dataType»
-	'''
-	dispatch def generate(CallVariable cv)'''
-	'''
-	}//que hacer con el linking
-	
-	def generateConditionals(Conditionals cond)'''
-	if «cond» 
+	def generatePrint(Prints print)'''
+	disp([«FOR prints : print.print»
+	«generateParamsPrint(prints)»
+	«ENDFOR»])
 	'''
 	
-	dispatch def generate(LogicalParams lp)'''
-	«Logi»
-	'''
-	def generate(Loops loops)'''
-	'''
-	def generate(Prints prints)'''
-	disp( «prints.print» )
+	def generateParamsPrint(ParmsPrint pp)'''
+	«generateParamsPrt(pp)»
 	'''
 	
-	def dispatch generateData(Numbers n) '''
+	def dispatch generateParamsPrt(Datas data)'''
+	«generateDatas(data)»
+	'''
+	
+	def dispatch generateDatas(Numbers num)'''
+	«num.value»
+	'''
+	
+	def dispatch generateDatas(Strings strings)'''
+	«strings.value»
 	''' 
 	
-	def dispatch generateData(Strings s) '''
+	def dispatch generateDatas(Booleans booleans)'''
+	«booleans.value»
+	''' 
+	
+	def dispatch generateDatas(Doubles doubles)'''
+	«doubles.value»
+	''' 
+	
+	def dispatch generateParamsPrt(CallVariable cv)'''
+	«cv.vars»
+	'''
+	
+	def dispatch generateParamsPrt(CallFunction cf)'''
+	«cf.func» («cf.exp») ;
 	'''
 }
-
- 

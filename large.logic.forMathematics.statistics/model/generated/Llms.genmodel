@@ -14,40 +14,74 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Operations/loops"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Operations/print"/>
     </genClasses>
-    <genClasses ecoreClass="Llms.ecore#//Prints">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Prints/print"/>
-    </genClasses>
-    <genClasses ecoreClass="Llms.ecore#//ParmsPrint"/>
-    <genClasses ecoreClass="Llms.ecore#//Names">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Llms.ecore#//Names/name"/>
-    </genClasses>
     <genClasses ecoreClass="Llms.ecore#//Functions">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Functions/output"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Functions/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Llms.ecore#//Functions/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Functions/params"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Functions/body"/>
-    </genClasses>
-    <genClasses ecoreClass="Llms.ecore#//Bodies">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Bodies/var"/>
-    </genClasses>
-    <genClasses ecoreClass="Llms.ecore#//Loops">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Loops/var"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Loops/number"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Loops/body"/>
-    </genClasses>
-    <genClasses ecoreClass="Llms.ecore#//Conditionals"/>
-    <genClasses ecoreClass="Llms.ecore#//LogicalParams">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//LogicalParams/body"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//LogicalParams/logicParms"/>
     </genClasses>
     <genClasses ecoreClass="Llms.ecore#//ParametersOutptut">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//ParametersOutptut/param"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//ParametersOutptut/params"/>
     </genClasses>
     <genClasses ecoreClass="Llms.ecore#//Parametersfunc"/>
+    <genClasses ecoreClass="Llms.ecore#//Bodies">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Bodies/var"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Bodies/loops"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Bodies/cond"/>
+    </genClasses>
+    <genClasses ecoreClass="Llms.ecore#//varParmArgs">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Llms.ecore#//varParmArgs/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Llms.ecore#//varParmArgs/dataType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//varParmArgs/exp"/>
+    </genClasses>
     <genClasses ecoreClass="Llms.ecore#//Expression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Expression/op"/>
     </genClasses>
+    <genClasses ecoreClass="Llms.ecore#//GenericVariable"/>
+    <genClasses ecoreClass="Llms.ecore#//Loops"/>
+    <genClasses ecoreClass="Llms.ecore#//Fors">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Fors/var"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Fors/number"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Fors/body"/>
+    </genClasses>
+    <genClasses ecoreClass="Llms.ecore#//Whiles">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Whiles/logical"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Whiles/bodie"/>
+    </genClasses>
+    <genClasses ecoreClass="Llms.ecore#//Conditionals">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Conditionals/ifs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Conditionals/elseif"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Conditionals/elses"/>
+    </genClasses>
+    <genClasses ecoreClass="Llms.ecore#//Ifs">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Ifs/lg"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Ifs/body"/>
+    </genClasses>
+    <genClasses ecoreClass="Llms.ecore#//ElseIfs">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//ElseIfs/logicParms"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//ElseIfs/body"/>
+    </genClasses>
+    <genClasses ecoreClass="Llms.ecore#//Elses">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Elses/body"/>
+    </genClasses>
+    <genClasses ecoreClass="Llms.ecore#//ParmsPrint"/>
+    <genClasses ecoreClass="Llms.ecore#//CallFunction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Llms.ecore#//CallFunction/func"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//CallFunction/exp"/>
+    </genClasses>
+    <genClasses ecoreClass="Llms.ecore#//CallVariable">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Llms.ecore#//CallVariable/vars"/>
+    </genClasses>
+    <genClasses ecoreClass="Llms.ecore#//OnlyVar">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Llms.ecore#//OnlyVar/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Llms.ecore#//OnlyVar/dataType"/>
+    </genClasses>
+    <genClasses ecoreClass="Llms.ecore#//Assignment">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Llms.ecore#//Assignment/vars"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Assignment/exp"/>
+    </genClasses>
+    <genClasses ecoreClass="Llms.ecore#//LogicalParams"/>
     <genClasses ecoreClass="Llms.ecore#//Operation"/>
     <genClasses ecoreClass="Llms.ecore#//LogicalOperation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//LogicalOperation/boolFunc"/>
@@ -74,24 +108,7 @@
     </genClasses>
     <genClasses ecoreClass="Llms.ecore#//Expressions"/>
     <genClasses ecoreClass="Llms.ecore#//Primary"/>
-    <genClasses ecoreClass="Llms.ecore#//callFunction">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Llms.ecore#//callFunction/func"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//callFunction/exp"/>
-    </genClasses>
-    <genClasses ecoreClass="Llms.ecore#//Assignment">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Llms.ecore#//Assignment/vars"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Assignment/exp"/>
-    </genClasses>
-    <genClasses ecoreClass="Llms.ecore#//GenericVariable"/>
-    <genClasses ecoreClass="Llms.ecore#//CallVariable">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Llms.ecore#//CallVariable/vars"/>
-    </genClasses>
-    <genClasses ecoreClass="Llms.ecore#//varParmArgs">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Llms.ecore#//varParmArgs/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Llms.ecore#//varParmArgs/dataType"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//varParmArgs/exp"/>
-    </genClasses>
-    <genClasses ecoreClass="Llms.ecore#//Data"/>
+    <genClasses ecoreClass="Llms.ecore#//Datas"/>
     <genClasses ecoreClass="Llms.ecore#//Numbers">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Llms.ecore#//Numbers/value"/>
     </genClasses>
@@ -103,6 +120,9 @@
     </genClasses>
     <genClasses ecoreClass="Llms.ecore#//Doubles">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Llms.ecore#//Doubles/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Llms.ecore#//Prints">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Prints/print"/>
     </genClasses>
     <genClasses ecoreClass="Llms.ecore#//funOutputs">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//funOutputs/params"/>

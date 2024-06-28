@@ -22,7 +22,7 @@ package large.logic.forMathematics.statistics.llms;
  * @model
  * @generated
  */
-public interface varParmArgs extends Primary, GenericVariable
+public interface varParmArgs extends GenericVariable, Primary
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

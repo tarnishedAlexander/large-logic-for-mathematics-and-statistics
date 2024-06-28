@@ -33,33 +33,6 @@ public interface LlmsFactory extends EFactory
   Operations createOperations();
 
   /**
-   * Returns a new object of class '<em>Prints</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Prints</em>'.
-   * @generated
-   */
-  Prints createPrints();
-
-  /**
-   * Returns a new object of class '<em>Parms Print</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Parms Print</em>'.
-   * @generated
-   */
-  ParmsPrint createParmsPrint();
-
-  /**
-   * Returns a new object of class '<em>Names</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Names</em>'.
-   * @generated
-   */
-  Names createNames();
-
-  /**
    * Returns a new object of class '<em>Functions</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -67,42 +40,6 @@ public interface LlmsFactory extends EFactory
    * @generated
    */
   Functions createFunctions();
-
-  /**
-   * Returns a new object of class '<em>Bodies</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Bodies</em>'.
-   * @generated
-   */
-  Bodies createBodies();
-
-  /**
-   * Returns a new object of class '<em>Loops</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Loops</em>'.
-   * @generated
-   */
-  Loops createLoops();
-
-  /**
-   * Returns a new object of class '<em>Conditionals</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Conditionals</em>'.
-   * @generated
-   */
-  Conditionals createConditionals();
-
-  /**
-   * Returns a new object of class '<em>Logical Params</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Logical Params</em>'.
-   * @generated
-   */
-  LogicalParams createLogicalParams();
 
   /**
    * Returns a new object of class '<em>Parameters Outptut</em>'.
@@ -123,6 +60,24 @@ public interface LlmsFactory extends EFactory
   Parametersfunc createParametersfunc();
 
   /**
+   * Returns a new object of class '<em>Bodies</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Bodies</em>'.
+   * @generated
+   */
+  Bodies createBodies();
+
+  /**
+   * Returns a new object of class '<em>var Parm Args</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>var Parm Args</em>'.
+   * @generated
+   */
+  varParmArgs createvarParmArgs();
+
+  /**
    * Returns a new object of class '<em>Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -130,6 +85,132 @@ public interface LlmsFactory extends EFactory
    * @generated
    */
   Expression createExpression();
+
+  /**
+   * Returns a new object of class '<em>Generic Variable</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Generic Variable</em>'.
+   * @generated
+   */
+  GenericVariable createGenericVariable();
+
+  /**
+   * Returns a new object of class '<em>Loops</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Loops</em>'.
+   * @generated
+   */
+  Loops createLoops();
+
+  /**
+   * Returns a new object of class '<em>Fors</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Fors</em>'.
+   * @generated
+   */
+  Fors createFors();
+
+  /**
+   * Returns a new object of class '<em>Whiles</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Whiles</em>'.
+   * @generated
+   */
+  Whiles createWhiles();
+
+  /**
+   * Returns a new object of class '<em>Conditionals</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Conditionals</em>'.
+   * @generated
+   */
+  Conditionals createConditionals();
+
+  /**
+   * Returns a new object of class '<em>Ifs</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Ifs</em>'.
+   * @generated
+   */
+  Ifs createIfs();
+
+  /**
+   * Returns a new object of class '<em>Else Ifs</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Else Ifs</em>'.
+   * @generated
+   */
+  ElseIfs createElseIfs();
+
+  /**
+   * Returns a new object of class '<em>Elses</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Elses</em>'.
+   * @generated
+   */
+  Elses createElses();
+
+  /**
+   * Returns a new object of class '<em>Parms Print</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parms Print</em>'.
+   * @generated
+   */
+  ParmsPrint createParmsPrint();
+
+  /**
+   * Returns a new object of class '<em>Call Function</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Call Function</em>'.
+   * @generated
+   */
+  CallFunction createCallFunction();
+
+  /**
+   * Returns a new object of class '<em>Call Variable</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Call Variable</em>'.
+   * @generated
+   */
+  CallVariable createCallVariable();
+
+  /**
+   * Returns a new object of class '<em>Only Var</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Only Var</em>'.
+   * @generated
+   */
+  OnlyVar createOnlyVar();
+
+  /**
+   * Returns a new object of class '<em>Assignment</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Assignment</em>'.
+   * @generated
+   */
+  Assignment createAssignment();
+
+  /**
+   * Returns a new object of class '<em>Logical Params</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Logical Params</em>'.
+   * @generated
+   */
+  LogicalParams createLogicalParams();
 
   /**
    * Returns a new object of class '<em>Operation</em>'.
@@ -285,58 +366,13 @@ public interface LlmsFactory extends EFactory
   Primary createPrimary();
 
   /**
-   * Returns a new object of class '<em>call Function</em>'.
+   * Returns a new object of class '<em>Datas</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>call Function</em>'.
+   * @return a new object of class '<em>Datas</em>'.
    * @generated
    */
-  callFunction createcallFunction();
-
-  /**
-   * Returns a new object of class '<em>Assignment</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Assignment</em>'.
-   * @generated
-   */
-  Assignment createAssignment();
-
-  /**
-   * Returns a new object of class '<em>Generic Variable</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Generic Variable</em>'.
-   * @generated
-   */
-  GenericVariable createGenericVariable();
-
-  /**
-   * Returns a new object of class '<em>Call Variable</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Call Variable</em>'.
-   * @generated
-   */
-  CallVariable createCallVariable();
-
-  /**
-   * Returns a new object of class '<em>var Parm Args</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>var Parm Args</em>'.
-   * @generated
-   */
-  varParmArgs createvarParmArgs();
-
-  /**
-   * Returns a new object of class '<em>Data</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Data</em>'.
-   * @generated
-   */
-  Data createData();
+  Datas createDatas();
 
   /**
    * Returns a new object of class '<em>Numbers</em>'.
@@ -373,6 +409,15 @@ public interface LlmsFactory extends EFactory
    * @generated
    */
   Doubles createDoubles();
+
+  /**
+   * Returns a new object of class '<em>Prints</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Prints</em>'.
+   * @generated
+   */
+  Prints createPrints();
 
   /**
    * Returns a new object of class '<em>fun Outputs</em>'.

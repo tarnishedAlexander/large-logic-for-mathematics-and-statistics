@@ -20,7 +20,7 @@ package large.logic.forMathematics.statistics.llms;
  * @model
  * @generated
  */
-public interface Booleans extends Data
+public interface Booleans extends Datas
 {
   /**
    * Returns the value of the '<em><b>Value</b></em>' attribute.

@@ -49,26 +49,26 @@ public interface Functions extends EObject
   void setOutput(ParametersOutptut value);
 
   /**
-   * Returns the value of the '<em><b>Name</b></em>' containment reference.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' containment reference.
-   * @see #setName(Names)
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
    * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getFunctions_Name()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  Names getName();
+  String getName();
 
   /**
-   * Sets the value of the '{@link large.logic.forMathematics.statistics.llms.Functions#getName <em>Name</em>}' containment reference.
+   * Sets the value of the '{@link large.logic.forMathematics.statistics.llms.Functions#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' containment reference.
+   * @param value the new value of the '<em>Name</em>' attribute.
    * @see #getName()
    * @generated
    */
-  void setName(Names value);
+  void setName(String value);
 
   /**
    * Returns the value of the '<em><b>Params</b></em>' containment reference.

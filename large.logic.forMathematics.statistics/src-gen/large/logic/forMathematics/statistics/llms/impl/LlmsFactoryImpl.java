@@ -66,17 +66,26 @@ public class LlmsFactoryImpl extends EFactoryImpl implements LlmsFactory
     switch (eClass.getClassifierID())
     {
       case LlmsPackage.OPERATIONS: return createOperations();
-      case LlmsPackage.PRINTS: return createPrints();
-      case LlmsPackage.PARMS_PRINT: return createParmsPrint();
-      case LlmsPackage.NAMES: return createNames();
       case LlmsPackage.FUNCTIONS: return createFunctions();
-      case LlmsPackage.BODIES: return createBodies();
-      case LlmsPackage.LOOPS: return createLoops();
-      case LlmsPackage.CONDITIONALS: return createConditionals();
-      case LlmsPackage.LOGICAL_PARAMS: return createLogicalParams();
       case LlmsPackage.PARAMETERS_OUTPTUT: return createParametersOutptut();
       case LlmsPackage.PARAMETERSFUNC: return createParametersfunc();
+      case LlmsPackage.BODIES: return createBodies();
+      case LlmsPackage.VAR_PARM_ARGS: return createvarParmArgs();
       case LlmsPackage.EXPRESSION: return createExpression();
+      case LlmsPackage.GENERIC_VARIABLE: return createGenericVariable();
+      case LlmsPackage.LOOPS: return createLoops();
+      case LlmsPackage.FORS: return createFors();
+      case LlmsPackage.WHILES: return createWhiles();
+      case LlmsPackage.CONDITIONALS: return createConditionals();
+      case LlmsPackage.IFS: return createIfs();
+      case LlmsPackage.ELSE_IFS: return createElseIfs();
+      case LlmsPackage.ELSES: return createElses();
+      case LlmsPackage.PARMS_PRINT: return createParmsPrint();
+      case LlmsPackage.CALL_FUNCTION: return createCallFunction();
+      case LlmsPackage.CALL_VARIABLE: return createCallVariable();
+      case LlmsPackage.ONLY_VAR: return createOnlyVar();
+      case LlmsPackage.ASSIGNMENT: return createAssignment();
+      case LlmsPackage.LOGICAL_PARAMS: return createLogicalParams();
       case LlmsPackage.OPERATION: return createOperation();
       case LlmsPackage.LOGICAL_OPERATION: return createLogicalOperation();
       case LlmsPackage.LESS_THAN: return createLessThan();
@@ -94,16 +103,12 @@ public class LlmsFactoryImpl extends EFactoryImpl implements LlmsFactory
       case LlmsPackage.ARITMETIC_OPERATION: return createAritmeticOperation();
       case LlmsPackage.EXPRESSIONS: return createExpressions();
       case LlmsPackage.PRIMARY: return createPrimary();
-      case LlmsPackage.CALL_FUNCTION: return createcallFunction();
-      case LlmsPackage.ASSIGNMENT: return createAssignment();
-      case LlmsPackage.GENERIC_VARIABLE: return createGenericVariable();
-      case LlmsPackage.CALL_VARIABLE: return createCallVariable();
-      case LlmsPackage.VAR_PARM_ARGS: return createvarParmArgs();
-      case LlmsPackage.DATA: return createData();
+      case LlmsPackage.DATAS: return createDatas();
       case LlmsPackage.NUMBERS: return createNumbers();
       case LlmsPackage.STRINGS: return createStrings();
       case LlmsPackage.BOOLEANS: return createBooleans();
       case LlmsPackage.DOUBLES: return createDoubles();
+      case LlmsPackage.PRINTS: return createPrints();
       case LlmsPackage.FUN_OUTPUTS: return createfunOutputs();
       case LlmsPackage.SUM: return createSum();
       case LlmsPackage.SUBS: return createSubs();
@@ -132,94 +137,10 @@ public class LlmsFactoryImpl extends EFactoryImpl implements LlmsFactory
    * @generated
    */
   @Override
-  public Prints createPrints()
-  {
-    PrintsImpl prints = new PrintsImpl();
-    return prints;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ParmsPrint createParmsPrint()
-  {
-    ParmsPrintImpl parmsPrint = new ParmsPrintImpl();
-    return parmsPrint;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Names createNames()
-  {
-    NamesImpl names = new NamesImpl();
-    return names;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Functions createFunctions()
   {
     FunctionsImpl functions = new FunctionsImpl();
     return functions;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Bodies createBodies()
-  {
-    BodiesImpl bodies = new BodiesImpl();
-    return bodies;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Loops createLoops()
-  {
-    LoopsImpl loops = new LoopsImpl();
-    return loops;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Conditionals createConditionals()
-  {
-    ConditionalsImpl conditionals = new ConditionalsImpl();
-    return conditionals;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public LogicalParams createLogicalParams()
-  {
-    LogicalParamsImpl logicalParams = new LogicalParamsImpl();
-    return logicalParams;
   }
 
   /**
@@ -252,10 +173,202 @@ public class LlmsFactoryImpl extends EFactoryImpl implements LlmsFactory
    * @generated
    */
   @Override
+  public Bodies createBodies()
+  {
+    BodiesImpl bodies = new BodiesImpl();
+    return bodies;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public varParmArgs createvarParmArgs()
+  {
+    varParmArgsImpl varParmArgs = new varParmArgsImpl();
+    return varParmArgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Expression createExpression()
   {
     ExpressionImpl expression = new ExpressionImpl();
     return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public GenericVariable createGenericVariable()
+  {
+    GenericVariableImpl genericVariable = new GenericVariableImpl();
+    return genericVariable;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Loops createLoops()
+  {
+    LoopsImpl loops = new LoopsImpl();
+    return loops;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Fors createFors()
+  {
+    ForsImpl fors = new ForsImpl();
+    return fors;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Whiles createWhiles()
+  {
+    WhilesImpl whiles = new WhilesImpl();
+    return whiles;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Conditionals createConditionals()
+  {
+    ConditionalsImpl conditionals = new ConditionalsImpl();
+    return conditionals;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Ifs createIfs()
+  {
+    IfsImpl ifs = new IfsImpl();
+    return ifs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ElseIfs createElseIfs()
+  {
+    ElseIfsImpl elseIfs = new ElseIfsImpl();
+    return elseIfs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Elses createElses()
+  {
+    ElsesImpl elses = new ElsesImpl();
+    return elses;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ParmsPrint createParmsPrint()
+  {
+    ParmsPrintImpl parmsPrint = new ParmsPrintImpl();
+    return parmsPrint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CallFunction createCallFunction()
+  {
+    CallFunctionImpl callFunction = new CallFunctionImpl();
+    return callFunction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CallVariable createCallVariable()
+  {
+    CallVariableImpl callVariable = new CallVariableImpl();
+    return callVariable;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public OnlyVar createOnlyVar()
+  {
+    OnlyVarImpl onlyVar = new OnlyVarImpl();
+    return onlyVar;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Assignment createAssignment()
+  {
+    AssignmentImpl assignment = new AssignmentImpl();
+    return assignment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public LogicalParams createLogicalParams()
+  {
+    LogicalParamsImpl logicalParams = new LogicalParamsImpl();
+    return logicalParams;
   }
 
   /**
@@ -468,70 +581,10 @@ public class LlmsFactoryImpl extends EFactoryImpl implements LlmsFactory
    * @generated
    */
   @Override
-  public callFunction createcallFunction()
+  public Datas createDatas()
   {
-    callFunctionImpl callFunction = new callFunctionImpl();
-    return callFunction;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Assignment createAssignment()
-  {
-    AssignmentImpl assignment = new AssignmentImpl();
-    return assignment;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public GenericVariable createGenericVariable()
-  {
-    GenericVariableImpl genericVariable = new GenericVariableImpl();
-    return genericVariable;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public CallVariable createCallVariable()
-  {
-    CallVariableImpl callVariable = new CallVariableImpl();
-    return callVariable;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public varParmArgs createvarParmArgs()
-  {
-    varParmArgsImpl varParmArgs = new varParmArgsImpl();
-    return varParmArgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Data createData()
-  {
-    DataImpl data = new DataImpl();
-    return data;
+    DatasImpl datas = new DatasImpl();
+    return datas;
   }
 
   /**
@@ -580,6 +633,18 @@ public class LlmsFactoryImpl extends EFactoryImpl implements LlmsFactory
   {
     DoublesImpl doubles = new DoublesImpl();
     return doubles;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Prints createPrints()
+  {
+    PrintsImpl prints = new PrintsImpl();
+    return prints;
   }
 
   /**

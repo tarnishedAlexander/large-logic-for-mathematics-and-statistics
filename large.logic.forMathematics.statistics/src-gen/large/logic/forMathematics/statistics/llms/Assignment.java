@@ -3,7 +3,6 @@
  */
 package large.logic.forMathematics.statistics.llms;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Assignment extends EObject
+public interface Assignment extends GenericVariable
 {
   /**
    * Returns the value of the '<em><b>Vars</b></em>' reference.

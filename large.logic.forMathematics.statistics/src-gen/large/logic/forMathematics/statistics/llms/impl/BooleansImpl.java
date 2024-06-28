@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class BooleansImpl extends DataImpl implements Booleans
+public class BooleansImpl extends DatasImpl implements Booleans
 {
   /**
    * The default value of the '{@link #isValue() <em>Value</em>}' attribute.

@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class NumbersImpl extends DataImpl implements Numbers
+public class NumbersImpl extends DatasImpl implements Numbers
 {
   /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.

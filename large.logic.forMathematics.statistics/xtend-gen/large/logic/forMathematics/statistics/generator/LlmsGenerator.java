@@ -5,14 +5,28 @@ package large.logic.forMathematics.statistics.generator;
 
 import java.util.Arrays;
 import large.logic.forMathematics.statistics.llms.Bodies;
+import large.logic.forMathematics.statistics.llms.Booleans;
+import large.logic.forMathematics.statistics.llms.CallFunction;
 import large.logic.forMathematics.statistics.llms.CallVariable;
 import large.logic.forMathematics.statistics.llms.Conditionals;
+import large.logic.forMathematics.statistics.llms.Datas;
+import large.logic.forMathematics.statistics.llms.Doubles;
+import large.logic.forMathematics.statistics.llms.ElseIfs;
+import large.logic.forMathematics.statistics.llms.Elses;
+import large.logic.forMathematics.statistics.llms.Expression;
+import large.logic.forMathematics.statistics.llms.Fors;
 import large.logic.forMathematics.statistics.llms.Functions;
+import large.logic.forMathematics.statistics.llms.GenericVariable;
+import large.logic.forMathematics.statistics.llms.Ifs;
+import large.logic.forMathematics.statistics.llms.LogicalParams;
 import large.logic.forMathematics.statistics.llms.Loops;
-import large.logic.forMathematics.statistics.llms.Names;
+import large.logic.forMathematics.statistics.llms.Numbers;
 import large.logic.forMathematics.statistics.llms.Operations;
 import large.logic.forMathematics.statistics.llms.ParametersOutptut;
+import large.logic.forMathematics.statistics.llms.ParmsPrint;
 import large.logic.forMathematics.statistics.llms.Prints;
+import large.logic.forMathematics.statistics.llms.Strings;
+import large.logic.forMathematics.statistics.llms.Whiles;
 import large.logic.forMathematics.statistics.llms.varParmArgs;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -41,8 +55,8 @@ public class LlmsGenerator extends AbstractGenerator {
     {
       EList<Functions> _func = op.getFunc();
       for(final Functions functions : _func) {
-        CharSequence _generate = this.generate(functions);
-        _builder.append(_generate);
+        CharSequence _generatefunc = this.generatefunc(functions);
+        _builder.append(_generatefunc);
         _builder.newLineIfNotEmpty();
       }
     }
@@ -50,32 +64,35 @@ public class LlmsGenerator extends AbstractGenerator {
     {
       EList<varParmArgs> _vars = op.getVars();
       for(final varParmArgs variables : _vars) {
-        CharSequence _generate_1 = this.generate(variables);
-        _builder.append(_generate_1);
+        CharSequence _generateVariables = this.generateVariables(variables);
+        _builder.append(_generateVariables);
         _builder.newLineIfNotEmpty();
       }
     }
+    _builder.newLine();
     {
       EList<Conditionals> _conditional = op.getConditional();
       for(final Conditionals conditional : _conditional) {
-        CharSequence _generate_2 = this.generate(conditional);
-        _builder.append(_generate_2);
+        CharSequence _generateCond = this.generateCond(conditional);
+        _builder.append(_generateCond);
         _builder.newLineIfNotEmpty();
       }
     }
+    _builder.newLine();
     {
       EList<Loops> _loops = op.getLoops();
       for(final Loops loops : _loops) {
-        CharSequence _generate_3 = this.generate(loops);
-        _builder.append(_generate_3);
+        CharSequence _generateLoops = this.generateLoops(loops);
+        _builder.append(_generateLoops);
         _builder.newLineIfNotEmpty();
       }
     }
+    _builder.newLine();
     {
       EList<Prints> _print = op.getPrint();
       for(final Prints prints : _print) {
-        CharSequence _generate_4 = this.generate(prints);
-        _builder.append(_generate_4);
+        CharSequence _generatePrint = this.generatePrint(prints);
+        _builder.append(_generatePrint);
         _builder.newLineIfNotEmpty();
       }
     }
@@ -88,7 +105,7 @@ public class LlmsGenerator extends AbstractGenerator {
     ParametersOutptut _output = fun.getOutput();
     _builder.append(_output);
     _builder.append(" = ");
-    Names _name = fun.getName();
+    String _name = fun.getName();
     _builder.append(_name);
     _builder.append(" ");
     ParametersOutptut _output_1 = fun.getOutput();
@@ -103,35 +120,244 @@ public class LlmsGenerator extends AbstractGenerator {
     return _builder;
   }
 
-  public CharSequence generateVariables(final /* Variables */Object vars) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nexp cannot be resolved");
-  }
-
-  protected CharSequence _generate(final varParmArgs vpa) {
+  public CharSequence generateVariables(final varParmArgs vars) {
     StringConcatenation _builder = new StringConcatenation();
-    String _name = vpa.getName();
+    _builder.append("generateDataTypes(vars.dataType)(");
+    String _name = vars.getName();
     _builder.append(_name);
-    _builder.append("  ");
-    String _dataType = vpa.getDataType();
-    _builder.append(_dataType);
+    _builder.append(") = ");
+    Expression _exp = vars.getExp();
+    _builder.append(_exp);
+    _builder.append("  ;");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
 
-  protected CharSequence _generate(final CallVariable cv) {
+  /**
+   * def generateDataTypes(DataTypes dt)'''
+   * '''
+   */
+  public CharSequence generateCond(final Conditionals cond) {
     StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateIfs = this.generateIfs(cond.getIfs());
+    _builder.append(_generateIfs);
+    _builder.newLineIfNotEmpty();
+    {
+      EList<ElseIfs> _elseif = cond.getElseif();
+      for(final ElseIfs elseif : _elseif) {
+        CharSequence _generateElif = this.generateElif(elseif);
+        _builder.append(_generateElif);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    CharSequence _generateElses = this.generateElses(cond.getElses());
+    _builder.append(_generateElses);
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.newLine();
     return _builder;
   }
 
-  public CharSequence generate(final EObject cv) {
-    if (cv instanceof CallVariable) {
-      return _generate((CallVariable)cv);
-    } else if (cv instanceof varParmArgs) {
-      return _generate((varParmArgs)cv);
+  public CharSequence generateIfs(final Ifs ifs) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("if ");
+    LogicalParams _lg = ifs.getLg();
+    _builder.append(_lg);
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    EList<Bodies> _body = ifs.getBody();
+    _builder.append(_body);
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    return _builder;
+  }
+
+  public CharSequence generateElif(final ElseIfs elif) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("elseif ");
+    EList<LogicalParams> _logicParms = elif.getLogicParms();
+    _builder.append(_logicParms);
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    EList<Bodies> _body = elif.getBody();
+    _builder.append(_body, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    return _builder;
+  }
+
+  public CharSequence generateElses(final Elses elses) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("else");
+    _builder.newLine();
+    EList<Bodies> _body = elses.getBody();
+    _builder.append(_body);
+    _builder.newLineIfNotEmpty();
+    _builder.append("end");
+    _builder.newLine();
+    return _builder;
+  }
+
+  public CharSequence generateLoops(final Loops loops) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateKindLoops = this.generateKindLoops(loops);
+    _builder.append(_generateKindLoops);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateKindLoops(final Fors fors) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("for ");
+    GenericVariable _var = fors.getVar();
+    _builder.append(_var);
+    _builder.newLineIfNotEmpty();
+    EList<Bodies> _body = fors.getBody();
+    _builder.append(_body);
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("end");
+    _builder.newLine();
+    return _builder;
+  }
+
+  protected CharSequence _generateKindLoops(final Whiles whiles) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.newLine();
+    _builder.append("while ");
+    LogicalParams _logical = whiles.getLogical();
+    _builder.append(_logical);
+    _builder.append(" ");
+    _builder.newLineIfNotEmpty();
+    EList<Bodies> _bodie = whiles.getBodie();
+    _builder.append(_bodie);
+    _builder.newLineIfNotEmpty();
+    _builder.append("end");
+    _builder.newLine();
+    return _builder;
+  }
+
+  public CharSequence generatePrint(final Prints print) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("disp([");
+    {
+      EList<ParmsPrint> _print = print.getPrint();
+      for(final ParmsPrint prints : _print) {
+        _builder.newLineIfNotEmpty();
+        CharSequence _generateParamsPrint = this.generateParamsPrint(prints);
+        _builder.append(_generateParamsPrint);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("])");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  public CharSequence generateParamsPrint(final ParmsPrint pp) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateParamsPrt = this.generateParamsPrt(pp);
+    _builder.append(_generateParamsPrt);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateParamsPrt(final Datas data) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateDatas = this.generateDatas(data);
+    _builder.append(_generateDatas);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateDatas(final Numbers num) {
+    StringConcatenation _builder = new StringConcatenation();
+    int _value = num.getValue();
+    _builder.append(_value);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateDatas(final Strings strings) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _value = strings.getValue();
+    _builder.append(_value);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateDatas(final Booleans booleans) {
+    StringConcatenation _builder = new StringConcatenation();
+    boolean _isValue = booleans.isValue();
+    _builder.append(_isValue);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateDatas(final Doubles doubles) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _value = doubles.getValue();
+    _builder.append(_value);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateParamsPrt(final CallVariable cv) {
+    StringConcatenation _builder = new StringConcatenation();
+    varParmArgs _vars = cv.getVars();
+    _builder.append(_vars);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateParamsPrt(final CallFunction cf) {
+    StringConcatenation _builder = new StringConcatenation();
+    Functions _func = cf.getFunc();
+    _builder.append(_func);
+    _builder.append(" (");
+    EList<Expression> _exp = cf.getExp();
+    _builder.append(_exp);
+    _builder.append(") ;");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  public CharSequence generateKindLoops(final Loops fors) {
+    if (fors instanceof Fors) {
+      return _generateKindLoops((Fors)fors);
+    } else if (fors instanceof Whiles) {
+      return _generateKindLoops((Whiles)fors);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(cv).toString());
+        Arrays.<Object>asList(fors).toString());
+    }
+  }
+
+  public CharSequence generateParamsPrt(final EObject cf) {
+    if (cf instanceof CallFunction) {
+      return _generateParamsPrt((CallFunction)cf);
+    } else if (cf instanceof CallVariable) {
+      return _generateParamsPrt((CallVariable)cf);
+    } else if (cf instanceof Datas) {
+      return _generateParamsPrt((Datas)cf);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(cf).toString());
+    }
+  }
+
+  public CharSequence generateDatas(final Datas booleans) {
+    if (booleans instanceof Booleans) {
+      return _generateDatas((Booleans)booleans);
+    } else if (booleans instanceof Doubles) {
+      return _generateDatas((Doubles)booleans);
+    } else if (booleans instanceof Numbers) {
+      return _generateDatas((Numbers)booleans);
+    } else if (booleans instanceof Strings) {
+      return _generateDatas((Strings)booleans);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(booleans).toString());
     }
   }
 }

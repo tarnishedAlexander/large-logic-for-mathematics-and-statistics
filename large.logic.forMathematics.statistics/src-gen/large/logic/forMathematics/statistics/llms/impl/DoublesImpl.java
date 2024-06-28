@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class DoublesImpl extends DataImpl implements Doubles
+public class DoublesImpl extends DatasImpl implements Doubles
 {
   /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.

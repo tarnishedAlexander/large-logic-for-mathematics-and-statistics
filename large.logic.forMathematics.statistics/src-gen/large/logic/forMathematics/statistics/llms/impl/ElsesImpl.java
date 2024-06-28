@@ -3,57 +3,55 @@
  */
 package large.logic.forMathematics.statistics.llms.impl;
 
-import large.logic.forMathematics.statistics.llms.LlmsPackage;
-import large.logic.forMathematics.statistics.llms.Names;
+import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
+import large.logic.forMathematics.statistics.llms.Bodies;
+import large.logic.forMathematics.statistics.llms.Elses;
+import large.logic.forMathematics.statistics.llms.LlmsPackage;
+
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Names</b></em>'.
+ * An implementation of the model object '<em><b>Elses</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link large.logic.forMathematics.statistics.llms.impl.NamesImpl#getName <em>Name</em>}</li>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.impl.ElsesImpl#getBody <em>Body</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class NamesImpl extends MinimalEObjectImpl.Container implements Names
+public class ElsesImpl extends MinimalEObjectImpl.Container implements Elses
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getBody()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
+  protected EList<Bodies> body;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected NamesImpl()
+  protected ElsesImpl()
   {
     super();
   }
@@ -66,7 +64,7 @@ public class NamesImpl extends MinimalEObjectImpl.Container implements Names
   @Override
   protected EClass eStaticClass()
   {
-    return LlmsPackage.Literals.NAMES;
+    return LlmsPackage.Literals.ELSES;
   }
 
   /**
@@ -75,9 +73,13 @@ public class NamesImpl extends MinimalEObjectImpl.Container implements Names
    * @generated
    */
   @Override
-  public String getName()
+  public EList<Bodies> getBody()
   {
-    return name;
+    if (body == null)
+    {
+      body = new EObjectContainmentEList<Bodies>(Bodies.class, this, LlmsPackage.ELSES__BODY);
+    }
+    return body;
   }
 
   /**
@@ -86,12 +88,14 @@ public class NamesImpl extends MinimalEObjectImpl.Container implements Names
    * @generated
    */
   @Override
-  public void setName(String newName)
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.NAMES__NAME, oldName, name));
+    switch (featureID)
+    {
+      case LlmsPackage.ELSES__BODY:
+        return ((InternalEList<?>)getBody()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -104,8 +108,8 @@ public class NamesImpl extends MinimalEObjectImpl.Container implements Names
   {
     switch (featureID)
     {
-      case LlmsPackage.NAMES__NAME:
-        return getName();
+      case LlmsPackage.ELSES__BODY:
+        return getBody();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -115,13 +119,15 @@ public class NamesImpl extends MinimalEObjectImpl.Container implements Names
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case LlmsPackage.NAMES__NAME:
-        setName((String)newValue);
+      case LlmsPackage.ELSES__BODY:
+        getBody().clear();
+        getBody().addAll((Collection<? extends Bodies>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -137,8 +143,8 @@ public class NamesImpl extends MinimalEObjectImpl.Container implements Names
   {
     switch (featureID)
     {
-      case LlmsPackage.NAMES__NAME:
-        setName(NAME_EDEFAULT);
+      case LlmsPackage.ELSES__BODY:
+        getBody().clear();
         return;
     }
     super.eUnset(featureID);
@@ -154,27 +160,10 @@ public class NamesImpl extends MinimalEObjectImpl.Container implements Names
   {
     switch (featureID)
     {
-      case LlmsPackage.NAMES__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case LlmsPackage.ELSES__BODY:
+        return body != null && !body.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
-  }
-
-} //NamesImpl
+} //ElsesImpl

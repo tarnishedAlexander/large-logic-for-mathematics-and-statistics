@@ -6,7 +6,6 @@ package large.logic.forMathematics.statistics.llms.impl;
 import large.logic.forMathematics.statistics.llms.Bodies;
 import large.logic.forMathematics.statistics.llms.Functions;
 import large.logic.forMathematics.statistics.llms.LlmsPackage;
-import large.logic.forMathematics.statistics.llms.Names;
 import large.logic.forMathematics.statistics.llms.ParametersOutptut;
 import large.logic.forMathematics.statistics.llms.Parametersfunc;
 
@@ -48,14 +47,24 @@ public class FunctionsImpl extends MinimalEObjectImpl.Container implements Funct
   protected ParametersOutptut output;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
    */
-  protected Names name;
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference.
@@ -154,7 +163,7 @@ public class FunctionsImpl extends MinimalEObjectImpl.Container implements Funct
    * @generated
    */
   @Override
-  public Names getName()
+  public String getName()
   {
     return name;
   }
@@ -164,38 +173,13 @@ public class FunctionsImpl extends MinimalEObjectImpl.Container implements Funct
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetName(Names newName, NotificationChain msgs)
+  @Override
+  public void setName(String newName)
   {
-    Names oldName = name;
+    String oldName = name;
     name = newName;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LlmsPackage.FUNCTIONS__NAME, oldName, newName);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(Names newName)
-  {
-    if (newName != name)
-    {
-      NotificationChain msgs = null;
-      if (name != null)
-        msgs = ((InternalEObject)name).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.FUNCTIONS__NAME, null, msgs);
-      if (newName != null)
-        msgs = ((InternalEObject)newName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.FUNCTIONS__NAME, null, msgs);
-      msgs = basicSetName(newName, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.FUNCTIONS__NAME, newName, newName));
+      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.FUNCTIONS__NAME, oldName, name));
   }
 
   /**
@@ -310,8 +294,6 @@ public class FunctionsImpl extends MinimalEObjectImpl.Container implements Funct
     {
       case LlmsPackage.FUNCTIONS__OUTPUT:
         return basicSetOutput(null, msgs);
-      case LlmsPackage.FUNCTIONS__NAME:
-        return basicSetName(null, msgs);
       case LlmsPackage.FUNCTIONS__PARAMS:
         return basicSetParams(null, msgs);
       case LlmsPackage.FUNCTIONS__BODY:
@@ -356,7 +338,7 @@ public class FunctionsImpl extends MinimalEObjectImpl.Container implements Funct
         setOutput((ParametersOutptut)newValue);
         return;
       case LlmsPackage.FUNCTIONS__NAME:
-        setName((Names)newValue);
+        setName((String)newValue);
         return;
       case LlmsPackage.FUNCTIONS__PARAMS:
         setParams((Parametersfunc)newValue);
@@ -382,7 +364,7 @@ public class FunctionsImpl extends MinimalEObjectImpl.Container implements Funct
         setOutput((ParametersOutptut)null);
         return;
       case LlmsPackage.FUNCTIONS__NAME:
-        setName((Names)null);
+        setName(NAME_EDEFAULT);
         return;
       case LlmsPackage.FUNCTIONS__PARAMS:
         setParams((Parametersfunc)null);
@@ -407,13 +389,30 @@ public class FunctionsImpl extends MinimalEObjectImpl.Container implements Funct
       case LlmsPackage.FUNCTIONS__OUTPUT:
         return output != null;
       case LlmsPackage.FUNCTIONS__NAME:
-        return name != null;
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case LlmsPackage.FUNCTIONS__PARAMS:
         return params != null;
       case LlmsPackage.FUNCTIONS__BODY:
         return body != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //FunctionsImpl

@@ -81,44 +81,9 @@ public class LlmsAdapterFactory extends AdapterFactoryImpl
         return createOperationsAdapter();
       }
       @Override
-      public Adapter casePrints(Prints object)
-      {
-        return createPrintsAdapter();
-      }
-      @Override
-      public Adapter caseParmsPrint(ParmsPrint object)
-      {
-        return createParmsPrintAdapter();
-      }
-      @Override
-      public Adapter caseNames(Names object)
-      {
-        return createNamesAdapter();
-      }
-      @Override
       public Adapter caseFunctions(Functions object)
       {
         return createFunctionsAdapter();
-      }
-      @Override
-      public Adapter caseBodies(Bodies object)
-      {
-        return createBodiesAdapter();
-      }
-      @Override
-      public Adapter caseLoops(Loops object)
-      {
-        return createLoopsAdapter();
-      }
-      @Override
-      public Adapter caseConditionals(Conditionals object)
-      {
-        return createConditionalsAdapter();
-      }
-      @Override
-      public Adapter caseLogicalParams(LogicalParams object)
-      {
-        return createLogicalParamsAdapter();
       }
       @Override
       public Adapter caseParametersOutptut(ParametersOutptut object)
@@ -131,9 +96,89 @@ public class LlmsAdapterFactory extends AdapterFactoryImpl
         return createParametersfuncAdapter();
       }
       @Override
+      public Adapter caseBodies(Bodies object)
+      {
+        return createBodiesAdapter();
+      }
+      @Override
+      public Adapter casevarParmArgs(varParmArgs object)
+      {
+        return createvarParmArgsAdapter();
+      }
+      @Override
       public Adapter caseExpression(Expression object)
       {
         return createExpressionAdapter();
+      }
+      @Override
+      public Adapter caseGenericVariable(GenericVariable object)
+      {
+        return createGenericVariableAdapter();
+      }
+      @Override
+      public Adapter caseLoops(Loops object)
+      {
+        return createLoopsAdapter();
+      }
+      @Override
+      public Adapter caseFors(Fors object)
+      {
+        return createForsAdapter();
+      }
+      @Override
+      public Adapter caseWhiles(Whiles object)
+      {
+        return createWhilesAdapter();
+      }
+      @Override
+      public Adapter caseConditionals(Conditionals object)
+      {
+        return createConditionalsAdapter();
+      }
+      @Override
+      public Adapter caseIfs(Ifs object)
+      {
+        return createIfsAdapter();
+      }
+      @Override
+      public Adapter caseElseIfs(ElseIfs object)
+      {
+        return createElseIfsAdapter();
+      }
+      @Override
+      public Adapter caseElses(Elses object)
+      {
+        return createElsesAdapter();
+      }
+      @Override
+      public Adapter caseParmsPrint(ParmsPrint object)
+      {
+        return createParmsPrintAdapter();
+      }
+      @Override
+      public Adapter caseCallFunction(CallFunction object)
+      {
+        return createCallFunctionAdapter();
+      }
+      @Override
+      public Adapter caseCallVariable(CallVariable object)
+      {
+        return createCallVariableAdapter();
+      }
+      @Override
+      public Adapter caseOnlyVar(OnlyVar object)
+      {
+        return createOnlyVarAdapter();
+      }
+      @Override
+      public Adapter caseAssignment(Assignment object)
+      {
+        return createAssignmentAdapter();
+      }
+      @Override
+      public Adapter caseLogicalParams(LogicalParams object)
+      {
+        return createLogicalParamsAdapter();
       }
       @Override
       public Adapter caseOperation(Operation object)
@@ -221,34 +266,9 @@ public class LlmsAdapterFactory extends AdapterFactoryImpl
         return createPrimaryAdapter();
       }
       @Override
-      public Adapter casecallFunction(callFunction object)
+      public Adapter caseDatas(Datas object)
       {
-        return createcallFunctionAdapter();
-      }
-      @Override
-      public Adapter caseAssignment(Assignment object)
-      {
-        return createAssignmentAdapter();
-      }
-      @Override
-      public Adapter caseGenericVariable(GenericVariable object)
-      {
-        return createGenericVariableAdapter();
-      }
-      @Override
-      public Adapter caseCallVariable(CallVariable object)
-      {
-        return createCallVariableAdapter();
-      }
-      @Override
-      public Adapter casevarParmArgs(varParmArgs object)
-      {
-        return createvarParmArgsAdapter();
-      }
-      @Override
-      public Adapter caseData(Data object)
-      {
-        return createDataAdapter();
+        return createDatasAdapter();
       }
       @Override
       public Adapter caseNumbers(Numbers object)
@@ -269,6 +289,11 @@ public class LlmsAdapterFactory extends AdapterFactoryImpl
       public Adapter caseDoubles(Doubles object)
       {
         return createDoublesAdapter();
+      }
+      @Override
+      public Adapter casePrints(Prints object)
+      {
+        return createPrintsAdapter();
       }
       @Override
       public Adapter casefunOutputs(funOutputs object)
@@ -333,51 +358,6 @@ public class LlmsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Prints <em>Prints</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see large.logic.forMathematics.statistics.llms.Prints
-   * @generated
-   */
-  public Adapter createPrintsAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.ParmsPrint <em>Parms Print</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see large.logic.forMathematics.statistics.llms.ParmsPrint
-   * @generated
-   */
-  public Adapter createParmsPrintAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Names <em>Names</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see large.logic.forMathematics.statistics.llms.Names
-   * @generated
-   */
-  public Adapter createNamesAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Functions <em>Functions</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -388,66 +368,6 @@ public class LlmsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFunctionsAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Bodies <em>Bodies</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see large.logic.forMathematics.statistics.llms.Bodies
-   * @generated
-   */
-  public Adapter createBodiesAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Loops <em>Loops</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see large.logic.forMathematics.statistics.llms.Loops
-   * @generated
-   */
-  public Adapter createLoopsAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Conditionals <em>Conditionals</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see large.logic.forMathematics.statistics.llms.Conditionals
-   * @generated
-   */
-  public Adapter createConditionalsAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.LogicalParams <em>Logical Params</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see large.logic.forMathematics.statistics.llms.LogicalParams
-   * @generated
-   */
-  public Adapter createLogicalParamsAdapter()
   {
     return null;
   }
@@ -483,6 +403,36 @@ public class LlmsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Bodies <em>Bodies</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see large.logic.forMathematics.statistics.llms.Bodies
+   * @generated
+   */
+  public Adapter createBodiesAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.varParmArgs <em>var Parm Args</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see large.logic.forMathematics.statistics.llms.varParmArgs
+   * @generated
+   */
+  public Adapter createvarParmArgsAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Expression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -493,6 +443,216 @@ public class LlmsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.GenericVariable <em>Generic Variable</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see large.logic.forMathematics.statistics.llms.GenericVariable
+   * @generated
+   */
+  public Adapter createGenericVariableAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Loops <em>Loops</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see large.logic.forMathematics.statistics.llms.Loops
+   * @generated
+   */
+  public Adapter createLoopsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Fors <em>Fors</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see large.logic.forMathematics.statistics.llms.Fors
+   * @generated
+   */
+  public Adapter createForsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Whiles <em>Whiles</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see large.logic.forMathematics.statistics.llms.Whiles
+   * @generated
+   */
+  public Adapter createWhilesAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Conditionals <em>Conditionals</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see large.logic.forMathematics.statistics.llms.Conditionals
+   * @generated
+   */
+  public Adapter createConditionalsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Ifs <em>Ifs</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see large.logic.forMathematics.statistics.llms.Ifs
+   * @generated
+   */
+  public Adapter createIfsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.ElseIfs <em>Else Ifs</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see large.logic.forMathematics.statistics.llms.ElseIfs
+   * @generated
+   */
+  public Adapter createElseIfsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Elses <em>Elses</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see large.logic.forMathematics.statistics.llms.Elses
+   * @generated
+   */
+  public Adapter createElsesAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.ParmsPrint <em>Parms Print</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see large.logic.forMathematics.statistics.llms.ParmsPrint
+   * @generated
+   */
+  public Adapter createParmsPrintAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.CallFunction <em>Call Function</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see large.logic.forMathematics.statistics.llms.CallFunction
+   * @generated
+   */
+  public Adapter createCallFunctionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.CallVariable <em>Call Variable</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see large.logic.forMathematics.statistics.llms.CallVariable
+   * @generated
+   */
+  public Adapter createCallVariableAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.OnlyVar <em>Only Var</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see large.logic.forMathematics.statistics.llms.OnlyVar
+   * @generated
+   */
+  public Adapter createOnlyVarAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Assignment <em>Assignment</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see large.logic.forMathematics.statistics.llms.Assignment
+   * @generated
+   */
+  public Adapter createAssignmentAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.LogicalParams <em>Logical Params</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see large.logic.forMathematics.statistics.llms.LogicalParams
+   * @generated
+   */
+  public Adapter createLogicalParamsAdapter()
   {
     return null;
   }
@@ -753,91 +913,16 @@ public class LlmsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.callFunction <em>call Function</em>}'.
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Datas <em>Datas</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see large.logic.forMathematics.statistics.llms.callFunction
+   * @see large.logic.forMathematics.statistics.llms.Datas
    * @generated
    */
-  public Adapter createcallFunctionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Assignment <em>Assignment</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see large.logic.forMathematics.statistics.llms.Assignment
-   * @generated
-   */
-  public Adapter createAssignmentAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.GenericVariable <em>Generic Variable</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see large.logic.forMathematics.statistics.llms.GenericVariable
-   * @generated
-   */
-  public Adapter createGenericVariableAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.CallVariable <em>Call Variable</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see large.logic.forMathematics.statistics.llms.CallVariable
-   * @generated
-   */
-  public Adapter createCallVariableAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.varParmArgs <em>var Parm Args</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see large.logic.forMathematics.statistics.llms.varParmArgs
-   * @generated
-   */
-  public Adapter createvarParmArgsAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Data <em>Data</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see large.logic.forMathematics.statistics.llms.Data
-   * @generated
-   */
-  public Adapter createDataAdapter()
+  public Adapter createDatasAdapter()
   {
     return null;
   }
@@ -898,6 +983,21 @@ public class LlmsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDoublesAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Prints <em>Prints</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see large.logic.forMathematics.statistics.llms.Prints
+   * @generated
+   */
+  public Adapter createPrintsAdapter()
   {
     return null;
   }
