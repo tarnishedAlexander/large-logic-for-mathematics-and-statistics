@@ -15,13 +15,14 @@ package large.logic.forMathematics.statistics.llms;
  * <ul>
  *   <li>{@link large.logic.forMathematics.statistics.llms.varParmArgs#getName <em>Name</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.varParmArgs#getDataType <em>Data Type</em>}</li>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.varParmArgs#getExp <em>Exp</em>}</li>
  * </ul>
  *
  * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getvarParmArgs()
  * @model
  * @generated
  */
-public interface varParmArgs extends Primary
+public interface varParmArgs extends Primary, GenericVariable
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -66,5 +67,27 @@ public interface varParmArgs extends Primary
    * @generated
    */
   void setDataType(String value);
+
+  /**
+   * Returns the value of the '<em><b>Exp</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Exp</em>' containment reference.
+   * @see #setExp(Expression)
+   * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getvarParmArgs_Exp()
+   * @model containment="true"
+   * @generated
+   */
+  Expression getExp();
+
+  /**
+   * Sets the value of the '{@link large.logic.forMathematics.statistics.llms.varParmArgs#getExp <em>Exp</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Exp</em>' containment reference.
+   * @see #getExp()
+   * @generated
+   */
+  void setExp(Expression value);
 
 } // varParmArgs

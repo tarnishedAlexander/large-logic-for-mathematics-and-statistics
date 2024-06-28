@@ -7,6 +7,7 @@ import com.google.inject.Inject;
 import java.util.Set;
 import large.logic.forMathematics.statistics.llms.Ands;
 import large.logic.forMathematics.statistics.llms.AritmeticOperation;
+import large.logic.forMathematics.statistics.llms.Assignment;
 import large.logic.forMathematics.statistics.llms.Bodies;
 import large.logic.forMathematics.statistics.llms.Booleans;
 import large.logic.forMathematics.statistics.llms.CallVariable;
@@ -20,6 +21,7 @@ import large.logic.forMathematics.statistics.llms.GreaterThan;
 import large.logic.forMathematics.statistics.llms.LessOrEqual;
 import large.logic.forMathematics.statistics.llms.LessThan;
 import large.logic.forMathematics.statistics.llms.LlmsPackage;
+import large.logic.forMathematics.statistics.llms.Loops;
 import large.logic.forMathematics.statistics.llms.Multiplication;
 import large.logic.forMathematics.statistics.llms.Names;
 import large.logic.forMathematics.statistics.llms.Nands;
@@ -30,12 +32,10 @@ import large.logic.forMathematics.statistics.llms.Numbers;
 import large.logic.forMathematics.statistics.llms.Operations;
 import large.logic.forMathematics.statistics.llms.Ors;
 import large.logic.forMathematics.statistics.llms.ParametersOutptut;
-import large.logic.forMathematics.statistics.llms.Primary;
 import large.logic.forMathematics.statistics.llms.Prints;
 import large.logic.forMathematics.statistics.llms.Strings;
 import large.logic.forMathematics.statistics.llms.Subs;
 import large.logic.forMathematics.statistics.llms.Sum;
-import large.logic.forMathematics.statistics.llms.Variables;
 import large.logic.forMathematics.statistics.llms.callFunction;
 import large.logic.forMathematics.statistics.llms.funOutputs;
 import large.logic.forMathematics.statistics.llms.varParmArgs;
@@ -69,6 +69,9 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case LlmsPackage.ARITMETIC_OPERATION:
 				sequence_AritmeticOperation(context, (AritmeticOperation) semanticObject); 
+				return; 
+			case LlmsPackage.ASSIGNMENT:
+				sequence_Assignment(context, (Assignment) semanticObject); 
 				return; 
 			case LlmsPackage.BODIES:
 				sequence_Bodies(context, (Bodies) semanticObject); 
@@ -171,6 +174,9 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
+			case LlmsPackage.LOOPS:
+				sequence_Loops(context, (Loops) semanticObject); 
+				return; 
 			case LlmsPackage.MULTIPLICATION:
 				sequence_Multiplication(context, (Multiplication) semanticObject); 
 				return; 
@@ -203,26 +209,8 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_Nots(context, (Nots) semanticObject); 
 				return; 
 			case LlmsPackage.NUMBERS:
-				if (rule == grammarAccess.getLoopsRule()) {
-					sequence_Loops_Numbers(context, (Numbers) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getParmsPrintRule()
-						|| rule == grammarAccess.getSumRule()
-						|| action == grammarAccess.getSumAccess().getSumLeftAction_1_0()
-						|| rule == grammarAccess.getSubsRule()
-						|| action == grammarAccess.getSubsAccess().getSubsLeftAction_1_0()
-						|| rule == grammarAccess.getDivitionRule()
-						|| action == grammarAccess.getDivitionAccess().getDivitionLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicationRule()
-						|| action == grammarAccess.getMultiplicationAccess().getMultiplicationLeftAction_1_0()
-						|| rule == grammarAccess.getPrimaryRule()
-						|| rule == grammarAccess.getDataRule()
-						|| rule == grammarAccess.getNumbersRule()) {
-					sequence_Numbers(context, (Numbers) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_Numbers(context, (Numbers) semanticObject); 
+				return; 
 			case LlmsPackage.OPERATIONS:
 				sequence_Operations(context, (Operations) semanticObject); 
 				return; 
@@ -231,9 +219,6 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case LlmsPackage.PARAMETERS_OUTPTUT:
 				sequence_ParametersOutptut(context, (ParametersOutptut) semanticObject); 
-				return; 
-			case LlmsPackage.PRIMARY:
-				sequence_Primary(context, (Primary) semanticObject); 
 				return; 
 			case LlmsPackage.PRINTS:
 				sequence_Prints(context, (Prints) semanticObject); 
@@ -247,16 +232,6 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case LlmsPackage.SUM:
 				sequence_Sum(context, (Sum) semanticObject); 
 				return; 
-			case LlmsPackage.VARIABLES:
-				if (rule == grammarAccess.getLoopsRule()) {
-					sequence_Loops_Variables(context, (Variables) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getVariablesRule()) {
-					sequence_Variables(context, (Variables) semanticObject); 
-					return; 
-				}
-				else break;
 			case LlmsPackage.CALL_FUNCTION:
 				sequence_callFunction(context, (callFunction) semanticObject); 
 				return; 
@@ -311,10 +286,33 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Assignment returns Assignment
+	 *
+	 * Constraint:
+	 *     (vars=[varParmArgs|ID] exp=Expression)
+	 * </pre>
+	 */
+	protected void sequence_Assignment(ISerializationContext context, Assignment semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, LlmsPackage.Literals.ASSIGNMENT__VARS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LlmsPackage.Literals.ASSIGNMENT__VARS));
+			if (transientValues.isValueTransient(semanticObject, LlmsPackage.Literals.ASSIGNMENT__EXP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LlmsPackage.Literals.ASSIGNMENT__EXP));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAssignmentAccess().getVarsVarParmArgsIDTerminalRuleCall_0_0_1(), semanticObject.eGet(LlmsPackage.Literals.ASSIGNMENT__VARS, false));
+		feeder.accept(grammarAccess.getAssignmentAccess().getExpExpressionParserRuleCall_2_0(), semanticObject.getExp());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     Bodies returns Bodies
 	 *
 	 * Constraint:
-	 *     var+=Variables*
+	 *     var+=GenericVariable*
 	 * </pre>
 	 */
 	protected void sequence_Bodies(ISerializationContext context, Bodies semanticObject) {
@@ -351,10 +349,20 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * <pre>
 	 * Contexts:
 	 *     ParmsPrint returns CallVariable
+	 *     Sum returns CallVariable
+	 *     Sum.Sum_1_0 returns CallVariable
+	 *     Subs returns CallVariable
+	 *     Subs.Subs_1_0 returns CallVariable
+	 *     Divition returns CallVariable
+	 *     Divition.Divition_1_0 returns CallVariable
+	 *     Multiplication returns CallVariable
+	 *     Multiplication.Multiplication_1_0 returns CallVariable
+	 *     Primary returns CallVariable
+	 *     GenericVariable returns CallVariable
 	 *     CallVariable returns CallVariable
 	 *
 	 * Constraint:
-	 *     vars=[Variables|ID]
+	 *     vars=[varParmArgs|ID]
 	 * </pre>
 	 */
 	protected void sequence_CallVariable(ISerializationContext context, CallVariable semanticObject) {
@@ -363,7 +371,7 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LlmsPackage.Literals.CALL_VARIABLE__VARS));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getCallVariableAccess().getVarsVariablesIDTerminalRuleCall_0_1(), semanticObject.eGet(LlmsPackage.Literals.CALL_VARIABLE__VARS, false));
+		feeder.accept(grammarAccess.getCallVariableAccess().getVarsVarParmArgsIDTerminalRuleCall_0_1(), semanticObject.eGet(LlmsPackage.Literals.CALL_VARIABLE__VARS, false));
 		feeder.finish();
 	}
 	
@@ -814,27 +822,13 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Loops returns Numbers
+	 *     Loops returns Loops
 	 *
 	 * Constraint:
-	 *     (value=INT number=Numbers body+=Bodies+)
+	 *     (var=GenericVariable number=Numbers body+=Bodies+)
 	 * </pre>
 	 */
-	protected void sequence_Loops_Numbers(ISerializationContext context, Numbers semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Loops returns Variables
-	 *
-	 * Constraint:
-	 *     ((typesVars=varParmArgs | typesVars=CallVariable) exp=Expression number=Numbers body+=Bodies+)
-	 * </pre>
-	 */
-	protected void sequence_Loops_Variables(ISerializationContext context, Variables semanticObject) {
+	protected void sequence_Loops(ISerializationContext context, Loops semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -999,7 +993,7 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Operations returns Operations
 	 *
 	 * Constraint:
-	 *     (name=ID (func+=Functions | vars+=Variables | conditional+=Conditionals | loops+=Loops | print+=Prints)*)
+	 *     (name=ID (func+=Functions | vars+=varParmArgs | conditional+=Conditionals | loops+=Loops | print+=Prints)*)
 	 * </pre>
 	 */
 	protected void sequence_Operations(ISerializationContext context, Operations semanticObject) {
@@ -1048,34 +1042,6 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_Parametersfunc(ISerializationContext context, funOutputs semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Sum returns Primary
-	 *     Sum.Sum_1_0 returns Primary
-	 *     Subs returns Primary
-	 *     Subs.Subs_1_0 returns Primary
-	 *     Divition returns Primary
-	 *     Divition.Divition_1_0 returns Primary
-	 *     Multiplication returns Primary
-	 *     Multiplication.Multiplication_1_0 returns Primary
-	 *     Primary returns Primary
-	 *
-	 * Constraint:
-	 *     var=[Variables|ID]
-	 * </pre>
-	 */
-	protected void sequence_Primary(ISerializationContext context, Primary semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, LlmsPackage.Literals.PRIMARY__VAR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LlmsPackage.Literals.PRIMARY__VAR));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getPrimaryAccess().getVarVariablesIDTerminalRuleCall_1_0_1(), semanticObject.eGet(LlmsPackage.Literals.PRIMARY__VAR, false));
-		feeder.finish();
 	}
 	
 	
@@ -1177,20 +1143,6 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Variables returns Variables
-	 *
-	 * Constraint:
-	 *     ((typesVars=varParmArgs | typesVars=CallVariable) exp=Expression)
-	 * </pre>
-	 */
-	protected void sequence_Variables(ISerializationContext context, Variables semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
 	 *     ParmsPrint returns callFunction
 	 *     Sum returns callFunction
 	 *     Sum.Sum_1_0 returns callFunction
@@ -1224,23 +1176,15 @@ public class LlmsSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Multiplication returns varParmArgs
 	 *     Multiplication.Multiplication_1_0 returns varParmArgs
 	 *     Primary returns varParmArgs
+	 *     GenericVariable returns varParmArgs
 	 *     varParmArgs returns varParmArgs
 	 *
 	 * Constraint:
-	 *     (name=ID dataType=DataTypes)
+	 *     (name=ID dataType=DataTypes exp=Expression?)
 	 * </pre>
 	 */
 	protected void sequence_varParmArgs(ISerializationContext context, varParmArgs semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, LlmsPackage.Literals.VAR_PARM_ARGS__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LlmsPackage.Literals.VAR_PARM_ARGS__NAME));
-			if (transientValues.isValueTransient(semanticObject, LlmsPackage.Literals.VAR_PARM_ARGS__DATA_TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LlmsPackage.Literals.VAR_PARM_ARGS__DATA_TYPE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getVarParmArgsAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getVarParmArgsAccess().getDataTypeDataTypesParserRuleCall_2_0(), semanticObject.getDataType());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

@@ -5,6 +5,7 @@ package large.logic.forMathematics.statistics.llms.impl;
 
 import large.logic.forMathematics.statistics.llms.Ands;
 import large.logic.forMathematics.statistics.llms.AritmeticOperation;
+import large.logic.forMathematics.statistics.llms.Assignment;
 import large.logic.forMathematics.statistics.llms.Bodies;
 import large.logic.forMathematics.statistics.llms.BooleanFunction;
 import large.logic.forMathematics.statistics.llms.Booleans;
@@ -17,6 +18,7 @@ import large.logic.forMathematics.statistics.llms.Equal;
 import large.logic.forMathematics.statistics.llms.Expression;
 import large.logic.forMathematics.statistics.llms.Expressions;
 import large.logic.forMathematics.statistics.llms.Functions;
+import large.logic.forMathematics.statistics.llms.GenericVariable;
 import large.logic.forMathematics.statistics.llms.GreaterOrEqual;
 import large.logic.forMathematics.statistics.llms.GreaterThan;
 import large.logic.forMathematics.statistics.llms.LessOrEqual;
@@ -44,7 +46,6 @@ import large.logic.forMathematics.statistics.llms.Prints;
 import large.logic.forMathematics.statistics.llms.Strings;
 import large.logic.forMathematics.statistics.llms.Subs;
 import large.logic.forMathematics.statistics.llms.Sum;
-import large.logic.forMathematics.statistics.llms.Variables;
 import large.logic.forMathematics.statistics.llms.callFunction;
 import large.logic.forMathematics.statistics.llms.funOutputs;
 import large.logic.forMathematics.statistics.llms.varParmArgs;
@@ -279,7 +280,14 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass variablesEClass = null;
+  private EClass assignmentEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass genericVariableEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -653,7 +661,7 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
    * @generated
    */
   @Override
-  public EReference getLoops_Number()
+  public EReference getLoops_Var()
   {
     return (EReference)loopsEClass.getEStructuralFeatures().get(0);
   }
@@ -664,9 +672,20 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
    * @generated
    */
   @Override
-  public EReference getLoops_Body()
+  public EReference getLoops_Number()
   {
     return (EReference)loopsEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLoops_Body()
+  {
+    return (EReference)loopsEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1038,17 +1057,6 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
    * @generated
    */
   @Override
-  public EReference getPrimary_Var()
-  {
-    return (EReference)primaryEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getcallFunction()
   {
     return callFunctionEClass;
@@ -1082,9 +1090,9 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
    * @generated
    */
   @Override
-  public EClass getVariables()
+  public EClass getAssignment()
   {
-    return variablesEClass;
+    return assignmentEClass;
   }
 
   /**
@@ -1093,9 +1101,9 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
    * @generated
    */
   @Override
-  public EReference getVariables_TypesVars()
+  public EReference getAssignment_Vars()
   {
-    return (EReference)variablesEClass.getEStructuralFeatures().get(0);
+    return (EReference)assignmentEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1104,9 +1112,20 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
    * @generated
    */
   @Override
-  public EReference getVariables_Exp()
+  public EReference getAssignment_Exp()
   {
-    return (EReference)variablesEClass.getEStructuralFeatures().get(1);
+    return (EReference)assignmentEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getGenericVariable()
+  {
+    return genericVariableEClass;
   }
 
   /**
@@ -1162,6 +1181,17 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
   public EAttribute getvarParmArgs_DataType()
   {
     return (EAttribute)varParmArgsEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getvarParmArgs_Exp()
+  {
+    return (EReference)varParmArgsEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1474,6 +1504,7 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
     createEReference(bodiesEClass, BODIES__VAR);
 
     loopsEClass = createEClass(LOOPS);
+    createEReference(loopsEClass, LOOPS__VAR);
     createEReference(loopsEClass, LOOPS__NUMBER);
     createEReference(loopsEClass, LOOPS__BODY);
 
@@ -1531,15 +1562,16 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
     expressionsEClass = createEClass(EXPRESSIONS);
 
     primaryEClass = createEClass(PRIMARY);
-    createEReference(primaryEClass, PRIMARY__VAR);
 
     callFunctionEClass = createEClass(CALL_FUNCTION);
     createEReference(callFunctionEClass, CALL_FUNCTION__FUNC);
     createEReference(callFunctionEClass, CALL_FUNCTION__EXP);
 
-    variablesEClass = createEClass(VARIABLES);
-    createEReference(variablesEClass, VARIABLES__TYPES_VARS);
-    createEReference(variablesEClass, VARIABLES__EXP);
+    assignmentEClass = createEClass(ASSIGNMENT);
+    createEReference(assignmentEClass, ASSIGNMENT__VARS);
+    createEReference(assignmentEClass, ASSIGNMENT__EXP);
+
+    genericVariableEClass = createEClass(GENERIC_VARIABLE);
 
     callVariableEClass = createEClass(CALL_VARIABLE);
     createEReference(callVariableEClass, CALL_VARIABLE__VARS);
@@ -1547,6 +1579,7 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
     varParmArgsEClass = createEClass(VAR_PARM_ARGS);
     createEAttribute(varParmArgsEClass, VAR_PARM_ARGS__NAME);
     createEAttribute(varParmArgsEClass, VAR_PARM_ARGS__DATA_TYPE);
+    createEReference(varParmArgsEClass, VAR_PARM_ARGS__EXP);
 
     dataEClass = createEClass(DATA);
 
@@ -1631,12 +1664,13 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
     primaryEClass.getESuperTypes().add(this.getExpressions());
     callFunctionEClass.getESuperTypes().add(this.getParmsPrint());
     callFunctionEClass.getESuperTypes().add(this.getPrimary());
-    variablesEClass.getESuperTypes().add(this.getLoops());
     callVariableEClass.getESuperTypes().add(this.getParmsPrint());
+    callVariableEClass.getESuperTypes().add(this.getPrimary());
+    callVariableEClass.getESuperTypes().add(this.getGenericVariable());
     varParmArgsEClass.getESuperTypes().add(this.getPrimary());
+    varParmArgsEClass.getESuperTypes().add(this.getGenericVariable());
     dataEClass.getESuperTypes().add(this.getParmsPrint());
     dataEClass.getESuperTypes().add(this.getPrimary());
-    numbersEClass.getESuperTypes().add(this.getLoops());
     numbersEClass.getESuperTypes().add(this.getData());
     stringsEClass.getESuperTypes().add(this.getData());
     booleansEClass.getESuperTypes().add(this.getData());
@@ -1651,7 +1685,7 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
     initEClass(operationsEClass, Operations.class, "Operations", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getOperations_Name(), ecorePackage.getEString(), "name", null, 0, 1, Operations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOperations_Func(), this.getFunctions(), null, "func", null, 0, -1, Operations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOperations_Vars(), this.getVariables(), null, "vars", null, 0, -1, Operations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOperations_Vars(), this.getvarParmArgs(), null, "vars", null, 0, -1, Operations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOperations_Conditional(), this.getConditionals(), null, "conditional", null, 0, -1, Operations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOperations_Loops(), this.getLoops(), null, "loops", null, 0, -1, Operations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOperations_Print(), this.getPrints(), null, "print", null, 0, -1, Operations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1671,9 +1705,10 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
     initEReference(getFunctions_Body(), this.getBodies(), null, "body", null, 0, 1, Functions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(bodiesEClass, Bodies.class, "Bodies", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getBodies_Var(), this.getVariables(), null, "var", null, 0, -1, Bodies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBodies_Var(), this.getGenericVariable(), null, "var", null, 0, -1, Bodies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(loopsEClass, Loops.class, "Loops", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLoops_Var(), this.getGenericVariable(), null, "var", null, 0, 1, Loops.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLoops_Number(), this.getNumbers(), null, "number", null, 0, 1, Loops.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLoops_Body(), this.getBodies(), null, "body", null, 0, -1, Loops.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1731,22 +1766,24 @@ public class LlmsPackageImpl extends EPackageImpl implements LlmsPackage
     initEClass(expressionsEClass, Expressions.class, "Expressions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(primaryEClass, Primary.class, "Primary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getPrimary_Var(), this.getVariables(), null, "var", null, 0, 1, Primary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(callFunctionEClass, callFunction.class, "callFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getcallFunction_Func(), this.getFunctions(), null, "func", null, 0, 1, callFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getcallFunction_Exp(), this.getExpression(), null, "exp", null, 0, -1, callFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(variablesEClass, Variables.class, "Variables", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getVariables_TypesVars(), ecorePackage.getEObject(), null, "typesVars", null, 0, 1, Variables.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getVariables_Exp(), this.getExpression(), null, "exp", null, 0, 1, Variables.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(assignmentEClass, Assignment.class, "Assignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAssignment_Vars(), this.getvarParmArgs(), null, "vars", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAssignment_Exp(), this.getExpression(), null, "exp", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(genericVariableEClass, GenericVariable.class, "GenericVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(callVariableEClass, CallVariable.class, "CallVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCallVariable_Vars(), this.getVariables(), null, "vars", null, 0, 1, CallVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCallVariable_Vars(), this.getvarParmArgs(), null, "vars", null, 0, 1, CallVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(varParmArgsEClass, varParmArgs.class, "varParmArgs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getvarParmArgs_Name(), ecorePackage.getEString(), "name", null, 0, 1, varParmArgs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getvarParmArgs_DataType(), ecorePackage.getEString(), "dataType", null, 0, 1, varParmArgs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getvarParmArgs_Exp(), this.getExpression(), null, "exp", null, 0, 1, varParmArgs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(dataEClass, Data.class, "Data", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

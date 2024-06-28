@@ -226,9 +226,14 @@ public class LlmsAdapterFactory extends AdapterFactoryImpl
         return createcallFunctionAdapter();
       }
       @Override
-      public Adapter caseVariables(Variables object)
+      public Adapter caseAssignment(Assignment object)
       {
-        return createVariablesAdapter();
+        return createAssignmentAdapter();
+      }
+      @Override
+      public Adapter caseGenericVariable(GenericVariable object)
+      {
+        return createGenericVariableAdapter();
       }
       @Override
       public Adapter caseCallVariable(CallVariable object)
@@ -763,16 +768,31 @@ public class LlmsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Variables <em>Variables</em>}'.
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.Assignment <em>Assignment</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see large.logic.forMathematics.statistics.llms.Variables
+   * @see large.logic.forMathematics.statistics.llms.Assignment
    * @generated
    */
-  public Adapter createVariablesAdapter()
+  public Adapter createAssignmentAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link large.logic.forMathematics.statistics.llms.GenericVariable <em>Generic Variable</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see large.logic.forMathematics.statistics.llms.GenericVariable
+   * @generated
+   */
+  public Adapter createGenericVariableAdapter()
   {
     return null;
   }

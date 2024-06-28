@@ -6,6 +6,7 @@ package large.logic.forMathematics.statistics.llms.impl;
 import java.util.Collection;
 
 import large.logic.forMathematics.statistics.llms.Bodies;
+import large.logic.forMathematics.statistics.llms.GenericVariable;
 import large.logic.forMathematics.statistics.llms.LlmsPackage;
 import large.logic.forMathematics.statistics.llms.Loops;
 import large.logic.forMathematics.statistics.llms.Numbers;
@@ -32,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.impl.LoopsImpl#getVar <em>Var</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.impl.LoopsImpl#getNumber <em>Number</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.impl.LoopsImpl#getBody <em>Body</em>}</li>
  * </ul>
@@ -40,6 +42,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class LoopsImpl extends MinimalEObjectImpl.Container implements Loops
 {
+  /**
+   * The cached value of the '{@link #getVar() <em>Var</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVar()
+   * @generated
+   * @ordered
+   */
+  protected GenericVariable var;
+
   /**
    * The cached value of the '{@link #getNumber() <em>Number</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -79,6 +91,56 @@ public class LoopsImpl extends MinimalEObjectImpl.Container implements Loops
   protected EClass eStaticClass()
   {
     return LlmsPackage.Literals.LOOPS;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public GenericVariable getVar()
+  {
+    return var;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetVar(GenericVariable newVar, NotificationChain msgs)
+  {
+    GenericVariable oldVar = var;
+    var = newVar;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LlmsPackage.LOOPS__VAR, oldVar, newVar);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setVar(GenericVariable newVar)
+  {
+    if (newVar != var)
+    {
+      NotificationChain msgs = null;
+      if (var != null)
+        msgs = ((InternalEObject)var).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.LOOPS__VAR, null, msgs);
+      if (newVar != null)
+        msgs = ((InternalEObject)newVar).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.LOOPS__VAR, null, msgs);
+      msgs = basicSetVar(newVar, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.LOOPS__VAR, newVar, newVar));
   }
 
   /**
@@ -156,6 +218,8 @@ public class LoopsImpl extends MinimalEObjectImpl.Container implements Loops
   {
     switch (featureID)
     {
+      case LlmsPackage.LOOPS__VAR:
+        return basicSetVar(null, msgs);
       case LlmsPackage.LOOPS__NUMBER:
         return basicSetNumber(null, msgs);
       case LlmsPackage.LOOPS__BODY:
@@ -174,6 +238,8 @@ public class LoopsImpl extends MinimalEObjectImpl.Container implements Loops
   {
     switch (featureID)
     {
+      case LlmsPackage.LOOPS__VAR:
+        return getVar();
       case LlmsPackage.LOOPS__NUMBER:
         return getNumber();
       case LlmsPackage.LOOPS__BODY:
@@ -193,6 +259,9 @@ public class LoopsImpl extends MinimalEObjectImpl.Container implements Loops
   {
     switch (featureID)
     {
+      case LlmsPackage.LOOPS__VAR:
+        setVar((GenericVariable)newValue);
+        return;
       case LlmsPackage.LOOPS__NUMBER:
         setNumber((Numbers)newValue);
         return;
@@ -214,6 +283,9 @@ public class LoopsImpl extends MinimalEObjectImpl.Container implements Loops
   {
     switch (featureID)
     {
+      case LlmsPackage.LOOPS__VAR:
+        setVar((GenericVariable)null);
+        return;
       case LlmsPackage.LOOPS__NUMBER:
         setNumber((Numbers)null);
         return;
@@ -234,6 +306,8 @@ public class LoopsImpl extends MinimalEObjectImpl.Container implements Loops
   {
     switch (featureID)
     {
+      case LlmsPackage.LOOPS__VAR:
+        return var != null;
       case LlmsPackage.LOOPS__NUMBER:
         return number != null;
       case LlmsPackage.LOOPS__BODY:

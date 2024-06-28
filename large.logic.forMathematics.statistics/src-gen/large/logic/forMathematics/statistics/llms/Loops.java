@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.Loops#getVar <em>Var</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.Loops#getNumber <em>Number</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.Loops#getBody <em>Body</em>}</li>
  * </ul>
@@ -26,6 +27,28 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Loops extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Var</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Var</em>' containment reference.
+   * @see #setVar(GenericVariable)
+   * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getLoops_Var()
+   * @model containment="true"
+   * @generated
+   */
+  GenericVariable getVar();
+
+  /**
+   * Sets the value of the '{@link large.logic.forMathematics.statistics.llms.Loops#getVar <em>Var</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Var</em>' containment reference.
+   * @see #getVar()
+   * @generated
+   */
+  void setVar(GenericVariable value);
+
   /**
    * Returns the value of the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->

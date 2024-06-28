@@ -7,7 +7,7 @@ Operations:
 	name=ID
 	 "{" 
 	(func += Functions |
-	vars += Variables |
+	vars += varParmArgs |
 	conditional+=Conditionals |
 	loops+=Loops | 
 	print += Prints)*
@@ -50,7 +50,7 @@ Functions:
 		//se va a guardar en una variable si no es instruccion
 		{Bodies} 
 		//exp += Expression*
-		var += Variables*
+		var += GenericVariable*
 		
 		";"
 	;
@@ -58,7 +58,7 @@ Functions:
 	Loops:
 		"for"
 		"("
-		(Variables | Numbers) ":" number=Numbers 
+		var=GenericVariable ":" number=Numbers 
 		")"
 		"=>"
 		"{"
@@ -206,8 +206,9 @@ LogicalOperation:
 //en primary hay ambiguedad, mas en especifico en callFunction
 
 	Primary:
-		varParmArgs | var = [Variables] | callFunction | Data //falta puede ser numero o string o bool o char
+		varParmArgs | CallVariable | callFunction | Data //falta puede ser numero o string o bool o char
 	;
+	
 	
 	//ahora no puede hacer operaciones dentro de los argumentos de callfunction solo se le pasa datos
 	callFunction:
@@ -216,18 +217,28 @@ LogicalOperation:
 	;
 	// ((data+=Data("," data+=Data)*)? | (vars+=[Variables](","vars+=[Variables])*)? )
 	//no entiendo porque?
-	Variables:
-		(varParmArgs | CallVariable) //reasignar un valor
-		"<="
-		exp = Expression
-		";"
+//	Variables:
+//		(varParmArgs | CallVariable) //reasignar un valor
+//		"<="
+//		exp = Expression
+//		";"
+//	;
+	
+	
+	Assignment:
+		vars = [varParmArgs] '<=' exp = Expression ";"
 	;
+	
+	GenericVariable:
+		CallVariable | varParmArgs
+	;
+	
 	CallVariable:
-		vars=[Variables]
+		vars=[varParmArgs]
 	;
 	
 	varParmArgs:
-		name=ID ":" dataType = DataTypes
+		name=ID ":" dataType = DataTypes ('<=' exp = Expression ";")?
 	;
 	
 	//cambiar a strings

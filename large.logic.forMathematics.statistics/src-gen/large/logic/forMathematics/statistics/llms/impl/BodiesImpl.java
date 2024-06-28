@@ -6,8 +6,8 @@ package large.logic.forMathematics.statistics.llms.impl;
 import java.util.Collection;
 
 import large.logic.forMathematics.statistics.llms.Bodies;
+import large.logic.forMathematics.statistics.llms.GenericVariable;
 import large.logic.forMathematics.statistics.llms.LlmsPackage;
-import large.logic.forMathematics.statistics.llms.Variables;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -44,7 +44,7 @@ public class BodiesImpl extends MinimalEObjectImpl.Container implements Bodies
    * @generated
    * @ordered
    */
-  protected EList<Variables> var;
+  protected EList<GenericVariable> var;
 
   /**
    * <!-- begin-user-doc -->
@@ -73,11 +73,11 @@ public class BodiesImpl extends MinimalEObjectImpl.Container implements Bodies
    * @generated
    */
   @Override
-  public EList<Variables> getVar()
+  public EList<GenericVariable> getVar()
   {
     if (var == null)
     {
-      var = new EObjectContainmentEList<Variables>(Variables.class, this, LlmsPackage.BODIES__VAR);
+      var = new EObjectContainmentEList<GenericVariable>(GenericVariable.class, this, LlmsPackage.BODIES__VAR);
     }
     return var;
   }
@@ -127,7 +127,7 @@ public class BodiesImpl extends MinimalEObjectImpl.Container implements Bodies
     {
       case LlmsPackage.BODIES__VAR:
         getVar().clear();
-        getVar().addAll((Collection<? extends Variables>)newValue);
+        getVar().addAll((Collection<? extends GenericVariable>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

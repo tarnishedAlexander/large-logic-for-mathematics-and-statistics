@@ -11,7 +11,7 @@ import large.logic.forMathematics.statistics.llms.LlmsPackage;
 import large.logic.forMathematics.statistics.llms.Loops;
 import large.logic.forMathematics.statistics.llms.Operations;
 import large.logic.forMathematics.statistics.llms.Prints;
-import large.logic.forMathematics.statistics.llms.Variables;
+import large.logic.forMathematics.statistics.llms.varParmArgs;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -85,7 +85,7 @@ public class OperationsImpl extends MinimalEObjectImpl.Container implements Oper
    * @generated
    * @ordered
    */
-  protected EList<Variables> vars;
+  protected EList<varParmArgs> vars;
 
   /**
    * The cached value of the '{@link #getConditional() <em>Conditional</em>}' containment reference list.
@@ -184,11 +184,11 @@ public class OperationsImpl extends MinimalEObjectImpl.Container implements Oper
    * @generated
    */
   @Override
-  public EList<Variables> getVars()
+  public EList<varParmArgs> getVars()
   {
     if (vars == null)
     {
-      vars = new EObjectContainmentEList<Variables>(Variables.class, this, LlmsPackage.OPERATIONS__VARS);
+      vars = new EObjectContainmentEList<varParmArgs>(varParmArgs.class, this, LlmsPackage.OPERATIONS__VARS);
     }
     return vars;
   }
@@ -308,7 +308,7 @@ public class OperationsImpl extends MinimalEObjectImpl.Container implements Oper
         return;
       case LlmsPackage.OPERATIONS__VARS:
         getVars().clear();
-        getVars().addAll((Collection<? extends Variables>)newValue);
+        getVars().addAll((Collection<? extends varParmArgs>)newValue);
         return;
       case LlmsPackage.OPERATIONS__CONDITIONAL:
         getConditional().clear();

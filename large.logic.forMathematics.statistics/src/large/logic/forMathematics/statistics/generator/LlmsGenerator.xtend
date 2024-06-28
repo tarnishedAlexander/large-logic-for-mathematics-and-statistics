@@ -14,7 +14,7 @@ import large.logic.forMathematics.statistics.llms.Conditionals
 import large.logic.forMathematics.statistics.llms.Loops
 import large.logic.forMathematics.statistics.llms.Prints
 import large.logic.forMathematics.statistics.llms.varParmArgs
-
+import large.logic.forMathematics.statistics.llms.CallVariable
 
 /**
  * Generates code from your model files on save.
@@ -53,17 +53,28 @@ class LlmsGenerator extends AbstractGenerator {
 	''' 
 
 
-	def generate(Functions fun)'''
+	def generatefunc(Functions fun)'''
 	function «fun.output» = «fun.name» «fun.output» 
 	«fun.body»
 	end
 	'''
 	
-	def generate(Variables vars)'''
-	«vars.» = «vars.exp»
+	def generateVariables(Variables vars)'''
+	«generate(vars)» = «vars.exp»
 	'''
-	def generate(Conditionals cond)'''
-	if «cond.»
+	dispatch def generate(varParmArgs vpa)'''
+	«vpa.name»  «vpa.dataType»
+	'''
+	dispatch def generate(CallVariable cv)'''
+	'''
+	}//que hacer con el linking
+	
+	def generateConditionals(Conditionals cond)'''
+	if «cond» 
+	'''
+	
+	dispatch def generate(LogicalParams lp)'''
+	«Logi»
 	'''
 	def generate(Loops loops)'''
 	'''
@@ -71,8 +82,11 @@ class LlmsGenerator extends AbstractGenerator {
 	disp( «prints.print» )
 	'''
 	
-	'''
+	def dispatch generateData(Numbers n) '''
+	''' 
 	
+	def dispatch generateData(Strings s) '''
+	'''
 }
 
  

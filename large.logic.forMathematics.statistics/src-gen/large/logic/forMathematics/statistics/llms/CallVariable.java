@@ -20,19 +20,19 @@ package large.logic.forMathematics.statistics.llms;
  * @model
  * @generated
  */
-public interface CallVariable extends ParmsPrint
+public interface CallVariable extends ParmsPrint, Primary, GenericVariable
 {
   /**
    * Returns the value of the '<em><b>Vars</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Vars</em>' reference.
-   * @see #setVars(Variables)
+   * @see #setVars(varParmArgs)
    * @see large.logic.forMathematics.statistics.llms.LlmsPackage#getCallVariable_Vars()
    * @model
    * @generated
    */
-  Variables getVars();
+  varParmArgs getVars();
 
   /**
    * Sets the value of the '{@link large.logic.forMathematics.statistics.llms.CallVariable#getVars <em>Vars</em>}' reference.
@@ -42,6 +42,6 @@ public interface CallVariable extends ParmsPrint
    * @see #getVars()
    * @generated
    */
-  void setVars(Variables value);
+  void setVars(varParmArgs value);
 
 } // CallVariable

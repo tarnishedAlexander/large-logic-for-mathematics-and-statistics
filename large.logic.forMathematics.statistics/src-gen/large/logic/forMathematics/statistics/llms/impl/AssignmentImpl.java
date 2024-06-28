@@ -3,44 +3,45 @@
  */
 package large.logic.forMathematics.statistics.llms.impl;
 
+import large.logic.forMathematics.statistics.llms.Assignment;
 import large.logic.forMathematics.statistics.llms.Expression;
 import large.logic.forMathematics.statistics.llms.LlmsPackage;
-import large.logic.forMathematics.statistics.llms.Variables;
+import large.logic.forMathematics.statistics.llms.varParmArgs;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Variables</b></em>'.
+ * An implementation of the model object '<em><b>Assignment</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link large.logic.forMathematics.statistics.llms.impl.VariablesImpl#getTypesVars <em>Types Vars</em>}</li>
- *   <li>{@link large.logic.forMathematics.statistics.llms.impl.VariablesImpl#getExp <em>Exp</em>}</li>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.impl.AssignmentImpl#getVars <em>Vars</em>}</li>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.impl.AssignmentImpl#getExp <em>Exp</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class VariablesImpl extends LoopsImpl implements Variables
+public class AssignmentImpl extends MinimalEObjectImpl.Container implements Assignment
 {
   /**
-   * The cached value of the '{@link #getTypesVars() <em>Types Vars</em>}' containment reference.
+   * The cached value of the '{@link #getVars() <em>Vars</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTypesVars()
+   * @see #getVars()
    * @generated
    * @ordered
    */
-  protected EObject typesVars;
+  protected varParmArgs vars;
 
   /**
    * The cached value of the '{@link #getExp() <em>Exp</em>}' containment reference.
@@ -57,7 +58,7 @@ public class VariablesImpl extends LoopsImpl implements Variables
    * <!-- end-user-doc -->
    * @generated
    */
-  protected VariablesImpl()
+  protected AssignmentImpl()
   {
     super();
   }
@@ -70,7 +71,7 @@ public class VariablesImpl extends LoopsImpl implements Variables
   @Override
   protected EClass eStaticClass()
   {
-    return LlmsPackage.Literals.VARIABLES;
+    return LlmsPackage.Literals.ASSIGNMENT;
   }
 
   /**
@@ -79,9 +80,19 @@ public class VariablesImpl extends LoopsImpl implements Variables
    * @generated
    */
   @Override
-  public EObject getTypesVars()
+  public varParmArgs getVars()
   {
-    return typesVars;
+    if (vars != null && vars.eIsProxy())
+    {
+      InternalEObject oldVars = (InternalEObject)vars;
+      vars = (varParmArgs)eResolveProxy(oldVars);
+      if (vars != oldVars)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, LlmsPackage.ASSIGNMENT__VARS, oldVars, vars));
+      }
+    }
+    return vars;
   }
 
   /**
@@ -89,38 +100,23 @@ public class VariablesImpl extends LoopsImpl implements Variables
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetTypesVars(EObject newTypesVars, NotificationChain msgs)
+  public varParmArgs basicGetVars()
   {
-    EObject oldTypesVars = typesVars;
-    typesVars = newTypesVars;
+    return vars;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setVars(varParmArgs newVars)
+  {
+    varParmArgs oldVars = vars;
+    vars = newVars;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LlmsPackage.VARIABLES__TYPES_VARS, oldTypesVars, newTypesVars);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setTypesVars(EObject newTypesVars)
-  {
-    if (newTypesVars != typesVars)
-    {
-      NotificationChain msgs = null;
-      if (typesVars != null)
-        msgs = ((InternalEObject)typesVars).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.VARIABLES__TYPES_VARS, null, msgs);
-      if (newTypesVars != null)
-        msgs = ((InternalEObject)newTypesVars).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.VARIABLES__TYPES_VARS, null, msgs);
-      msgs = basicSetTypesVars(newTypesVars, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.VARIABLES__TYPES_VARS, newTypesVars, newTypesVars));
+      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.ASSIGNMENT__VARS, oldVars, vars));
   }
 
   /**
@@ -145,7 +141,7 @@ public class VariablesImpl extends LoopsImpl implements Variables
     exp = newExp;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LlmsPackage.VARIABLES__EXP, oldExp, newExp);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LlmsPackage.ASSIGNMENT__EXP, oldExp, newExp);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -163,14 +159,14 @@ public class VariablesImpl extends LoopsImpl implements Variables
     {
       NotificationChain msgs = null;
       if (exp != null)
-        msgs = ((InternalEObject)exp).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.VARIABLES__EXP, null, msgs);
+        msgs = ((InternalEObject)exp).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.ASSIGNMENT__EXP, null, msgs);
       if (newExp != null)
-        msgs = ((InternalEObject)newExp).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.VARIABLES__EXP, null, msgs);
+        msgs = ((InternalEObject)newExp).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.ASSIGNMENT__EXP, null, msgs);
       msgs = basicSetExp(newExp, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.VARIABLES__EXP, newExp, newExp));
+      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.ASSIGNMENT__EXP, newExp, newExp));
   }
 
   /**
@@ -183,9 +179,7 @@ public class VariablesImpl extends LoopsImpl implements Variables
   {
     switch (featureID)
     {
-      case LlmsPackage.VARIABLES__TYPES_VARS:
-        return basicSetTypesVars(null, msgs);
-      case LlmsPackage.VARIABLES__EXP:
+      case LlmsPackage.ASSIGNMENT__EXP:
         return basicSetExp(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -201,9 +195,10 @@ public class VariablesImpl extends LoopsImpl implements Variables
   {
     switch (featureID)
     {
-      case LlmsPackage.VARIABLES__TYPES_VARS:
-        return getTypesVars();
-      case LlmsPackage.VARIABLES__EXP:
+      case LlmsPackage.ASSIGNMENT__VARS:
+        if (resolve) return getVars();
+        return basicGetVars();
+      case LlmsPackage.ASSIGNMENT__EXP:
         return getExp();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -219,10 +214,10 @@ public class VariablesImpl extends LoopsImpl implements Variables
   {
     switch (featureID)
     {
-      case LlmsPackage.VARIABLES__TYPES_VARS:
-        setTypesVars((EObject)newValue);
+      case LlmsPackage.ASSIGNMENT__VARS:
+        setVars((varParmArgs)newValue);
         return;
-      case LlmsPackage.VARIABLES__EXP:
+      case LlmsPackage.ASSIGNMENT__EXP:
         setExp((Expression)newValue);
         return;
     }
@@ -239,10 +234,10 @@ public class VariablesImpl extends LoopsImpl implements Variables
   {
     switch (featureID)
     {
-      case LlmsPackage.VARIABLES__TYPES_VARS:
-        setTypesVars((EObject)null);
+      case LlmsPackage.ASSIGNMENT__VARS:
+        setVars((varParmArgs)null);
         return;
-      case LlmsPackage.VARIABLES__EXP:
+      case LlmsPackage.ASSIGNMENT__EXP:
         setExp((Expression)null);
         return;
     }
@@ -259,12 +254,12 @@ public class VariablesImpl extends LoopsImpl implements Variables
   {
     switch (featureID)
     {
-      case LlmsPackage.VARIABLES__TYPES_VARS:
-        return typesVars != null;
-      case LlmsPackage.VARIABLES__EXP:
+      case LlmsPackage.ASSIGNMENT__VARS:
+        return vars != null;
+      case LlmsPackage.ASSIGNMENT__EXP:
         return exp != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //VariablesImpl
+} //AssignmentImpl

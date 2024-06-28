@@ -11,7 +11,6 @@ import large.logic.forMathematics.statistics.llms.Functions;
 import large.logic.forMathematics.statistics.llms.LlmsPackage;
 import large.logic.forMathematics.statistics.llms.Operation;
 import large.logic.forMathematics.statistics.llms.Primary;
-import large.logic.forMathematics.statistics.llms.Variables;
 import large.logic.forMathematics.statistics.llms.callFunction;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -36,7 +35,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link large.logic.forMathematics.statistics.llms.impl.callFunctionImpl#getOp <em>Op</em>}</li>
- *   <li>{@link large.logic.forMathematics.statistics.llms.impl.callFunctionImpl#getVar <em>Var</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.impl.callFunctionImpl#getFunc <em>Func</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.impl.callFunctionImpl#getExp <em>Exp</em>}</li>
  * </ul>
@@ -54,16 +52,6 @@ public class callFunctionImpl extends ParmsPrintImpl implements callFunction
    * @ordered
    */
   protected Operation op;
-
-  /**
-   * The cached value of the '{@link #getVar() <em>Var</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getVar()
-   * @generated
-   * @ordered
-   */
-  protected Variables var;
 
   /**
    * The cached value of the '{@link #getFunc() <em>Func</em>}' reference.
@@ -162,51 +150,6 @@ public class callFunctionImpl extends ParmsPrintImpl implements callFunction
    * @generated
    */
   @Override
-  public Variables getVar()
-  {
-    if (var != null && var.eIsProxy())
-    {
-      InternalEObject oldVar = (InternalEObject)var;
-      var = (Variables)eResolveProxy(oldVar);
-      if (var != oldVar)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, LlmsPackage.CALL_FUNCTION__VAR, oldVar, var));
-      }
-    }
-    return var;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Variables basicGetVar()
-  {
-    return var;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setVar(Variables newVar)
-  {
-    Variables oldVar = var;
-    var = newVar;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.CALL_FUNCTION__VAR, oldVar, var));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Functions getFunc()
   {
     if (func != null && func.eIsProxy())
@@ -291,9 +234,6 @@ public class callFunctionImpl extends ParmsPrintImpl implements callFunction
     {
       case LlmsPackage.CALL_FUNCTION__OP:
         return getOp();
-      case LlmsPackage.CALL_FUNCTION__VAR:
-        if (resolve) return getVar();
-        return basicGetVar();
       case LlmsPackage.CALL_FUNCTION__FUNC:
         if (resolve) return getFunc();
         return basicGetFunc();
@@ -316,9 +256,6 @@ public class callFunctionImpl extends ParmsPrintImpl implements callFunction
     {
       case LlmsPackage.CALL_FUNCTION__OP:
         setOp((Operation)newValue);
-        return;
-      case LlmsPackage.CALL_FUNCTION__VAR:
-        setVar((Variables)newValue);
         return;
       case LlmsPackage.CALL_FUNCTION__FUNC:
         setFunc((Functions)newValue);
@@ -344,9 +281,6 @@ public class callFunctionImpl extends ParmsPrintImpl implements callFunction
       case LlmsPackage.CALL_FUNCTION__OP:
         setOp((Operation)null);
         return;
-      case LlmsPackage.CALL_FUNCTION__VAR:
-        setVar((Variables)null);
-        return;
       case LlmsPackage.CALL_FUNCTION__FUNC:
         setFunc((Functions)null);
         return;
@@ -369,8 +303,6 @@ public class callFunctionImpl extends ParmsPrintImpl implements callFunction
     {
       case LlmsPackage.CALL_FUNCTION__OP:
         return op != null;
-      case LlmsPackage.CALL_FUNCTION__VAR:
-        return var != null;
       case LlmsPackage.CALL_FUNCTION__FUNC:
         return func != null;
       case LlmsPackage.CALL_FUNCTION__EXP:
@@ -406,7 +338,6 @@ public class callFunctionImpl extends ParmsPrintImpl implements callFunction
     {
       switch (derivedFeatureID)
       {
-        case LlmsPackage.CALL_FUNCTION__VAR: return LlmsPackage.PRIMARY__VAR;
         default: return -1;
       }
     }
@@ -440,7 +371,6 @@ public class callFunctionImpl extends ParmsPrintImpl implements callFunction
     {
       switch (baseFeatureID)
       {
-        case LlmsPackage.PRIMARY__VAR: return LlmsPackage.CALL_FUNCTION__VAR;
         default: return -1;
       }
     }

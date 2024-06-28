@@ -3,16 +3,17 @@
  */
 package large.logic.forMathematics.statistics.generator;
 
+import java.util.Arrays;
 import large.logic.forMathematics.statistics.llms.Bodies;
+import large.logic.forMathematics.statistics.llms.CallVariable;
 import large.logic.forMathematics.statistics.llms.Conditionals;
 import large.logic.forMathematics.statistics.llms.Functions;
 import large.logic.forMathematics.statistics.llms.Loops;
 import large.logic.forMathematics.statistics.llms.Names;
 import large.logic.forMathematics.statistics.llms.Operations;
 import large.logic.forMathematics.statistics.llms.ParametersOutptut;
-import large.logic.forMathematics.statistics.llms.ParmsPrint;
 import large.logic.forMathematics.statistics.llms.Prints;
-import large.logic.forMathematics.statistics.llms.Variables;
+import large.logic.forMathematics.statistics.llms.varParmArgs;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -47,8 +48,8 @@ public class LlmsGenerator extends AbstractGenerator {
     }
     _builder.newLine();
     {
-      EList<Variables> _vars = op.getVars();
-      for(final Variables variables : _vars) {
+      EList<varParmArgs> _vars = op.getVars();
+      for(final varParmArgs variables : _vars) {
         CharSequence _generate_1 = this.generate(variables);
         _builder.append(_generate_1);
         _builder.newLineIfNotEmpty();
@@ -81,7 +82,7 @@ public class LlmsGenerator extends AbstractGenerator {
     return _builder;
   }
 
-  public CharSequence generate(final Functions fun) {
+  public CharSequence generatefunc(final Functions fun) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("function ");
     ParametersOutptut _output = fun.getOutput();
@@ -102,28 +103,35 @@ public class LlmsGenerator extends AbstractGenerator {
     return _builder;
   }
 
-  public CharSequence generate(final Variables vars) {
+  public CharSequence generateVariables(final /* Variables */Object vars) {
     throw new Error("Unresolved compilation problems:"
-      + "\nno viable alternative at input \'» = «\'");
+      + "\nexp cannot be resolved");
   }
 
-  public CharSequence generate(final Conditionals cond) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nno viable alternative at input \'»\\r\\n\\t\'\'\'\'");
-  }
-
-  public CharSequence generate(final Loops loops) {
+  protected CharSequence _generate(final varParmArgs vpa) {
     StringConcatenation _builder = new StringConcatenation();
-    return _builder;
-  }
-
-  public CharSequence generate(final Prints prints) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("disp( ");
-    EList<ParmsPrint> _print = prints.getPrint();
-    _builder.append(_print);
-    _builder.append(" )");
+    String _name = vpa.getName();
+    _builder.append(_name);
+    _builder.append("  ");
+    String _dataType = vpa.getDataType();
+    _builder.append(_dataType);
     _builder.newLineIfNotEmpty();
     return _builder;
+  }
+
+  protected CharSequence _generate(final CallVariable cv) {
+    StringConcatenation _builder = new StringConcatenation();
+    return _builder;
+  }
+
+  public CharSequence generate(final EObject cv) {
+    if (cv instanceof CallVariable) {
+      return _generate((CallVariable)cv);
+    } else if (cv instanceof varParmArgs) {
+      return _generate((varParmArgs)cv);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(cv).toString());
+    }
   }
 }

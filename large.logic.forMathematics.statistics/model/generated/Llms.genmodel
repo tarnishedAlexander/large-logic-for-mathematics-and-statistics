@@ -31,6 +31,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Bodies/var"/>
     </genClasses>
     <genClasses ecoreClass="Llms.ecore#//Loops">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Loops/var"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Loops/number"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Loops/body"/>
     </genClasses>
@@ -72,23 +73,23 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//AritmeticOperation/sum"/>
     </genClasses>
     <genClasses ecoreClass="Llms.ecore#//Expressions"/>
-    <genClasses ecoreClass="Llms.ecore#//Primary">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Llms.ecore#//Primary/var"/>
-    </genClasses>
+    <genClasses ecoreClass="Llms.ecore#//Primary"/>
     <genClasses ecoreClass="Llms.ecore#//callFunction">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Llms.ecore#//callFunction/func"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//callFunction/exp"/>
     </genClasses>
-    <genClasses ecoreClass="Llms.ecore#//Variables">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Variables/typesVars"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Variables/exp"/>
+    <genClasses ecoreClass="Llms.ecore#//Assignment">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Llms.ecore#//Assignment/vars"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//Assignment/exp"/>
     </genClasses>
+    <genClasses ecoreClass="Llms.ecore#//GenericVariable"/>
     <genClasses ecoreClass="Llms.ecore#//CallVariable">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Llms.ecore#//CallVariable/vars"/>
     </genClasses>
     <genClasses ecoreClass="Llms.ecore#//varParmArgs">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Llms.ecore#//varParmArgs/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Llms.ecore#//varParmArgs/dataType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Llms.ecore#//varParmArgs/exp"/>
     </genClasses>
     <genClasses ecoreClass="Llms.ecore#//Data"/>
     <genClasses ecoreClass="Llms.ecore#//Numbers">

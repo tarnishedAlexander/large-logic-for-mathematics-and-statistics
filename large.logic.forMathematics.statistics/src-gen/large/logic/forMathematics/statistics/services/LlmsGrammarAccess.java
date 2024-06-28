@@ -36,7 +36,7 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final Assignment cFuncAssignment_4_0 = (Assignment)cAlternatives_4.eContents().get(0);
 		private final RuleCall cFuncFunctionsParserRuleCall_4_0_0 = (RuleCall)cFuncAssignment_4_0.eContents().get(0);
 		private final Assignment cVarsAssignment_4_1 = (Assignment)cAlternatives_4.eContents().get(1);
-		private final RuleCall cVarsVariablesParserRuleCall_4_1_0 = (RuleCall)cVarsAssignment_4_1.eContents().get(0);
+		private final RuleCall cVarsVarParmArgsParserRuleCall_4_1_0 = (RuleCall)cVarsAssignment_4_1.eContents().get(0);
 		private final Assignment cConditionalAssignment_4_2 = (Assignment)cAlternatives_4.eContents().get(2);
 		private final RuleCall cConditionalConditionalsParserRuleCall_4_2_0 = (RuleCall)cConditionalAssignment_4_2.eContents().get(0);
 		private final Assignment cLoopsAssignment_4_3 = (Assignment)cAlternatives_4.eContents().get(3);
@@ -50,7 +50,7 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//    name=ID
 		//     "{"
 		//    (func += Functions |
-		//    vars += Variables |
+		//    vars += varParmArgs |
 		//    conditional+=Conditionals |
 		//    loops+=Loops |
 		//    print += Prints)*
@@ -62,7 +62,7 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//name=ID
 		// "{"
 		//(func += Functions |
-		//vars += Variables |
+		//vars += varParmArgs |
 		//conditional+=Conditionals |
 		//loops+=Loops |
 		//print += Prints)*
@@ -85,7 +85,7 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 		
 		//(func += Functions |
-		//vars += Variables |
+		//vars += varParmArgs |
 		//conditional+=Conditionals |
 		//loops+=Loops |
 		//print += Prints)*
@@ -97,11 +97,11 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//Functions
 		public RuleCall getFuncFunctionsParserRuleCall_4_0_0() { return cFuncFunctionsParserRuleCall_4_0_0; }
 		
-		//vars += Variables
+		//vars += varParmArgs
 		public Assignment getVarsAssignment_4_1() { return cVarsAssignment_4_1; }
 		
-		//Variables
-		public RuleCall getVarsVariablesParserRuleCall_4_1_0() { return cVarsVariablesParserRuleCall_4_1_0; }
+		//varParmArgs
+		public RuleCall getVarsVarParmArgsParserRuleCall_4_1_0() { return cVarsVarParmArgsParserRuleCall_4_1_0; }
 		
 		//conditional+=Conditionals
 		public Assignment getConditionalAssignment_4_2() { return cConditionalAssignment_4_2; }
@@ -309,7 +309,7 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cBodiesAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cVarAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cVarVariablesParserRuleCall_1_0 = (RuleCall)cVarAssignment_1.eContents().get(0);
+		private final RuleCall cVarGenericVariableParserRuleCall_1_0 = (RuleCall)cVarAssignment_1.eContents().get(0);
 		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//// Function [Output1, Output2] <= id(n:int) => {
@@ -320,7 +320,7 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//    //se va a guardar en una variable si no es instruccion
 		//    {Bodies}
 		//    //exp += Expression*
-		//    var += Variables*
+		//    var += GenericVariable*
 		//    ";"
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -329,7 +329,7 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		////se va a guardar en una variable si no es instruccion
 		//{Bodies}
 		////exp += Expression*
-		//var += Variables*
+		//var += GenericVariable*
 		//";"
 		public Group getGroup() { return cGroup; }
 		
@@ -339,11 +339,11 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		public Action getBodiesAction_0() { return cBodiesAction_0; }
 		
 		////exp += Expression*
-		//var += Variables*
+		//var += GenericVariable*
 		public Assignment getVarAssignment_1() { return cVarAssignment_1; }
 		
-		//Variables
-		public RuleCall getVarVariablesParserRuleCall_1_0() { return cVarVariablesParserRuleCall_1_0; }
+		//GenericVariable
+		public RuleCall getVarGenericVariableParserRuleCall_1_0() { return cVarGenericVariableParserRuleCall_1_0; }
 		
 		//";"
 		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
@@ -353,9 +353,8 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cForKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
-		private final RuleCall cVariablesParserRuleCall_2_0 = (RuleCall)cAlternatives_2.eContents().get(0);
-		private final RuleCall cNumbersParserRuleCall_2_1 = (RuleCall)cAlternatives_2.eContents().get(1);
+		private final Assignment cVarAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cVarGenericVariableParserRuleCall_2_0 = (RuleCall)cVarAssignment_2.eContents().get(0);
 		private final Keyword cColonKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cNumberAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cNumberNumbersParserRuleCall_4_0 = (RuleCall)cNumberAssignment_4.eContents().get(0);
@@ -369,7 +368,7 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//Loops:
 		//    "for"
 		//    "("
-		//    (Variables | Numbers) ":" number=Numbers
+		//    var=GenericVariable ":" number=Numbers
 		//    ")"
 		//    "=>"
 		//    "{"
@@ -381,7 +380,7 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		
 		//"for"
 		//"("
-		//(Variables | Numbers) ":" number=Numbers
+		//var=GenericVariable ":" number=Numbers
 		//")"
 		//"=>"
 		//"{"
@@ -395,14 +394,11 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//"("
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//(Variables | Numbers)
-		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		//var=GenericVariable
+		public Assignment getVarAssignment_2() { return cVarAssignment_2; }
 		
-		//Variables
-		public RuleCall getVariablesParserRuleCall_2_0() { return cVariablesParserRuleCall_2_0; }
-		
-		//Numbers
-		public RuleCall getNumbersParserRuleCall_2_1() { return cNumbersParserRuleCall_2_1; }
+		//GenericVariable
+		public RuleCall getVarGenericVariableParserRuleCall_2_0() { return cVarGenericVariableParserRuleCall_2_0; }
 		
 		//":"
 		public Keyword getColonKeyword_3() { return cColonKeyword_3; }
@@ -1340,32 +1336,24 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "large.logic.forMathematics.statistics.Llms.Primary");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cVarParmArgsParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final Assignment cVarAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
-		private final CrossReference cVarVariablesCrossReference_1_0 = (CrossReference)cVarAssignment_1.eContents().get(0);
-		private final RuleCall cVarVariablesIDTerminalRuleCall_1_0_1 = (RuleCall)cVarVariablesCrossReference_1_0.eContents().get(1);
+		private final RuleCall cCallVariableParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cCallFunctionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cDataParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		////en primary hay ambiguedad, mas en especifico en callFunction
 		//    Primary:
-		//        varParmArgs | var = [Variables] | callFunction | Data //falta puede ser numero o string o bool o char
+		//        varParmArgs | CallVariable | callFunction | Data //falta puede ser numero o string o bool o char
 		//    ;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//varParmArgs | var = [Variables] | callFunction | Data
+		//varParmArgs | CallVariable | callFunction | Data
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//varParmArgs
 		public RuleCall getVarParmArgsParserRuleCall_0() { return cVarParmArgsParserRuleCall_0; }
 		
-		//var = [Variables]
-		public Assignment getVarAssignment_1() { return cVarAssignment_1; }
-		
-		//[Variables]
-		public CrossReference getVarVariablesCrossReference_1_0() { return cVarVariablesCrossReference_1_0; }
-		
-		//ID
-		public RuleCall getVarVariablesIDTerminalRuleCall_1_0_1() { return cVarVariablesIDTerminalRuleCall_1_0_1; }
+		//CallVariable
+		public RuleCall getCallVariableParserRuleCall_1() { return cCallVariableParserRuleCall_1; }
 		
 		//callFunction
 		public RuleCall getCallFunctionParserRuleCall_2() { return cCallFunctionParserRuleCall_2; }
@@ -1436,48 +1424,43 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//")"
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
 	}
-	public class VariablesElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "large.logic.forMathematics.statistics.Llms.Variables");
+	public class AssignmentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "large.logic.forMathematics.statistics.Llms.Assignment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cTypesVarsAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Alternatives cTypesVarsAlternatives_0_0 = (Alternatives)cTypesVarsAssignment_0.eContents().get(0);
-		private final RuleCall cTypesVarsVarParmArgsParserRuleCall_0_0_0 = (RuleCall)cTypesVarsAlternatives_0_0.eContents().get(0);
-		private final RuleCall cTypesVarsCallVariableParserRuleCall_0_0_1 = (RuleCall)cTypesVarsAlternatives_0_0.eContents().get(1);
+		private final Assignment cVarsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cVarsVarParmArgsCrossReference_0_0 = (CrossReference)cVarsAssignment_0.eContents().get(0);
+		private final RuleCall cVarsVarParmArgsIDTerminalRuleCall_0_0_1 = (RuleCall)cVarsVarParmArgsCrossReference_0_0.eContents().get(1);
 		private final Keyword cLessThanSignEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cExpAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cExpExpressionParserRuleCall_2_0 = (RuleCall)cExpAssignment_2.eContents().get(0);
 		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//// ((data+=Data("," data+=Data)*)? | (vars+=[Variables](","vars+=[Variables])*)? )
-		////no entiendo porque?
-		//Variables:
-		//    typesVars=(varParmArgs | CallVariable) //reasignar un valor
-		//    "<="
-		//    exp = Expression
-		//    ";"
-		//;
+		//    // ((data+=Data("," data+=Data)*)? | (vars+=[Variables](","vars+=[Variables])*)? )
+		//    //no entiendo porque?
+		////    Variables:
+		////        (varParmArgs | CallVariable) //reasignar un valor
+		////        "<="
+		////        exp = Expression
+		////        ";"
+		////    ;
+		//    Assignment:
+		//        vars = [varParmArgs] '<=' exp = Expression ";"
+		//    ;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//typesVars=(varParmArgs | CallVariable) //reasignar un valor
-		//"<="
-		//exp = Expression
-		//";"
+		//vars = [varParmArgs] '<=' exp = Expression ";"
 		public Group getGroup() { return cGroup; }
 		
-		//typesVars=(varParmArgs | CallVariable)
-		public Assignment getTypesVarsAssignment_0() { return cTypesVarsAssignment_0; }
+		//vars = [varParmArgs]
+		public Assignment getVarsAssignment_0() { return cVarsAssignment_0; }
 		
-		//(varParmArgs | CallVariable)
-		public Alternatives getTypesVarsAlternatives_0_0() { return cTypesVarsAlternatives_0_0; }
+		//[varParmArgs]
+		public CrossReference getVarsVarParmArgsCrossReference_0_0() { return cVarsVarParmArgsCrossReference_0_0; }
 		
-		//varParmArgs
-		public RuleCall getTypesVarsVarParmArgsParserRuleCall_0_0_0() { return cTypesVarsVarParmArgsParserRuleCall_0_0_0; }
+		//ID
+		public RuleCall getVarsVarParmArgsIDTerminalRuleCall_0_0_1() { return cVarsVarParmArgsIDTerminalRuleCall_0_0_1; }
 		
-		//CallVariable
-		public RuleCall getTypesVarsCallVariableParserRuleCall_0_0_1() { return cTypesVarsCallVariableParserRuleCall_0_0_1; }
-		
-		////reasignar un valor
-		//       "<="
+		//'<='
 		public Keyword getLessThanSignEqualsSignKeyword_1() { return cLessThanSignEqualsSignKeyword_1; }
 		
 		//exp = Expression
@@ -1489,25 +1472,45 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//";"
 		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
 	}
-	public class CallVariableElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "large.logic.forMathematics.statistics.Llms.CallVariable");
-		private final Assignment cVarsAssignment = (Assignment)rule.eContents().get(1);
-		private final CrossReference cVarsVariablesCrossReference_0 = (CrossReference)cVarsAssignment.eContents().get(0);
-		private final RuleCall cVarsVariablesIDTerminalRuleCall_0_1 = (RuleCall)cVarsVariablesCrossReference_0.eContents().get(1);
+	public class GenericVariableElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "large.logic.forMathematics.statistics.Llms.GenericVariable");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cCallVariableParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cVarParmArgsParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//CallVariable:
-		//    vars=[Variables]
+		//GenericVariable:
+		//    CallVariable | varParmArgs
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//vars=[Variables]
+		//CallVariable | varParmArgs
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//CallVariable
+		public RuleCall getCallVariableParserRuleCall_0() { return cCallVariableParserRuleCall_0; }
+		
+		//varParmArgs
+		public RuleCall getVarParmArgsParserRuleCall_1() { return cVarParmArgsParserRuleCall_1; }
+	}
+	public class CallVariableElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "large.logic.forMathematics.statistics.Llms.CallVariable");
+		private final Assignment cVarsAssignment = (Assignment)rule.eContents().get(1);
+		private final CrossReference cVarsVarParmArgsCrossReference_0 = (CrossReference)cVarsAssignment.eContents().get(0);
+		private final RuleCall cVarsVarParmArgsIDTerminalRuleCall_0_1 = (RuleCall)cVarsVarParmArgsCrossReference_0.eContents().get(1);
+		
+		//CallVariable:
+		//    vars=[varParmArgs]
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//vars=[varParmArgs]
 		public Assignment getVarsAssignment() { return cVarsAssignment; }
 		
-		//[Variables]
-		public CrossReference getVarsVariablesCrossReference_0() { return cVarsVariablesCrossReference_0; }
+		//[varParmArgs]
+		public CrossReference getVarsVarParmArgsCrossReference_0() { return cVarsVarParmArgsCrossReference_0; }
 		
 		//ID
-		public RuleCall getVarsVariablesIDTerminalRuleCall_0_1() { return cVarsVariablesIDTerminalRuleCall_0_1; }
+		public RuleCall getVarsVarParmArgsIDTerminalRuleCall_0_1() { return cVarsVarParmArgsIDTerminalRuleCall_0_1; }
 	}
 	public class VarParmArgsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "large.logic.forMathematics.statistics.Llms.varParmArgs");
@@ -1517,13 +1520,18 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cDataTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cDataTypeDataTypesParserRuleCall_2_0 = (RuleCall)cDataTypeAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cLessThanSignEqualsSignKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cExpAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cExpExpressionParserRuleCall_3_1_0 = (RuleCall)cExpAssignment_3_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
 		
 		//varParmArgs:
-		//    name=ID ":" dataType = DataTypes
+		//    name=ID ":" dataType = DataTypes ('<=' exp = Expression ";")?
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID ":" dataType = DataTypes
+		//name=ID ":" dataType = DataTypes ('<=' exp = Expression ";")?
 		public Group getGroup() { return cGroup; }
 		
 		//name=ID
@@ -1540,6 +1548,21 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		
 		//DataTypes
 		public RuleCall getDataTypeDataTypesParserRuleCall_2_0() { return cDataTypeDataTypesParserRuleCall_2_0; }
+		
+		//('<=' exp = Expression ";")?
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//'<='
+		public Keyword getLessThanSignEqualsSignKeyword_3_0() { return cLessThanSignEqualsSignKeyword_3_0; }
+		
+		//exp = Expression
+		public Assignment getExpAssignment_3_1() { return cExpAssignment_3_1; }
+		
+		//Expression
+		public RuleCall getExpExpressionParserRuleCall_3_1_0() { return cExpExpressionParserRuleCall_3_1_0; }
+		
+		//";"
+		public Keyword getSemicolonKeyword_3_2() { return cSemicolonKeyword_3_2; }
 	}
 	public class DataTypesElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "large.logic.forMathematics.statistics.Llms.DataTypes");
@@ -1713,7 +1736,8 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	private final MultiplicationElements pMultiplication;
 	private final PrimaryElements pPrimary;
 	private final CallFunctionElements pCallFunction;
-	private final VariablesElements pVariables;
+	private final AssignmentElements pAssignment;
+	private final GenericVariableElements pGenericVariable;
 	private final CallVariableElements pCallVariable;
 	private final VarParmArgsElements pVarParmArgs;
 	private final DataTypesElements pDataTypes;
@@ -1766,7 +1790,8 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		this.pMultiplication = new MultiplicationElements();
 		this.pPrimary = new PrimaryElements();
 		this.pCallFunction = new CallFunctionElements();
-		this.pVariables = new VariablesElements();
+		this.pAssignment = new AssignmentElements();
+		this.pGenericVariable = new GenericVariableElements();
 		this.pCallVariable = new CallVariableElements();
 		this.pVarParmArgs = new VarParmArgsElements();
 		this.pDataTypes = new DataTypesElements();
@@ -1810,7 +1835,7 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	//    name=ID
 	//     "{"
 	//    (func += Functions |
-	//    vars += Variables |
+	//    vars += varParmArgs |
 	//    conditional+=Conditionals |
 	//    loops+=Loops |
 	//    print += Prints)*
@@ -1886,7 +1911,7 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	//    //se va a guardar en una variable si no es instruccion
 	//    {Bodies}
 	//    //exp += Expression*
-	//    var += Variables*
+	//    var += GenericVariable*
 	//    ";"
 	//;
 	public BodiesElements getBodiesAccess() {
@@ -1900,7 +1925,7 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	//Loops:
 	//    "for"
 	//    "("
-	//    (Variables | Numbers) ":" number=Numbers
+	//    var=GenericVariable ":" number=Numbers
 	//    ")"
 	//    "=>"
 	//    "{"
@@ -2212,7 +2237,7 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	
 	////en primary hay ambiguedad, mas en especifico en callFunction
 	//    Primary:
-	//        varParmArgs | var = [Variables] | callFunction | Data //falta puede ser numero o string o bool o char
+	//        varParmArgs | CallVariable | callFunction | Data //falta puede ser numero o string o bool o char
 	//    ;
 	public PrimaryElements getPrimaryAccess() {
 		return pPrimary;
@@ -2235,24 +2260,38 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		return getCallFunctionAccess().getRule();
 	}
 	
-	//// ((data+=Data("," data+=Data)*)? | (vars+=[Variables](","vars+=[Variables])*)? )
-	////no entiendo porque?
-	//Variables:
-	//    typesVars=(varParmArgs | CallVariable) //reasignar un valor
-	//    "<="
-	//    exp = Expression
-	//    ";"
-	//;
-	public VariablesElements getVariablesAccess() {
-		return pVariables;
+	//    // ((data+=Data("," data+=Data)*)? | (vars+=[Variables](","vars+=[Variables])*)? )
+	//    //no entiendo porque?
+	////    Variables:
+	////        (varParmArgs | CallVariable) //reasignar un valor
+	////        "<="
+	////        exp = Expression
+	////        ";"
+	////    ;
+	//    Assignment:
+	//        vars = [varParmArgs] '<=' exp = Expression ";"
+	//    ;
+	public AssignmentElements getAssignmentAccess() {
+		return pAssignment;
 	}
 	
-	public ParserRule getVariablesRule() {
-		return getVariablesAccess().getRule();
+	public ParserRule getAssignmentRule() {
+		return getAssignmentAccess().getRule();
+	}
+	
+	//GenericVariable:
+	//    CallVariable | varParmArgs
+	//;
+	public GenericVariableElements getGenericVariableAccess() {
+		return pGenericVariable;
+	}
+	
+	public ParserRule getGenericVariableRule() {
+		return getGenericVariableAccess().getRule();
 	}
 	
 	//CallVariable:
-	//    vars=[Variables]
+	//    vars=[varParmArgs]
 	//;
 	public CallVariableElements getCallVariableAccess() {
 		return pCallVariable;
@@ -2263,7 +2302,7 @@ public class LlmsGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	}
 	
 	//varParmArgs:
-	//    name=ID ":" dataType = DataTypes
+	//    name=ID ":" dataType = DataTypes ('<=' exp = Expression ";")?
 	//;
 	public VarParmArgsElements getVarParmArgsAccess() {
 		return pVarParmArgs;

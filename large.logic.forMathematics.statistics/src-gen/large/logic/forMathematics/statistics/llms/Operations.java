@@ -66,7 +66,7 @@ public interface Operations extends EObject
 
   /**
    * Returns the value of the '<em><b>Vars</b></em>' containment reference list.
-   * The list contents are of type {@link large.logic.forMathematics.statistics.llms.Variables}.
+   * The list contents are of type {@link large.logic.forMathematics.statistics.llms.varParmArgs}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Vars</em>' containment reference list.
@@ -74,7 +74,7 @@ public interface Operations extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<Variables> getVars();
+  EList<varParmArgs> getVars();
 
   /**
    * Returns the value of the '<em><b>Conditional</b></em>' containment reference list.

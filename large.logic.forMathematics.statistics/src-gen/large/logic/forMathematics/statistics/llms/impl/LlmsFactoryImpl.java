@@ -95,7 +95,8 @@ public class LlmsFactoryImpl extends EFactoryImpl implements LlmsFactory
       case LlmsPackage.EXPRESSIONS: return createExpressions();
       case LlmsPackage.PRIMARY: return createPrimary();
       case LlmsPackage.CALL_FUNCTION: return createcallFunction();
-      case LlmsPackage.VARIABLES: return createVariables();
+      case LlmsPackage.ASSIGNMENT: return createAssignment();
+      case LlmsPackage.GENERIC_VARIABLE: return createGenericVariable();
       case LlmsPackage.CALL_VARIABLE: return createCallVariable();
       case LlmsPackage.VAR_PARM_ARGS: return createvarParmArgs();
       case LlmsPackage.DATA: return createData();
@@ -479,10 +480,22 @@ public class LlmsFactoryImpl extends EFactoryImpl implements LlmsFactory
    * @generated
    */
   @Override
-  public Variables createVariables()
+  public Assignment createAssignment()
   {
-    VariablesImpl variables = new VariablesImpl();
-    return variables;
+    AssignmentImpl assignment = new AssignmentImpl();
+    return assignment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public GenericVariable createGenericVariable()
+  {
+    GenericVariableImpl genericVariable = new GenericVariableImpl();
+    return genericVariable;
   }
 
   /**

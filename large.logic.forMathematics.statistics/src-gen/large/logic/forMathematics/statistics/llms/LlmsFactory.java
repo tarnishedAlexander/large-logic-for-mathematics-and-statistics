@@ -294,13 +294,22 @@ public interface LlmsFactory extends EFactory
   callFunction createcallFunction();
 
   /**
-   * Returns a new object of class '<em>Variables</em>'.
+   * Returns a new object of class '<em>Assignment</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Variables</em>'.
+   * @return a new object of class '<em>Assignment</em>'.
    * @generated
    */
-  Variables createVariables();
+  Assignment createAssignment();
+
+  /**
+   * Returns a new object of class '<em>Generic Variable</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Generic Variable</em>'.
+   * @generated
+   */
+  GenericVariable createGenericVariable();
 
   /**
    * Returns a new object of class '<em>Call Variable</em>'.

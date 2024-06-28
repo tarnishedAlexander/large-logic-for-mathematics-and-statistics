@@ -6,7 +6,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="func" upperBound="-1" eType="#//Functions"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="vars" upperBound="-1" eType="#//Variables"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vars" upperBound="-1" eType="#//varParmArgs"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditional" upperBound="-1"
         eType="#//Conditionals" containment="true"/>
@@ -34,10 +34,12 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Bodies">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="var" upperBound="-1" eType="#//Variables"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="var" upperBound="-1" eType="#//GenericVariable"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Loops">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//GenericVariable"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="number" eType="#//Numbers"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="body" upperBound="-1" eType="#//Bodies"
@@ -92,29 +94,29 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Expressions" eSuperTypes="#//Expression"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Primary" eSuperTypes="#//Expressions">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//Variables"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Primary" eSuperTypes="#//Expressions"/>
   <eClassifiers xsi:type="ecore:EClass" name="callFunction" eSuperTypes="#//ParmsPrint #//Primary">
     <eStructuralFeatures xsi:type="ecore:EReference" name="func" eType="#//Functions"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="exp" upperBound="-1" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Variables" eSuperTypes="#//Loops">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="typesVars" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Assignment">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vars" eType="#//varParmArgs"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="exp" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CallVariable" eSuperTypes="#//ParmsPrint">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="vars" eType="#//Variables"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GenericVariable"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CallVariable" eSuperTypes="#//ParmsPrint #//Primary #//GenericVariable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vars" eType="#//varParmArgs"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="varParmArgs" eSuperTypes="#//Primary">
+  <eClassifiers xsi:type="ecore:EClass" name="varParmArgs" eSuperTypes="#//Primary #//GenericVariable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exp" eType="#//Expression"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Data" eSuperTypes="#//ParmsPrint #//Primary"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Numbers" eSuperTypes="#//Loops #//Data">
+  <eClassifiers xsi:type="ecore:EClass" name="Numbers" eSuperTypes="#//Data">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Strings" eSuperTypes="#//Data">

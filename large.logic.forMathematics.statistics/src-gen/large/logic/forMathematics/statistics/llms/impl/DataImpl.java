@@ -9,7 +9,6 @@ import large.logic.forMathematics.statistics.llms.Expressions;
 import large.logic.forMathematics.statistics.llms.LlmsPackage;
 import large.logic.forMathematics.statistics.llms.Operation;
 import large.logic.forMathematics.statistics.llms.Primary;
-import large.logic.forMathematics.statistics.llms.Variables;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -28,7 +27,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link large.logic.forMathematics.statistics.llms.impl.DataImpl#getOp <em>Op</em>}</li>
- *   <li>{@link large.logic.forMathematics.statistics.llms.impl.DataImpl#getVar <em>Var</em>}</li>
  * </ul>
  *
  * @generated
@@ -44,16 +42,6 @@ public class DataImpl extends ParmsPrintImpl implements Data
    * @ordered
    */
   protected Operation op;
-
-  /**
-   * The cached value of the '{@link #getVar() <em>Var</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getVar()
-   * @generated
-   * @ordered
-   */
-  protected Variables var;
 
   /**
    * <!-- begin-user-doc -->
@@ -132,51 +120,6 @@ public class DataImpl extends ParmsPrintImpl implements Data
    * @generated
    */
   @Override
-  public Variables getVar()
-  {
-    if (var != null && var.eIsProxy())
-    {
-      InternalEObject oldVar = (InternalEObject)var;
-      var = (Variables)eResolveProxy(oldVar);
-      if (var != oldVar)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, LlmsPackage.DATA__VAR, oldVar, var));
-      }
-    }
-    return var;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Variables basicGetVar()
-  {
-    return var;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setVar(Variables newVar)
-  {
-    Variables oldVar = var;
-    var = newVar;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.DATA__VAR, oldVar, var));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -199,9 +142,6 @@ public class DataImpl extends ParmsPrintImpl implements Data
     {
       case LlmsPackage.DATA__OP:
         return getOp();
-      case LlmsPackage.DATA__VAR:
-        if (resolve) return getVar();
-        return basicGetVar();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -218,9 +158,6 @@ public class DataImpl extends ParmsPrintImpl implements Data
     {
       case LlmsPackage.DATA__OP:
         setOp((Operation)newValue);
-        return;
-      case LlmsPackage.DATA__VAR:
-        setVar((Variables)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -239,9 +176,6 @@ public class DataImpl extends ParmsPrintImpl implements Data
       case LlmsPackage.DATA__OP:
         setOp((Operation)null);
         return;
-      case LlmsPackage.DATA__VAR:
-        setVar((Variables)null);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -258,8 +192,6 @@ public class DataImpl extends ParmsPrintImpl implements Data
     {
       case LlmsPackage.DATA__OP:
         return op != null;
-      case LlmsPackage.DATA__VAR:
-        return var != null;
     }
     return super.eIsSet(featureID);
   }
@@ -291,7 +223,6 @@ public class DataImpl extends ParmsPrintImpl implements Data
     {
       switch (derivedFeatureID)
       {
-        case LlmsPackage.DATA__VAR: return LlmsPackage.PRIMARY__VAR;
         default: return -1;
       }
     }
@@ -325,7 +256,6 @@ public class DataImpl extends ParmsPrintImpl implements Data
     {
       switch (baseFeatureID)
       {
-        case LlmsPackage.PRIMARY__VAR: return LlmsPackage.DATA__VAR;
         default: return -1;
       }
     }

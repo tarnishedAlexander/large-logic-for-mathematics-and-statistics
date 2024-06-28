@@ -27,7 +27,7 @@ public interface Bodies extends EObject
 {
   /**
    * Returns the value of the '<em><b>Var</b></em>' containment reference list.
-   * The list contents are of type {@link large.logic.forMathematics.statistics.llms.Variables}.
+   * The list contents are of type {@link large.logic.forMathematics.statistics.llms.GenericVariable}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Var</em>' containment reference list.
@@ -35,6 +35,6 @@ public interface Bodies extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<Variables> getVar();
+  EList<GenericVariable> getVar();
 
 } // Bodies

@@ -4,10 +4,16 @@
 package large.logic.forMathematics.statistics.llms.impl;
 
 import large.logic.forMathematics.statistics.llms.CallVariable;
+import large.logic.forMathematics.statistics.llms.Expression;
+import large.logic.forMathematics.statistics.llms.Expressions;
+import large.logic.forMathematics.statistics.llms.GenericVariable;
 import large.logic.forMathematics.statistics.llms.LlmsPackage;
-import large.logic.forMathematics.statistics.llms.Variables;
+import large.logic.forMathematics.statistics.llms.Operation;
+import large.logic.forMathematics.statistics.llms.Primary;
+import large.logic.forMathematics.statistics.llms.varParmArgs;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -22,6 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link large.logic.forMathematics.statistics.llms.impl.CallVariableImpl#getOp <em>Op</em>}</li>
  *   <li>{@link large.logic.forMathematics.statistics.llms.impl.CallVariableImpl#getVars <em>Vars</em>}</li>
  * </ul>
  *
@@ -30,6 +37,16 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
 {
   /**
+   * The cached value of the '{@link #getOp() <em>Op</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOp()
+   * @generated
+   * @ordered
+   */
+  protected Operation op;
+
+  /**
    * The cached value of the '{@link #getVars() <em>Vars</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -37,7 +54,7 @@ public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
    * @generated
    * @ordered
    */
-  protected Variables vars;
+  protected varParmArgs vars;
 
   /**
    * <!-- begin-user-doc -->
@@ -66,12 +83,62 @@ public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
    * @generated
    */
   @Override
-  public Variables getVars()
+  public Operation getOp()
+  {
+    return op;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetOp(Operation newOp, NotificationChain msgs)
+  {
+    Operation oldOp = op;
+    op = newOp;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LlmsPackage.CALL_VARIABLE__OP, oldOp, newOp);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setOp(Operation newOp)
+  {
+    if (newOp != op)
+    {
+      NotificationChain msgs = null;
+      if (op != null)
+        msgs = ((InternalEObject)op).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.CALL_VARIABLE__OP, null, msgs);
+      if (newOp != null)
+        msgs = ((InternalEObject)newOp).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LlmsPackage.CALL_VARIABLE__OP, null, msgs);
+      msgs = basicSetOp(newOp, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.CALL_VARIABLE__OP, newOp, newOp));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public varParmArgs getVars()
   {
     if (vars != null && vars.eIsProxy())
     {
       InternalEObject oldVars = (InternalEObject)vars;
-      vars = (Variables)eResolveProxy(oldVars);
+      vars = (varParmArgs)eResolveProxy(oldVars);
       if (vars != oldVars)
       {
         if (eNotificationRequired())
@@ -86,7 +153,7 @@ public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
    * <!-- end-user-doc -->
    * @generated
    */
-  public Variables basicGetVars()
+  public varParmArgs basicGetVars()
   {
     return vars;
   }
@@ -97,12 +164,28 @@ public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
    * @generated
    */
   @Override
-  public void setVars(Variables newVars)
+  public void setVars(varParmArgs newVars)
   {
-    Variables oldVars = vars;
+    varParmArgs oldVars = vars;
     vars = newVars;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, LlmsPackage.CALL_VARIABLE__VARS, oldVars, vars));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case LlmsPackage.CALL_VARIABLE__OP:
+        return basicSetOp(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -115,6 +198,8 @@ public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
   {
     switch (featureID)
     {
+      case LlmsPackage.CALL_VARIABLE__OP:
+        return getOp();
       case LlmsPackage.CALL_VARIABLE__VARS:
         if (resolve) return getVars();
         return basicGetVars();
@@ -132,8 +217,11 @@ public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
   {
     switch (featureID)
     {
+      case LlmsPackage.CALL_VARIABLE__OP:
+        setOp((Operation)newValue);
+        return;
       case LlmsPackage.CALL_VARIABLE__VARS:
-        setVars((Variables)newValue);
+        setVars((varParmArgs)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -149,8 +237,11 @@ public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
   {
     switch (featureID)
     {
+      case LlmsPackage.CALL_VARIABLE__OP:
+        setOp((Operation)null);
+        return;
       case LlmsPackage.CALL_VARIABLE__VARS:
-        setVars((Variables)null);
+        setVars((varParmArgs)null);
         return;
     }
     super.eUnset(featureID);
@@ -166,10 +257,92 @@ public class CallVariableImpl extends ParmsPrintImpl implements CallVariable
   {
     switch (featureID)
     {
+      case LlmsPackage.CALL_VARIABLE__OP:
+        return op != null;
       case LlmsPackage.CALL_VARIABLE__VARS:
         return vars != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Expression.class)
+    {
+      switch (derivedFeatureID)
+      {
+        case LlmsPackage.CALL_VARIABLE__OP: return LlmsPackage.EXPRESSION__OP;
+        default: return -1;
+      }
+    }
+    if (baseClass == Expressions.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == Primary.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == GenericVariable.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Expression.class)
+    {
+      switch (baseFeatureID)
+      {
+        case LlmsPackage.EXPRESSION__OP: return LlmsPackage.CALL_VARIABLE__OP;
+        default: return -1;
+      }
+    }
+    if (baseClass == Expressions.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == Primary.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == GenericVariable.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
 } //CallVariableImpl

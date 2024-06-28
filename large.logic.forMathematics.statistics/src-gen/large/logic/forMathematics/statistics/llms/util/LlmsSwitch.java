@@ -330,11 +330,17 @@ public class LlmsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case LlmsPackage.VARIABLES:
+      case LlmsPackage.ASSIGNMENT:
       {
-        Variables variables = (Variables)theEObject;
-        T result = caseVariables(variables);
-        if (result == null) result = caseLoops(variables);
+        Assignment assignment = (Assignment)theEObject;
+        T result = caseAssignment(assignment);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LlmsPackage.GENERIC_VARIABLE:
+      {
+        GenericVariable genericVariable = (GenericVariable)theEObject;
+        T result = caseGenericVariable(genericVariable);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -343,6 +349,10 @@ public class LlmsSwitch<T> extends Switch<T>
         CallVariable callVariable = (CallVariable)theEObject;
         T result = caseCallVariable(callVariable);
         if (result == null) result = caseParmsPrint(callVariable);
+        if (result == null) result = casePrimary(callVariable);
+        if (result == null) result = caseGenericVariable(callVariable);
+        if (result == null) result = caseExpressions(callVariable);
+        if (result == null) result = caseExpression(callVariable);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -351,6 +361,7 @@ public class LlmsSwitch<T> extends Switch<T>
         varParmArgs varParmArgs = (varParmArgs)theEObject;
         T result = casevarParmArgs(varParmArgs);
         if (result == null) result = casePrimary(varParmArgs);
+        if (result == null) result = caseGenericVariable(varParmArgs);
         if (result == null) result = caseExpressions(varParmArgs);
         if (result == null) result = caseExpression(varParmArgs);
         if (result == null) result = defaultCase(theEObject);
@@ -371,7 +382,6 @@ public class LlmsSwitch<T> extends Switch<T>
       {
         Numbers numbers = (Numbers)theEObject;
         T result = caseNumbers(numbers);
-        if (result == null) result = caseLoops(numbers);
         if (result == null) result = caseData(numbers);
         if (result == null) result = caseParmsPrint(numbers);
         if (result == null) result = casePrimary(numbers);
@@ -942,17 +952,33 @@ public class LlmsSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Variables</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Assignment</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Variables</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Assignment</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseVariables(Variables object)
+  public T caseAssignment(Assignment object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Generic Variable</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Generic Variable</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGenericVariable(GenericVariable object)
   {
     return null;
   }
