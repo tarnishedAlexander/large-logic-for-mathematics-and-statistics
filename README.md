@@ -107,7 +107,7 @@ Este lenguaje fue creado por:
 
 - Natalia Bilbao Cano, estudiante de 9no semestre de la carrera de Ingeniería en Sistemas Computacionales de la Universidad Privada Boliviana.
 - Alexander Cruz Mamani, estudiante de 5to semestre de la carrera de Ingeniería en Sistemas Computacionales de la Universidad Privada Boliviana.
-- 
+  
 Ambos autores han desarrollado este proyecto con la intención de facilitar la creación y manipulación de constructos lógicos y matemáticos, especialmente en el ámbito de la estadística y el aprendizaje automático.
 
 Gracias por utilizar el lenguaje Llms para Lógica y Estadística Matemática! ¡Feliz programación!
