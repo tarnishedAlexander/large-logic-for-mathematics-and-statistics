@@ -1,2 +1,2 @@
-# large-logic-for-mathematics-and-statistics
-programming language for mathematicians and statisticians
+# Large Logic for Mathematics and Statistics
+Programming Language for Mathematicians and Statisticians
